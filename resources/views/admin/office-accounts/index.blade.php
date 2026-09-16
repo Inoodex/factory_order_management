@@ -1,0 +1,139 @@
+@extends('admin.layouts.master')
+
+@section('title', 'Office Accounts')
+
+@section('content')
+    <div class="flex flex-wrap items-center justify-between gap-4">
+        <h2 class="text-xl font-semibold uppercase">Office Accounts</h2>
+        <div class="flex w-full flex-wrap items-center justify-end gap-4 sm:w-auto">
+            <a href="{{ route('admin.office-accounts.create') }}" class="btn btn-primary gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Add Account
+            </a>
+        </div>
+    </div>
+
+    <div class="panel mt-6">
+        <div class="mb-5 flex flex-col gap-5 md:flex-row md:items-center">
+            <form action="{{ route('admin.office-accounts.index') }}" method="GET"
+                class="flex flex-1 flex-col gap-5 md:flex-row md:items-center w-full">
+                <div class="relative w-full md:w-80">
+                    <input type="text" name="search" value="{{ request('search') }}"
+                        placeholder="Search name, provider, number..." class="form-input ltr:pr-11 rtl:pl-11" />
+                    <button type="submit"
+                        class="absolute inset-y-0 flex items-center hover:text-primary ltr:right-4 rtl:left-4">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="11.5" cy="11.5" r="9.5" stroke="currentColor" stroke-width="1.5"
+                                opacity="0.5" />
+                            <path d="M18.5 18.5L22 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex gap-2">
+                    <select name="account_type" class="form-select w-full min-w-[120px] pr-10">
+                        <option value="">Type</option>
+                        <option value="bank" {{ request('account_type') == 'bank' ? 'selected' : '' }}>Bank</option>
+                        <option value="mfs" {{ request('account_type') == 'mfs' ? 'selected' : '' }}>MFS</option>
+                        <option value="cash" {{ request('account_type') == 'cash' ? 'selected' : '' }}>Cash</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                    <a href="{{ route('admin.office-accounts.index') }}" class="btn btn-outline-danger">Reset</a>
+                </div>
+            </form>
+        </div>
+
+        <div class="datatable">
+            <div class="overflow-x-auto min-h-[220px]">
+                <table class="table-hover w-full table-auto">
+                    <thead>
+                        <tr>
+                            <th>Account Name</th>
+                            {{-- <th>Type</th> --}}
+                            <th>Bank/Provider Name</th>
+                            <th>Account Number</th>
+                            <th>Branch</th>
+                            {{-- <th>Opening Balance</th> --}}
+                            {{-- <th>Total Income</th>
+                            <th>Total Expense</th> --}}
+                            <th>Current Balance</th>
+                            {{-- <th>Status</th> --}}
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($accounts as $account)
+                            <tr>
+                                <td class="font-semibold">{{ $account->account_name }}</td>
+                                {{-- <td><span class="badge badge-outline-primary uppercase">{{ $account->account_type }}</span> --}}
+                                </td>
+                                <td>{{ $account->provider_name ?? 'N/A' }}</td>
+                                <td class="font-mono">{{ $account->account_number }}</td>
+                                <td>{{ $account->branch_name ?? 'N/A' }}</td>
+                                {{-- <td class="font-semibold">{{ number_format($account->opening_balance ?? 0, 2) }}</td> --}}
+                                @php
+                                    $totalCredit = (float) ($account->total_income ?? 0);
+                                    $totalDebit = (float) ($account->total_expense ?? 0);
+                                    $currentBalance = ($account->opening_balance ?? 0) + $totalDebit - $totalCredit;
+                                @endphp
+                                {{-- <td class="text-success font-semibold">{{ number_format($income, 2) }}</td>
+                                <td class="text-danger font-semibold">{{ number_format($expense, 2) }}</td> --}}
+                                <td class="font-semibold">{{ number_format($currentBalance, 2) }}</td>
+                                {{-- <td>
+                                    @if ($account->status == 'active')
+                                        <span class="badge bg-success">Active</span>
+                                    @else
+                                        <span class="badge bg-danger">Inactive</span>
+                                    @endif
+                                </td> --}}
+                                <td class="text-center">
+                                    <div class="relative inline-block text-left" x-data="{ open: false }" @click.outside="open = false">
+                                        <button type="button" @click="open = !open" class="flex h-8 w-8 items-center justify-center rounded-full text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-[#1b2e4b] dark:text-gray-400 focus:outline-none transition" title="Actions">
+                                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                                                <circle cx="12" cy="5" r="2"/>
+                                                <circle cx="12" cy="12" r="2"/>
+                                                <circle cx="12" cy="19" r="2"/>
+                                            </svg>
+                                        </button>
+                                        <div x-show="open" x-cloak 
+                                            x-transition:enter="transition ease-out duration-100" 
+                                            x-transition:enter-start="transform opacity-0 scale-95" 
+                                            x-transition:enter-end="transform opacity-100 scale-100" 
+                                            x-transition:leave="transition ease-in duration-75" 
+                                            x-transition:leave-start="transform opacity-100 scale-100" 
+                                            x-transition:leave-end="transform opacity-0 scale-95"
+                                            class="absolute right-0 z-50 mt-1 w-40 origin-top-right rounded-lg bg-white p-1 shadow-lg ring-1 ring-black/5 dark:bg-[#1b2e4b] dark:ring-gray-700 text-left">
+                                            <a href="{{ route('admin.office-accounts.edit', $account->id) }}" class="flex items-center gap-2 rounded-md px-3 py-2 text-xs font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-[#121e32]">
+                                                <svg class="h-3.5 w-3.5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                                                Edit Account
+                                            </a>
+                                            <form action="{{ route('admin.office-accounts.destroy', $account->id) }}" method="POST" onsubmit="return confirm('Delete this account?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="flex w-full items-center gap-2 rounded-md px-3 py-2 text-xs font-medium text-danger hover:bg-red-50 dark:hover:bg-[#121e32]">
+                                                    <svg class="h-3.5 w-3.5 text-danger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="10" class="text-center">No office accounts found.</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-4">
+                {{ $accounts->links() }}
+            </div>
+        </div>
+    </div>
+@endsection

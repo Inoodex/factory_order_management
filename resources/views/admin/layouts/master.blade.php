@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>@yield('title') | {{ get_setting('app_name', config('app.name')) }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon"
+        href="{{ get_setting('app_favicon') ? asset('storage/' . get_setting('app_favicon')) : asset('favicon.ico') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets/css/perfect-scrollbar.min.css') }}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets/css/style.css') }}" />
+    <link defer rel="stylesheet" type="text/css" media="screen" href="{{ asset('assets/css/animate.css') }}" />
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- jQuery (required) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    @stack('styles')
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body x-data="main" class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
+    :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme === 'dark' || $store.app.isDarkMode ?  'dark' : '', $store.app.menu, $store.app.layout,$store.app.rtlClass]">
+
+    @include('admin.layouts.partials.loader')
+    @include('admin.layouts.partials.scroll-to-top')
+
+    <div class="main-container min-h-screen text-black dark:text-white-dark" :class="[$store.app.navbar]">
+        @include('admin.layouts.partials.customizer')
+        @include('admin.layouts.sidebar')
+
+        <div class="main-content flex min-h-screen flex-col">
+            @include('admin.layouts.header')
+
+            <div class="animate__animated p-6" :class="[$store.app.animation]">
+                @include('admin.layouts.partials.flash-messages')
+                @yield('content')
+            </div>
+
+            @include('admin.layouts.footer')
+        </div>
+    </div>
+
+    @include('admin.layouts.scripts')
+    @stack('scripts')
+
+    @if(auth()->check())
+    <audio id="notification-sound" preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let lastNotificationCount = {{ auth()->user()->unreadNotifications->count() }};
+            let originalTitle = document.title;
+            let notificationInterval = null;
+
+            function playNotificationSound() {
+                const sound = document.getElementById('notification-sound');
+                if (sound) {
+                    sound.play().catch(e => console.log('Sound play blocked by browser:', e));
+                }
+            }
+
+            function updateTabTitle(count) {
+                if (count > 0) {
+                    if (!notificationInterval) {
+                        notificationInterval = setInterval(() => {
+                            document.title = document.title === originalTitle 
+                                ? `(${count}) New Notification!` 
+                                : originalTitle;
+                        }, 1000);
+                    }
+                } else {
+                    if (notificationInterval) {
+                        clearInterval(notificationInterval);
+                        notificationInterval = null;
+                    }
+                    document.title = originalTitle;
+                }
+            }
+
+            // Initial check
+            if (lastNotificationCount > 0) {
+                updateTabTitle(lastNotificationCount);
+            }
+
+            // Poll for new notifications every 30 seconds
+            setInterval(() => {
+                fetch('{{ route("admin.notifications.count") }}')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.count > lastNotificationCount) {
+                            playNotificationSound();
+                        }
+                        lastNotificationCount = data.count;
+                        updateTabTitle(lastNotificationCount);
+                    })
+                    .catch(error => console.error('Error fetching notifications:', error));
+            }, 30000);
+        });
+    </script>
+    @endif
+</body>
+
+</html>
