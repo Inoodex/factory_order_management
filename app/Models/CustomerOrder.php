@@ -19,6 +19,7 @@ class CustomerOrder extends Model
         'order_no',
         'style_no',
         'style_name',
+        'brand',
         'style_image',
         'composition',
         'color_name',

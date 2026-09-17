@@ -10,6 +10,16 @@ This hands-on guide walks you through the entire Buying House workflow from begi
 - **Login Email / Username**: `hello@inoodex.com` or `admin`
 - **Password**: `hello@inoodex.com`
 
+> [!TIP]
+> **Workflow Overview**: See the complete architectural diagram below or in [WORKFLOW.md](WORKFLOW.md).
+> 
+> <details>
+> <summary><b>🗺️ Click to view End-to-End Visual Workflow Diagram</b></summary>
+> 
+> ![End-to-End Operational and Financial Workflow Diagram](./docs/workflow_diagram.png)
+> 
+> </details>
+
 ---
 
 ## Step 1: Log In to the System

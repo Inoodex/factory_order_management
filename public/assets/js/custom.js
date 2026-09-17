@@ -63,6 +63,105 @@
                 this.open = !this.open;
             },
         }));
+
+        // Table Action 3-Dot Dropdown with smart Popper positioning
+        Alpine.data("tableDropdown", (initialOpenState = false) => ({
+            open: initialOpenState,
+            popper: null,
+
+            toggle() {
+                this.open = !this.open;
+                if (this.open) {
+                    this.$nextTick(() => {
+                        this.updatePosition();
+                    });
+                } else {
+                    this.cleanup();
+                }
+            },
+
+            close() {
+                this.open = false;
+                this.cleanup();
+            },
+
+            updatePosition() {
+                const btn = this.$refs.btn || this.$el.querySelector('button');
+                const menu = this.$refs.menu || this.$el.querySelector('[x-show="open"]') || this.$el.querySelector('.table-dropdown-menu');
+                if (!btn || !menu) return;
+
+                const tr = this.$el.closest('tr');
+                const td = this.$el.closest('td');
+                if (tr) tr.classList.add('dropdown-open');
+                if (td) td.classList.add('dropdown-open');
+
+                if (window.Popper && typeof window.Popper.createPopper === 'function') {
+                    this.cleanup(false);
+                    menu.style.zIndex = '99999';
+                    this.popper = window.Popper.createPopper(btn, menu, {
+                        placement: 'bottom-end',
+                        strategy: 'fixed',
+                        modifiers: [
+                            {
+                                name: 'computeStyles',
+                                options: {
+                                    gpuAcceleration: false,
+                                    adaptive: false,
+                                },
+                            },
+                            {
+                                name: 'preventOverflow',
+                                options: {
+                                    boundary: 'viewport',
+                                    padding: 10,
+                                },
+                            },
+                            {
+                                name: 'flip',
+                                options: {
+                                    fallbackPlacements: ['top-end'],
+                                    padding: 10,
+                                },
+                            },
+                            {
+                                name: 'offset',
+                                options: {
+                                    offset: [0, 4],
+                                },
+                            },
+                        ],
+                    });
+                    this.popper.forceUpdate();
+                } else {
+                    // Smart CSS fallback if Popper is not yet loaded
+                    const rect = btn.getBoundingClientRect();
+                    if (window.innerHeight - rect.bottom < 200) {
+                        menu.classList.remove('origin-top-right', 'mt-1', 'top-full');
+                        menu.classList.add('origin-bottom-right', 'bottom-full', 'mb-1');
+                    } else {
+                        menu.classList.remove('origin-bottom-right', 'bottom-full', 'mb-1');
+                        menu.classList.add('origin-top-right', 'top-full', 'mt-1');
+                    }
+                }
+            },
+
+            cleanup(clearClasses = true) {
+                const menu = this.$refs?.menu || this.$el?.querySelector('.table-dropdown-menu');
+                if (menu) {
+                    menu.removeAttribute('data-popper-placement');
+                }
+                if (clearClasses) {
+                    const tr = this.$el.closest('tr');
+                    const td = this.$el.closest('td');
+                    if (tr) tr.classList.remove('dropdown-open');
+                    if (td) td.classList.remove('dropdown-open');
+                }
+                if (this.popper) {
+                    this.popper.destroy();
+                    this.popper = null;
+                }
+            },
+        }));
         Alpine.data("modal", (initialOpenState = false) => ({
             open: initialOpenState,
 
@@ -471,4 +570,107 @@
             },
         });
     });
+
+    // Global Automatic Enhancer for ALL table action 3-dot dropdowns
+    (function initGlobalTableDropdownDelegator() {
+        let activeGlobalPopper = null;
+        let activeContainer = null;
+
+        function closeGlobalPopper() {
+            if (activeContainer) {
+                const menu = activeContainer.querySelector('.table-dropdown-menu, [x-show="open"]');
+                if (menu) {
+                    menu.removeAttribute('data-popper-placement');
+                }
+                const tr = activeContainer.closest('tr');
+                const td = activeContainer.closest('td');
+                if (tr) tr.classList.remove('dropdown-open');
+                if (td) td.classList.remove('dropdown-open');
+                activeContainer = null;
+            }
+            if (activeGlobalPopper) {
+                activeGlobalPopper.destroy();
+                activeGlobalPopper = null;
+            }
+        }
+
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('table td button');
+            if (btn) {
+                const container = btn.closest('.relative, [x-data]');
+                if (container && container.closest('table')) {
+                    // If managed by tableDropdown Alpine component, skip duplicate popper
+                    if (container._x_dataStack && container._x_dataStack[0]?.updatePosition) {
+                        return;
+                    }
+                    const menu = container.querySelector('[x-show="open"], .table-dropdown-menu');
+                    if (menu) {
+                        requestAnimationFrame(() => {
+                            // Wait for Alpine to toggle visibility
+                            const isVisible = menu.style.display !== 'none' && !menu.hasAttribute('x-cloak');
+                            if (isVisible) {
+                                closeGlobalPopper();
+                                activeContainer = container;
+                                const tr = container.closest('tr');
+                                const td = container.closest('td');
+                                if (tr) tr.classList.add('dropdown-open');
+                                if (td) td.classList.add('dropdown-open');
+
+                                if (window.Popper && typeof window.Popper.createPopper === 'function') {
+                                    menu.style.zIndex = '99999';
+                                    activeGlobalPopper = window.Popper.createPopper(btn, menu, {
+                                        placement: 'bottom-end',
+                                        strategy: 'fixed',
+                                        modifiers: [
+                                            {
+                                                name: 'computeStyles',
+                                                options: { gpuAcceleration: false, adaptive: false },
+                                            },
+                                            {
+                                                name: 'preventOverflow',
+                                                options: { boundary: 'viewport', padding: 10 },
+                                            },
+                                            {
+                                                name: 'flip',
+                                                options: { fallbackPlacements: ['top-end'], padding: 10 },
+                                            },
+                                            {
+                                                name: 'offset',
+                                                options: { offset: [0, 4] },
+                                            },
+                                        ],
+                                    });
+                                    activeGlobalPopper.forceUpdate();
+                                    requestAnimationFrame(() => {
+                                        if (activeGlobalPopper) activeGlobalPopper.update();
+                                    });
+                                }
+                            } else {
+                                closeGlobalPopper();
+                            }
+                        });
+                    }
+                }
+            } else {
+                // Clicked outside button or inside menu
+                const clickedInsideMenu = e.target.closest('.table-dropdown-menu, [x-show="open"]');
+                if (!clickedInsideMenu) {
+                    closeGlobalPopper();
+                }
+            }
+        }, true);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeGlobalPopper();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (activeGlobalPopper) activeGlobalPopper.update();
+        });
+        window.addEventListener('scroll', () => {
+            if (activeGlobalPopper) activeGlobalPopper.update();
+        }, true);
+    })();
 })();

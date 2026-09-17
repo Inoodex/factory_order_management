@@ -8,27 +8,24 @@
         <a href="{{ route('admin.suppliers.index') }}" class="btn btn-outline-secondary">Back to List</a>
     </div>
 
-    <div class="panel mt-6 max-w-3xl">
+    <div class="panel mt-6">
         <form action="{{ route('admin.suppliers.store') }}" method="POST" class="space-y-5">
             @csrf
             <div>
                 <label for="name" class="font-semibold">Supplier / Factory Name <span class="text-danger">*</span></label>
-                <input type="text" id="name" name="name" value="{{ old('name') }}" required
-                    placeholder="e.g. Apex Knitting & Dyeing Ltd, Viyellatex Ltd..." class="form-input" />
+                <input type="text" id="name" name="name" value="{{ old('name') }}" required class="form-input" />
                 @error('name') <span class="text-danger text-sm">{{ $message }}</span> @enderror
             </div>
 
             <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
                 <div>
                     <label for="location" class="font-semibold">Location / Factory Zone</label>
-                    <input type="text" id="location" name="location" value="{{ old('location') }}"
-                        placeholder="e.g. Gazipur, Narayanganj, Chittagong EPZ..." class="form-input" />
+                    <input type="text" id="location" name="location" value="{{ old('location') }}" class="form-input" />
                     @error('location') <span class="text-danger text-sm">{{ $message }}</span> @enderror
                 </div>
                 <div>
                     <label for="contact_person" class="font-semibold">Contact Person</label>
-                    <input type="text" id="contact_person" name="contact_person" value="{{ old('contact_person') }}"
-                        placeholder="e.g. Merchandiser or Factory GM..." class="form-input" />
+                    <input type="text" id="contact_person" name="contact_person" value="{{ old('contact_person') }}" class="form-input" />
                     @error('contact_person') <span class="text-danger text-sm">{{ $message }}</span> @enderror
                 </div>
             </div>
@@ -36,14 +33,12 @@
             <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
                 <div>
                     <label for="phone" class="font-semibold">Phone Number</label>
-                    <input type="text" id="phone" name="phone" value="{{ old('phone') }}"
-                        placeholder="+880 1800 000000" class="form-input" />
+                    <input type="text" id="phone" name="phone" value="{{ old('phone') }}" class="form-input" />
                     @error('phone') <span class="text-danger text-sm">{{ $message }}</span> @enderror
                 </div>
                 <div>
                     <label for="email" class="font-semibold">Email Address</label>
-                    <input type="email" id="email" name="email" value="{{ old('email') }}"
-                        placeholder="supplier@factory.com" class="form-input" />
+                    <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-input" />
                     @error('email') <span class="text-danger text-sm">{{ $message }}</span> @enderror
                 </div>
             </div>

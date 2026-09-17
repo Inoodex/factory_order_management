@@ -2,6 +2,41 @@
 
 @section('title', 'Edit Invoice')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('assets/css/nice-select2.css') }}">
+    <style>
+        .nice-select {
+            width: 100%;
+            height: 42px !important;
+            display: flex !important;
+            align-items: center !important;
+            background-image: none !important;
+        }
+
+        .nice-select .current {
+            line-height: normal !important;
+            display: flex !important;
+            align-items: center !important;
+            height: 100% !important;
+        }
+
+        .nice-select .list {
+            width: 100%;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .nice-select .nice-select-dropdown {
+            width: 100% !important;
+            z-index: 50 !important;
+        }
+
+        .form-select {
+            background-image: none !important;
+        }
+    </style>
+@endpush
+
 @section('content')
     <div class="flex flex-wrap items-center justify-between gap-4">
         <h2 class="text-xl font-semibold uppercase">Edit Invoice #{{ $invoice->invoice_number }}</h2>
@@ -36,8 +71,7 @@
             <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
                 <div class="form-group">
                     <label for="customer_order_id">Customer Order (Apparel / Factory)</label>
-                    <select name="customer_order_id" id="customer_order_id" class="form-select"
-                        x-model="selectedOrderId" @change="onOrderSelect">
+                    <select name="customer_order_id" id="customer_order_id" class="form-select">
                         <option value="">-- General Invoice / No Order --</option>
                         @foreach ($customerOrders as $ord)
                             <option value="{{ $ord->id }}" {{ $invoice->customer_order_id == $ord->id ? 'selected' : '' }}
@@ -250,32 +284,33 @@
                 ] : null) !!},
 
                 init() {
-                    this.initNiceSelect();
                     this.syncNotes();
                     this.calculateTotals();
-                },
-
-                initNiceSelect() {
-                    setTimeout(() => {
-                        const el = document.getElementById('customer_order_id');
-                        if (el) {
-                            NiceSelect.bind(el, {
-                                searchable: true,
-                                placeholder: 'Select Factory Customer Order'
-                            });
-                        }
-                    }, 100);
-                },
-
-                onOrderSelect() {
+                    const self = this;
                     const el = document.getElementById('customer_order_id');
-                    if (!el || !el.value) {
+                    if (el && typeof NiceSelect !== 'undefined') {
+                        NiceSelect.bind(el, {
+                            searchable: true,
+                            placeholder: 'Select Factory Customer Order'
+                        });
+
+                        el.addEventListener('change', function() {
+                            self.onOrderSelect(this.value);
+                        });
+                    }
+                },
+
+                onOrderSelect(orderId) {
+                    this.selectedOrderId = orderId || '';
+
+                    if (!orderId) {
                         this.orderDetails = null;
                         return;
                     }
 
-                    const opt = el.options[el.selectedIndex];
-                    if (opt) {
+                    const el = document.getElementById('customer_order_id');
+                    const opt = el ? el.querySelector(`option[value="${orderId}"]`) : null;
+                    if (opt && opt.value) {
                         this.orderDetails = {
                             order_no: opt.dataset.orderNo,
                             style: opt.dataset.style,
@@ -283,6 +318,8 @@
                             qty: opt.dataset.qty,
                             total: parseFloat(opt.dataset.total) || 0
                         };
+                    } else {
+                        this.orderDetails = null;
                     }
                 },
 

@@ -28,6 +28,40 @@
         [x-cloak] {
             display: none !important;
         }
+
+        /* Table Action Dropdown: Fixed viewport strategy prevents table container scrollbars */
+        .table-dropdown-menu,
+        table td .table-dropdown-menu,
+        table td [x-ref="menu"] {
+            position: fixed !important;
+            margin: 0 !important;
+            right: auto !important;
+            bottom: auto !important;
+            z-index: 99999 !important;
+        }
+
+        /* Hide completely until Popper calculates exact viewport coordinates to avoid any flash */
+        .table-dropdown-menu:not([data-popper-placement]),
+        table td [x-ref="menu"]:not([data-popper-placement]) {
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        /* Elevate active row and cell above subsequent rows */
+        table tr.dropdown-open,
+        table td.dropdown-open {
+            position: relative !important;
+            z-index: 60 !important;
+        }
+
+        .table-dropdown-menu[data-popper-placement^="top"] {
+            transform-origin: bottom right !important;
+        }
+
+        .table-dropdown-menu[data-popper-placement^="bottom"] {
+            transform-origin: top right !important;
+        }
     </style>
 </head>
 

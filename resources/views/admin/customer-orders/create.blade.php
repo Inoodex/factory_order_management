@@ -22,9 +22,9 @@
                     <div>
                         <label for="customer_id" class="font-semibold">Customer / Buyer <span class="text-danger">*</span></label>
                         <select name="customer_id" id="customer_id" class="form-select" required>
-                            <option value="">Select Buyer / Brand</option>
+                            <option value="">Select Buyer</option>
                             @foreach ($customers as $c)
-                                <option value="{{ $c->id }}" {{ old('customer_id') == $c->id ? 'selected' : '' }}>
+                                <option value="{{ $c->id }}" data-brand="{{ $c->brand }}" {{ old('customer_id') == $c->id ? 'selected' : '' }}>
                                     {{ $c->name }} {{ $c->brand ? "({$c->brand})" : '' }} {{ $c->session ? "- {$c->session}" : '' }}
                                 </option>
                             @endforeach
@@ -50,7 +50,7 @@
             <!-- Section 2: Order & Style Details -->
             <div class="border-b pb-4">
                 <h3 class="text-md font-bold uppercase text-primary mb-3">2. Order & Style Specifications</h3>
-                <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+                <div class="grid grid-cols-1 gap-5 md:grid-cols-4">
                     <div>
                         <label for="order_no" class="font-semibold">Order Number <span class="text-danger">*</span></label>
                         <input type="text" id="order_no" name="order_no" value="{{ old('order_no', $suggestedOrderNo) }}" required
@@ -59,32 +59,34 @@
                     </div>
 
                     <div>
+                        <label for="brand" class="font-semibold">Brand</label>
+                        <input type="text" id="brand" name="brand" value="{{ old('brand') }}" class="form-input" />
+                        @error('brand') <span class="text-danger text-sm">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div>
                         <label for="style_no" class="font-semibold">Style Number <span class="text-danger">*</span></label>
-                        <input type="text" id="style_no" name="style_no" value="{{ old('style_no') }}" required
-                            placeholder="e.g. STY-2026-901" class="form-input" />
+                        <input type="text" id="style_no" name="style_no" value="{{ old('style_no') }}" required class="form-input" />
                         @error('style_no') <span class="text-danger text-sm">{{ $message }}</span> @enderror
                     </div>
 
                     <div>
                         <label for="style_name" class="font-semibold">Style Name / Description</label>
-                        <input type="text" id="style_name" name="style_name" value="{{ old('style_name') }}"
-                            placeholder="e.g. Men Slim Crewneck T-Shirt" class="form-input" />
+                        <input type="text" id="style_name" name="style_name" value="{{ old('style_name') }}" class="form-input" />
                         @error('style_name') <span class="text-danger text-sm">{{ $message }}</span> @enderror
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 gap-5 md:grid-cols-3 mt-4">
                     <div>
-                        <label for="composition" class="font-semibold">Fabric Composition</label>
-                        <input type="text" id="composition" name="composition" value="{{ old('composition') }}"
-                            placeholder="e.g. 100% Cotton, 80/20 Cotton/Polyester" class="form-input" />
+                        <label for="composition" class="font-semibold">Fabric Composition (%)</label>
+                        <input type="text" id="composition" name="composition" value="{{ old('composition') }}" class="form-input" />
                         @error('composition') <span class="text-danger text-sm">{{ $message }}</span> @enderror
                     </div>
 
                     <div>
                         <label for="color_name" class="font-semibold">Color Name</label>
-                        <input type="text" id="color_name" name="color_name" value="{{ old('color_name') }}"
-                            placeholder="e.g. Navy Heather, Jet Black" class="form-input" />
+                        <input type="text" id="color_name" name="color_name" value="{{ old('color_name') }}" class="form-input" />
                         @error('color_name') <span class="text-danger text-sm">{{ $message }}</span> @enderror
                     </div>
 
@@ -98,7 +100,7 @@
 
                 <!-- Style Image Upload -->
                 <div class="mt-4">
-                    <label for="style_image" class="font-semibold">Style Sketch / Photo</label>
+                    <label for="style_image" class="font-semibold">Style Photo</label>
                     <input type="file" id="style_image" name="style_image" accept="image/*" class="form-input file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20" />
                     <span class="text-xs text-gray-500">Supported formats: JPG, PNG, WEBP (Max 5MB)</span>
                     @error('style_image') <span class="text-danger text-sm">{{ $message }}</span> @enderror
@@ -131,7 +133,7 @@
 
                 <div class="mt-4">
                     <label for="notes" class="font-semibold">Special Instructions / Remarks</label>
-                    <textarea id="notes" name="notes" rows="2" placeholder="Packaging requirements, washing instructions, trims specs..." class="form-textarea">{{ old('notes') }}</textarea>
+                    <textarea id="notes" name="notes" rows="2" class="form-textarea">{{ old('notes') }}</textarea>
                     @error('notes') <span class="text-danger text-sm">{{ $message }}</span> @enderror
                 </div>
             </div>
@@ -142,4 +144,16 @@
             </div>
         </form>
     </div>
+
+    @push('scripts')
+        <script>
+            document.getElementById('customer_id')?.addEventListener('change', function() {
+                const selected = this.options[this.selectedIndex];
+                const brandInput = document.getElementById('brand');
+                if (brandInput && !brandInput.value && selected && selected.dataset.brand) {
+                    brandInput.value = selected.dataset.brand;
+                }
+            });
+        </script>
+    @endpush
 @endsection

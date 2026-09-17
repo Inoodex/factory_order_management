@@ -14,7 +14,7 @@
         <a href="{{ route('admin.factory-followups.index') }}" class="btn btn-outline-secondary">Back to List</a>
     </div>
 
-    <div class="panel mt-6 max-w-3xl">
+    <div class="panel mt-6">
         <form action="{{ route('admin.factory-followups.update', $factoryFollowup) }}" method="POST" class="space-y-6">
             @csrf
             @method('PUT')
@@ -70,7 +70,7 @@
                 <h3 class="text-md font-bold uppercase text-primary mb-3">2. Factory Production Stages</h3>
                 <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
                     <div>
-                        <label for="knitting_status" class="font-semibold">Knitting / Weaving <span class="text-danger">*</span></label>
+                        <label for="knitting_status" class="font-semibold">Knitting<span class="text-danger">*</span></label>
                         <select name="knitting_status" id="knitting_status" class="form-select" required>
                             @foreach (\App\Models\FactoryFollowup::PRODUCTION_STATUSES as $status)
                                 <option value="{{ $status }}" {{ old('knitting_status', $factoryFollowup->knitting_status) === $status ? 'selected' : '' }}>
@@ -82,7 +82,7 @@
                     </div>
 
                     <div>
-                        <label for="dyeing_status" class="font-semibold">Dyeing / Washing <span class="text-danger">*</span></label>
+                        <label for="dyeing_status" class="font-semibold">Dyeing<span class="text-danger">*</span></label>
                         <select name="dyeing_status" id="dyeing_status" class="form-select" required>
                             @foreach (\App\Models\FactoryFollowup::PRODUCTION_STATUSES as $status)
                                 <option value="{{ $status }}" {{ old('dyeing_status', $factoryFollowup->dyeing_status) === $status ? 'selected' : '' }}>
@@ -94,7 +94,7 @@
                     </div>
 
                     <div>
-                        <label for="cutting_status" class="font-semibold">Cutting / Fabrication <span class="text-danger">*</span></label>
+                        <label for="cutting_status" class="font-semibold">Cutting<span class="text-danger">*</span></label>
                         <select name="cutting_status" id="cutting_status" class="form-select" required>
                             @foreach (\App\Models\FactoryFollowup::PRODUCTION_STATUSES as $status)
                                 <option value="{{ $status }}" {{ old('cutting_status', $factoryFollowup->cutting_status) === $status ? 'selected' : '' }}>

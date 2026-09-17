@@ -47,8 +47,12 @@
             <div class="panel">
                 <div class="flex items-start justify-between border-b pb-4">
                     <div>
-                        <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Style Specification</span>
-                        <h3 class="text-2xl font-bold text-primary">{{ $customerOrder->style_no }}</h3>
+                        <div class="flex items-center gap-2">
+                            <h3 class="text-2xl font-bold text-primary">{{ $customerOrder->style_no }}</h3>
+                            @if($customerOrder->brand || $customerOrder->customer?->brand)
+                                <span class="badge bg-primary/10 text-primary text-xs font-bold uppercase">{{ $customerOrder->brand ?: $customerOrder->customer?->brand }}</span>
+                            @endif
+                        </div>
                         <p class="text-sm font-medium text-gray-600 dark:text-gray-300">{{ $customerOrder->style_name ?? 'No style description' }}</p>
                     </div>
                     @if($customerOrder->style_image)
@@ -188,10 +192,13 @@
                         <span class="text-xs text-gray-400 block">Name:</span>
                         <strong class="text-base text-primary">{{ $customerOrder->customer?->name ?? '—' }}</strong>
                     </div>
-                    @if($customerOrder->customer?->brand)
+                    @php
+                        $displayBrand = $customerOrder->brand ?: $customerOrder->customer?->brand;
+                    @endphp
+                    @if($displayBrand)
                         <div>
                             <span class="text-xs text-gray-400 block">Brand:</span>
-                            <span class="badge bg-info/10 text-info">{{ $customerOrder->customer->brand }}</span>
+                            <span class="badge bg-info/10 text-info">{{ $displayBrand }}</span>
                         </div>
                     @endif
                     @if($customerOrder->customer?->session)

@@ -2,6 +2,41 @@
 
 @section('title', 'Create Invoice')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('assets/css/nice-select2.css') }}">
+    <style>
+        .nice-select {
+            width: 100%;
+            height: 42px !important;
+            display: flex !important;
+            align-items: center !important;
+            background-image: none !important;
+        }
+
+        .nice-select .current {
+            line-height: normal !important;
+            display: flex !important;
+            align-items: center !important;
+            height: 100% !important;
+        }
+
+        .nice-select .list {
+            width: 100%;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .nice-select .nice-select-dropdown {
+            width: 100% !important;
+            z-index: 50 !important;
+        }
+
+        .form-select {
+            background-image: none !important;
+        }
+    </style>
+@endpush
+
 @section('content')
     <div class="flex flex-wrap items-center justify-between gap-4">
         <h2 class="text-xl font-semibold uppercase">Create New Invoice</h2>
@@ -22,12 +57,12 @@
         <div class="panel mt-6">
             <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
                 <div class="form-group">
-                    <label for="customer_order_id">Customer Order (Apparel / Factory)</label>
-                    <select name="customer_order_id" id="customer_order_id" class="form-select"
-                        x-model="selectedOrderId" @change="onOrderSelect">
+                    <label for="customer_order_id" class="font-semibold text-sm">Customer Order (Apparel / Factory)</label>
+                    <select name="customer_order_id" id="customer_order_id" class="form-select font-medium text-sm">
                         <option value="">-- General Invoice / No Specific Order --</option>
                         @foreach ($customerOrders as $ord)
                             <option value="{{ $ord->id }}"
+                                {{ (old('customer_order_id', $selectedOrder?->id) == $ord->id) ? 'selected' : '' }}
                                 data-order-no="{{ $ord->order_no }}"
                                 data-style="{{ $ord->style_no }}"
                                 data-customer="{{ $ord->customer?->name ?? 'N/A' }}"
@@ -38,7 +73,7 @@
                             </option>
                         @endforeach
                     </select>
-                    <span class="text-xs text-white-dark mt-1">Select an order to link this invoice to a factory order</span>
+                    <span class="text-xs text-gray-500 mt-1 block">Select an order to link this invoice and auto-populate line items</span>
                 </div>
 
                 <div class="form-group">
@@ -204,60 +239,60 @@
     </form>
 @endsection
 
+@php
+    $defaultRevenueAccount = $accounts->firstWhere('type', 'revenue') ?? $accounts->first();
+@endphp
+
 @push('scripts')
     <script src="{{ asset('assets/js/nice-select2.js') }}"></script>
     <script>
         function invoiceForm() {
+            const defaultAccountId = '{{ $defaultRevenueAccount?->id ?? '' }}';
             return {
+                defaultAccountId: defaultAccountId,
                 items: [{
-                    chart_of_account_id: '',
+                    chart_of_account_id: defaultAccountId,
                     description: '',
                     quantity: 1,
                     unit_price: 0
                 }],
                 grandTotal: 0,
-                selectedOrderId: '{{ $selectedOrder ? $selectedOrder->id : '' }}',
-                orderDetails: {!! json_encode(
-                    $selectedOrder
-                    ? [
-                        'order_no' => $selectedOrder->order_no,
-                        'style' => $selectedOrder->style_no,
-                        'customer' => $selectedOrder->customer?->name ?? 'N/A',
-                        'qty' => $selectedOrder->color_qty,
-                        'total' => (float) ($selectedOrder->total_price ?: ($selectedOrder->price * $selectedOrder->color_qty)),
-                    ]
-                    : null
-                ) !!},
+                selectedOrderId: '{{ old('customer_order_id', $selectedOrder ? $selectedOrder->id : '') }}',
+                orderDetails: null,
 
                 init() {
-                    this.initNiceSelect();
                     this.syncNotes();
+                    const self = this;
+                    const el = document.getElementById('customer_order_id');
+                    if (el && typeof NiceSelect !== 'undefined') {
+                        NiceSelect.bind(el, {
+                            searchable: true,
+                            placeholder: 'Select Factory Customer Order'
+                        });
+
+                        el.addEventListener('change', function() {
+                            self.onOrderSelect(this.value);
+                        });
+                    }
+
                     if (this.selectedOrderId) {
-                        this.onOrderSelect();
+                        this.$nextTick(() => {
+                            this.onOrderSelect(this.selectedOrderId);
+                        });
                     }
                 },
 
-                initNiceSelect() {
-                    setTimeout(() => {
-                        const el = document.getElementById('customer_order_id');
-                        if (el) {
-                            NiceSelect.bind(el, {
-                                searchable: true,
-                                placeholder: 'Select Factory Customer Order'
-                            });
-                        }
-                    }, 100);
-                },
+                onOrderSelect(orderId) {
+                    this.selectedOrderId = orderId || '';
 
-                onOrderSelect() {
-                    const el = document.getElementById('customer_order_id');
-                    if (!el || !el.value) {
+                    if (!orderId) {
                         this.orderDetails = null;
                         return;
                     }
 
-                    const opt = el.options[el.selectedIndex];
-                    if (opt) {
+                    const el = document.getElementById('customer_order_id');
+                    const opt = el ? el.querySelector(`option[value="${orderId}"]`) : null;
+                    if (opt && opt.value) {
                         this.orderDetails = {
                             order_no: opt.dataset.orderNo,
                             style: opt.dataset.style,
@@ -266,13 +301,18 @@
                             total: parseFloat(opt.dataset.total) || 0
                         };
 
-                        // Auto-fill first line item if empty
-                        if (this.items.length === 1 && (!this.items[0].description || this.items[0].unit_price == 0)) {
+                        // Auto-fill or update first line item with order details
+                        if (this.items.length >= 1) {
+                            if (!this.items[0].chart_of_account_id) {
+                                this.items[0].chart_of_account_id = this.defaultAccountId;
+                            }
                             this.items[0].description = `Apparel Order: ${opt.dataset.orderNo} (Style: ${opt.dataset.style})`;
                             this.items[0].quantity = parseInt(opt.dataset.qty) || 1;
                             this.items[0].unit_price = parseFloat(opt.dataset.price) || 0;
                             this.calculateTotals();
                         }
+                    } else {
+                        this.orderDetails = null;
                     }
                 },
 

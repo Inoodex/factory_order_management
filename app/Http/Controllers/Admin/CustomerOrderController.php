@@ -19,6 +19,7 @@ class CustomerOrderController extends Controller
             $query->where(function ($q) use ($search) {
                 $q->where('order_no', 'like', "%{$search}%")
                     ->orWhere('style_no', 'like', "%{$search}%")
+                    ->orWhere('brand', 'like', "%{$search}%")
                     ->orWhere('style_name', 'like', "%{$search}%")
                     ->orWhere('color_name', 'like', "%{$search}%")
                     ->orWhere('composition', 'like', "%{$search}%");
@@ -72,6 +73,7 @@ class CustomerOrderController extends Controller
             'order_no' => 'required|string|max:100|unique:customer_orders,order_no',
             'style_no' => 'required|string|max:100',
             'style_name' => 'nullable|string|max:255',
+            'brand' => 'nullable|string|max:100',
             'composition' => 'nullable|string|max:255',
             'color_name' => 'nullable|string|max:100',
             'color_qty' => 'required|integer|min:0',
@@ -115,6 +117,7 @@ class CustomerOrderController extends Controller
             'order_no' => 'required|string|max:100|unique:customer_orders,order_no,' . $customerOrder->id,
             'style_no' => 'required|string|max:100',
             'style_name' => 'nullable|string|max:255',
+            'brand' => 'nullable|string|max:100',
             'composition' => 'nullable|string|max:255',
             'color_name' => 'nullable|string|max:100',
             'color_qty' => 'required|integer|min:0',

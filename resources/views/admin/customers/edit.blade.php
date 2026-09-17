@@ -8,7 +8,7 @@
         <a href="{{ route('admin.customers.index') }}" class="btn btn-outline-secondary">Back to List</a>
     </div>
 
-    <div class="panel mt-6 max-w-3xl">
+    <div class="panel mt-6">
         <form action="{{ route('admin.customers.update', $customer) }}" method="POST" class="space-y-5">
             @csrf
             @method('PUT')

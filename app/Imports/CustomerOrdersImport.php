@@ -62,6 +62,7 @@ class CustomerOrdersImport implements ToCollection, WithHeadingRow
                 'order_no' => $orderNo,
                 'style_no' => $styleNo,
                 'style_name' => trim($row['style_name'] ?? ''),
+                'brand' => trim($row['brand'] ?? '') ?: ($customer->brand ?? null),
                 'composition' => trim($row['composition'] ?? ''),
                 'color_name' => trim($row['color_name'] ?? ''),
                 'color_qty' => (int) ($row['color_qty'] ?? 0),

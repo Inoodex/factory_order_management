@@ -59,46 +59,126 @@ The Factory Order Management portal is an enterprise ERP designed specifically f
 
 ## 2. End-to-End Workflow Diagram
 
+![End-to-End Operational and Financial Workflow Diagram](./docs/workflow_diagram.png)
+
+<details>
+<summary><b>🔍 Click to expand Text / ASCII Flowchart Map</b></summary>
+
+```text
+                             ┌────────────────────────┐
+                             │  START: SYSTEM SETUP   │
+                             └───────────┬────────────┘
+                                         │
+                                         ▼
+                     ┌───────────────────────────────────────┐
+                     │ 1. Initialize Accounting Period,      │
+                     │    Chart of Accounts & Office Accounts│
+                     └───────────────────┬───────────────────┘
+                                         │
+                                         ▼
+                     ┌───────────────────────────────────────┐
+                     │ 2. Onboard Business Partners:         │
+                     │    Customers (Buyers) & Factories     │
+                     └───────────────────┬───────────────────┘
+                                         │
+                                         ▼
+                     ┌───────────────────────────────────────┐
+                     │ 3. Create Customer Order (PO)         │
+                     │    (Style, Quantity, Price, ETD Date) │
+                     └───────────────────┬───────────────────┘
+                                         │
+                     ┌───────────────────┴───────────────────┐
+                     │     AUTOMATIC SYSTEM INITIALIZATION   │
+                     │  - Generates Factory Order Record     │
+                     │  - Generates Factory Followup Tracker │
+                     └───────┬───────────────────────┬───────┘
+                             │                       │
+     ┌───────────────────────┘                       └───────────────────────┐
+     ▼                                                                       ▼
+┌─────────────────────────────────┐                     ┌─────────────────────────────────┐
+│     COMMERCIAL & FINANCIAL      │                     │        FACTORY PRODUCTION       │
+│           LIFECYCLE             │                     │            LIFECYCLE            │
+├─────────────────────────────────┤                     ├─────────────────────────────────┤
+│ 4. Generate Commercial Invoice  │                     │ 5. Sample Milestones:           │
+│    for Customer Order           │                     │    PPS Submission & Approval    │
+│               │                 │                     │               │                 │
+│               ▼                 │                     │               ▼                 │
+│ 6. Receive Customer Payment     │                     │ 7. Floor Production Tracking:   │
+│    (Cash / Bank Office Account) │                     │    - Knitting Stage             │
+│               │                 │                     │    - Dyeing Stage               │
+│               ▼                 │                     │    - Cutting Stage              │
+│ 8. Auto Journal Entry Created:  │                     │    - Finishing Stage            │
+│    - Debit: Cash / Bank Account │                     │               │                 │
+│    - Credit: Sales Revenue      │                     │               ▼                 │
+│               │                 │                     │ 9. Final Sample & Packing:      │
+│               │                 │                     │    - SHS Sample Approval        │
+│               │                 │                     │    - Final Carton Packing       │
+│               │                 │                     │               │                 │
+│               │                 │                     │               ▼                 │
+│               │                 │                     │ 10. Shipment Delivery:          │
+│               │                 │                     │     Actual Delivery Date (AETD) │
+│               │                 │                     └───────────────┬─────────────────┘
+│               │                 │                                     │
+│               │ ◄──────── (Factory Floor Expenses & Costs) ───────────┘
+│               │
+│               ▼
+│ 11. General Ledger & Audits:
+│     - Balanced Double-Entry Journal
+│     - Real-Time Trial Balance & P/L
+│               │
+│               ▼
+│ 12. Bank Reconciliation & Monthly Close
+└───────────────┬─────────────────┘
+                │
+                ▼
+┌─────────────────────────────────┐
+│ ORDER FULFILLED & AUDIT CLOSED  │
+└─────────────────────────────────┘
+```
+
+</details>
+
+<details>
+<summary><b>📊 Click to view Mermaid Flowchart Code</b></summary>
+
 ```mermaid
 flowchart TD
-    classDef startEnd fill:#4f46e5,stroke:#312e81,stroke-width:2px,color:#fff;
-    classDef process fill:#f8fafc,stroke:#64748b,stroke-width:1.5px,color:#1e293b;
-    classDef finance fill:#059669,stroke:#065f46,stroke-width:1.5px,color:#fff;
-    classDef production fill:#0284c7,stroke:#0369a1,stroke-width:1.5px,color:#fff;
+    Start(["Start: System Setup"]) --> S1["1. Initialize Accounting Period, COA, Office Accounts"]
+    S1 --> S2["2. Onboard Customers & Suppliers / Factories"]
+    S2 --> S3["3. Create Customer Order (Style, Quantity, Price, ETD)"]
 
-    Start([Start: System Setup]) :::startEnd --> S1[Initialize Accounting Period, COA, & Office Accounts] :::process
-    S1 --> S2[Create Customers & Suppliers / Factories] :::process
-    S2 --> S3[Create Customer Order with Style, Qty, Price, ETD] :::process
-
-    subgraph Auto_Event [Automated Lifecycle Initialization]
-        S3 -.->|Automatic Trigger| S4[Create Factory Order Record] :::production
-        S4 -.->|Automatic Trigger| S5[Create Factory Followup Tracker] :::production
+    subgraph Auto_Event ["Automated System Initialization"]
+        S3 -.->|"Auto Trigger"| S4["Create Factory Order Record"]
+        S4 -.->|"Auto Trigger"| S5["Create Factory Followup Tracker"]
     end
 
-    subgraph Production_Phase [Factory Production Tracking]
-        S5 --> P1[PPS Sample Submission & Approval] :::production
-        P1 --> P2[Knitting Stage: Not Started ➔ In Progress ➔ Completed] :::production
-        P2 --> P3[Dyeing Stage: Not Started ➔ In Progress ➔ Completed] :::production
-        P3 --> P4[Cutting Stage: Not Started ➔ In Progress ➔ Completed] :::production
-        P4 --> P5[SHS Sample Approval & Final Packing] :::production
-        P5 --> P6[Shipment / AETD Actual Delivery] :::production
+    subgraph Production_Phase ["Factory Production Tracking"]
+        S5 --> P1["PPS Sample Submission & Approval"]
+        P1 --> P2["Knitting Stage (Pending -> In Progress -> Completed)"]
+        P2 --> P3["Dyeing Stage (Pending -> In Progress -> Completed)"]
+        P3 --> P4["Cutting Stage (Pending -> In Progress -> Completed)"]
+        P4 --> P5["SHS Sample Approval & Final Packing"]
+        P5 --> P6["Shipment / AETD Actual Delivery"]
     end
 
-    subgraph Finance_Phase [Commercial & Accounting Flow]
-        S3 --> F1[Generate Customer Invoice] :::finance
-        F1 --> F2[Receive Customer Payment] :::finance
-        F2 --> F3[Post Auto Journal Entry Credit Revenue / Debit Cash or Bank] :::finance
+    subgraph Finance_Phase ["Commercial & Accounting Flow"]
+        S3 --> F1["Generate Customer Invoice"]
+        F1 --> F2["Receive Customer Payment"]
+        F2 --> F3["Auto Journal Entry: Debit Cash/Bank | Credit Revenue"]
 
-        P3 -.->|Factory Costs| E1[Record Factory Expense via COA] :::finance
-        E1 --> E2[Post Auto Journal Entry Debit Expense / Credit Cash or Bank] :::finance
+        P3 -.->|"Factory Costs"| E1["Record Factory Expense via COA"]
+        E1 --> E2["Auto Journal Entry: Debit Expense | Credit Cash/Bank"]
 
-        F3 --> GL[General Ledger & Financial Statements] :::finance
+        F3 --> GL["General Ledger & Financial Statements"]
         E2 --> GL
-        GL --> REC[Bank Reconciliation] :::finance
+        GL --> REC["Bank Reconciliation"]
     end
 
-    P6 --> Completed([Order Fulfillment & Audit Closed]) :::startEnd
+    P6 --> Completed(["Order Fulfillment & Audit Closed"])
+    REC --> Completed
 ```
+
+</details>
 
 ---
 

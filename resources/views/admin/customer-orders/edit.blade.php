@@ -24,7 +24,7 @@
                         <label for="customer_id" class="font-semibold">Customer / Buyer <span class="text-danger">*</span></label>
                         <select name="customer_id" id="customer_id" class="form-select" required>
                             @foreach ($customers as $c)
-                                <option value="{{ $c->id }}" {{ old('customer_id', $customerOrder->customer_id) == $c->id ? 'selected' : '' }}>
+                                <option value="{{ $c->id }}" data-brand="{{ $c->brand }}" {{ old('customer_id', $customerOrder->customer_id) == $c->id ? 'selected' : '' }}>
                                     {{ $c->name }} {{ $c->brand ? "({$c->brand})" : '' }} {{ $c->session ? "- {$c->session}" : '' }}
                                 </option>
                             @endforeach
@@ -49,12 +49,19 @@
             <!-- Section 2: Order & Style Details -->
             <div class="border-b pb-4">
                 <h3 class="text-md font-bold uppercase text-primary mb-3">2. Order & Style Specifications</h3>
-                <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+                <div class="grid grid-cols-1 gap-5 md:grid-cols-4">
                     <div>
                         <label for="order_no" class="font-semibold">Order Number <span class="text-danger">*</span></label>
                         <input type="text" id="order_no" name="order_no" value="{{ old('order_no', $customerOrder->order_no) }}" required
                             class="form-input font-bold text-primary" />
                         @error('order_no') <span class="text-danger text-sm">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div>
+                        <label for="brand" class="font-semibold">Brand</label>
+                        <input type="text" id="brand" name="brand" value="{{ old('brand', $customerOrder->brand ?? $customerOrder->customer?->brand) }}"
+                            class="form-input" />
+                        @error('brand') <span class="text-danger text-sm">{{ $message }}</span> @enderror
                     </div>
 
                     <div>
@@ -150,4 +157,16 @@
             </div>
         </form>
     </div>
+
+    @push('scripts')
+        <script>
+            document.getElementById('customer_id')?.addEventListener('change', function() {
+                const selected = this.options[this.selectedIndex];
+                const brandInput = document.getElementById('brand');
+                if (brandInput && !brandInput.value && selected && selected.dataset.brand) {
+                    brandInput.value = selected.dataset.brand;
+                }
+            });
+        </script>
+    @endpush
 @endsection

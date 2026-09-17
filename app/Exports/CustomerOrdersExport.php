@@ -52,7 +52,7 @@ class CustomerOrdersExport implements FromCollection, WithHeadings, WithMapping,
         return [
             $order->order_no,
             $order->customer?->name ?? 'N/A',
-            $order->customer?->brand ?? 'N/A',
+            $order->brand ?: ($order->customer?->brand ?? 'N/A'),
             $order->customer?->session ?? 'N/A',
             $order->supplier?->name ?? 'N/A',
             $order->style_no,

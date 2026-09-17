@@ -1,0 +1,320 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1520" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <!-- Node Gradients -->
+    <linearGradient id="gradIndigo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#4338ca" />
+    </linearGradient>
+
+    <linearGradient id="gradSlate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <linearGradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+
+    <linearGradient id="gradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+
+    <linearGradient id="gradEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+
+    <linearGradient id="gradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+
+    <linearGradient id="gradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#6d28d9" />
+    </linearGradient>
+
+    <linearGradient id="gradTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14b8a6" />
+      <stop offset="100%" stop-color="#0f766e" />
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="125%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+
+    <filter id="glowGold" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#fbbf24" flood-opacity="0.6" />
+    </filter>
+
+    <!-- Arrow Markers -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#94a3b8" />
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="1520" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="2" />
+
+  <!-- HEADER SECTION -->
+  <g transform="translate(550, 48)" text-anchor="middle">
+    <rect x="-240" y="-24" width="480" height="30" rx="15" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" />
+    <text x="0" y="-4" fill="#60a5fa" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">GARMENT BUYING HOUSE &amp; MANUFACTURING ERP</text>
+    
+    <text x="0" y="32" fill="#ffffff" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="24" font-weight="800" letter-spacing="0.5">End-to-End Operational &amp; Financial Workflow</text>
+    <text x="0" y="56" fill="#94a3b8" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13">Complete lifecycle from partner setup and order booking to production tracking, commercial invoicing, and double-entry general ledger</text>
+  </g>
+
+  <!-- ==================== STAGE 1 ==================== -->
+  <g transform="translate(340, 130)" filter="url(#cardShadow)">
+    <rect width="420" height="72" rx="12" fill="url(#gradIndigo)" stroke="#818cf8" stroke-width="1.5" />
+    <circle cx="36" cy="36" r="18" fill="rgba(255,255,255,0.2)" />
+    <text x="36" y="41" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">1</text>
+    <text x="68" y="30" fill="#ffffff" font-family="sans-serif" font-size="15" font-weight="bold">System Setup &amp; Accounts Initialization</text>
+    <text x="68" y="50" fill="#c7d2fe" font-family="sans-serif" font-size="12">Configure Active Accounting Period, Chart of Accounts &amp; Office Accounts</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <line x1="550" y1="202" x2="550" y2="232" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)" />
+
+  <!-- ==================== STAGE 2 ==================== -->
+  <g transform="translate(340, 235)" filter="url(#cardShadow)">
+    <rect width="420" height="72" rx="12" fill="url(#gradSlate)" stroke="#64748b" stroke-width="1.5" />
+    <circle cx="36" cy="36" r="18" fill="rgba(255,255,255,0.15)" />
+    <text x="36" y="41" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">2</text>
+    <text x="68" y="30" fill="#ffffff" font-family="sans-serif" font-size="15" font-weight="bold">Partner Onboarding</text>
+    <text x="68" y="50" fill="#cbd5e1" font-family="sans-serif" font-size="12">Register Customers (Buyers) &amp; Suppliers (Fabric/Garment Factories)</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <line x1="550" y1="307" x2="550" y2="337" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)" />
+
+  <!-- ==================== STAGE 3 ==================== -->
+  <g transform="translate(340, 340)" filter="url(#cardShadow)">
+    <rect width="420" height="76" rx="12" fill="url(#gradBlue)" stroke="#60a5fa" stroke-width="1.5" />
+    <circle cx="36" cy="38" r="18" fill="rgba(255,255,255,0.2)" />
+    <text x="36" y="43" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">3</text>
+    <text x="68" y="32" fill="#ffffff" font-family="sans-serif" font-size="15" font-weight="bold">Customer Order Booking (PO)</text>
+    <text x="68" y="52" fill="#bfdbfe" font-family="sans-serif" font-size="12">Enter Style Name/Ref, Color Breakdown, Quantity, Unit Price &amp; ETD</text>
+  </g>
+
+  <!-- Arrow 3 -> Event Banner -->
+  <line x1="550" y1="416" x2="550" y2="446" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrow)" />
+
+  <!-- ==================== AUTOMATED EVENT INITIALIZER ==================== -->
+  <g transform="translate(260, 450)" filter="url(#glowGold)">
+    <rect width="580" height="58" rx="29" fill="url(#gradAmber)" stroke="#fde68a" stroke-width="2" stroke-dasharray="6 4" />
+    <text x="290" y="26" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="900" letter-spacing="1" text-anchor="middle">⚡ AUTOMATED SYSTEM PROVISIONING TRIGGER</text>
+    <text x="290" y="44" fill="#fef3c7" font-family="sans-serif" font-size="11.5" font-weight="500" text-anchor="middle">CustomerOrder observer auto-creates matching FactoryOrder &amp; FactoryFollowup tracker</text>
+  </g>
+
+  <!-- Branching Paths from Trigger -->
+  <!-- Branch Left: to Commercial & Accounting -->
+  <path d="M 400 508 Q 280 540 280 575" fill="none" stroke="#34d399" stroke-width="2.5" stroke-dasharray="5 4" marker-end="url(#arrowGreen)" />
+  <!-- Branch Right: to Factory Production -->
+  <path d="M 700 508 Q 820 540 820 575" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="5 4" marker-end="url(#arrowBlue)" />
+
+  <!-- ========================================================================= -->
+  <!-- LEFT COLUMN: COMMERCIAL & ACCOUNTING LIFECYCLE                           -->
+  <!-- ========================================================================= -->
+
+  <!-- Column Header Left -->
+  <g transform="translate(70, 560)">
+    <rect width="420" height="34" rx="8" fill="#064e3b" stroke="#059669" stroke-width="1" />
+    <text x="210" y="22" fill="#6ee7b7" font-family="sans-serif" font-size="12" font-weight="800" letter-spacing="1" text-anchor="middle">💼 COMMERCIAL INVOICING &amp; ACCOUNTING STREAM</text>
+  </g>
+
+  <!-- Step L1: Commercial Invoicing -->
+  <g transform="translate(70, 610)" filter="url(#cardShadow)">
+    <rect width="420" height="74" rx="10" fill="#022c22" stroke="#059669" stroke-width="1.5" />
+    <circle cx="32" cy="37" r="16" fill="#059669" />
+    <text x="32" y="42" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">4A</text>
+    <text x="60" y="30" fill="#a7f3d0" font-family="sans-serif" font-size="14" font-weight="bold">Commercial Invoicing</text>
+    <text x="60" y="50" fill="#6ee7b7" font-family="sans-serif" font-size="11.5">Generate Customer Invoice with line items, quantities, &amp; prices</text>
+  </g>
+
+  <!-- Arrow L1 -> L2 -->
+  <line x1="280" y1="684" x2="280" y2="714" stroke="#34d399" stroke-width="2" marker-end="url(#arrowGreen)" />
+
+  <!-- Step L2: Customer Payment Receipt -->
+  <g transform="translate(70, 718)" filter="url(#cardShadow)">
+    <rect width="420" height="74" rx="10" fill="#042f2e" stroke="#0d9488" stroke-width="1.5" />
+    <circle cx="32" cy="37" r="16" fill="#0d9488" />
+    <text x="32" y="42" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">5A</text>
+    <text x="60" y="30" fill="#99f6e4" font-family="sans-serif" font-size="14" font-weight="bold">Customer Payment Receipt</text>
+    <text x="60" y="50" fill="#5eead4" font-family="sans-serif" font-size="11.5">Receive Payment into Cash / Bank Office Account; issue receipt voucher</text>
+  </g>
+
+  <!-- Arrow L2 -> L3 -->
+  <line x1="280" y1="792" x2="280" y2="822" stroke="#34d399" stroke-width="2" marker-end="url(#arrowGreen)" />
+
+  <!-- Step L3: Auto Double-Entry Revenue Entry -->
+  <g transform="translate(70, 826)" filter="url(#cardShadow)">
+    <rect width="420" height="84" rx="10" fill="#064e3b" stroke="#10b981" stroke-width="1.5" />
+    <circle cx="32" cy="42" r="16" fill="#10b981" />
+    <text x="32" y="47" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">6A</text>
+    <text x="60" y="28" fill="#d1fae5" font-family="sans-serif" font-size="14" font-weight="bold">Automated Revenue Journal Entry</text>
+    <text x="60" y="48" fill="#a7f3d0" font-family="sans-serif" font-size="11.5">• Debit: Office Cash / Bank Account (Asset 1010/1020)</text>
+    <text x="60" y="66" fill="#6ee7b7" font-family="sans-serif" font-size="11.5">• Credit: Garment Sales Revenue (Income 4010)</text>
+  </g>
+
+  <!-- Arrow L3 -> L4 -->
+  <line x1="280" y1="910" x2="280" y2="940" stroke="#34d399" stroke-width="2" marker-end="url(#arrowGreen)" />
+
+  <!-- Step L4: Factory Expenses & Direct Costs -->
+  <g transform="translate(70, 944)" filter="url(#cardShadow)">
+    <rect width="420" height="84" rx="10" fill="#292524" stroke="#d97706" stroke-width="1.5" />
+    <circle cx="32" cy="42" r="16" fill="#d97706" />
+    <text x="32" y="47" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">7A</text>
+    <text x="60" y="28" fill="#fde68a" font-family="sans-serif" font-size="14" font-weight="bold">Factory Expenses &amp; Floor Costs</text>
+    <text x="60" y="48" fill="#fcd34d" font-family="sans-serif" font-size="11.5">Fabric, knitting, dyeing &amp; accessories expenses posted</text>
+    <text x="60" y="66" fill="#fbbf24" font-family="sans-serif" font-size="11.5">• Debit: Factory Expense (5010) • Credit: Bank (1020)</text>
+  </g>
+
+  <!-- Arrow L4 -> L5 -->
+  <line x1="280" y1="1028" x2="280" y2="1058" stroke="#34d399" stroke-width="2" marker-end="url(#arrowGreen)" />
+
+  <!-- Step L5: General Ledger & Bank Reconciliation -->
+  <g transform="translate(70, 1062)" filter="url(#cardShadow)">
+    <rect width="420" height="84" rx="10" fill="#082f49" stroke="#0284c7" stroke-width="1.5" />
+    <circle cx="32" cy="42" r="16" fill="#0284c7" />
+    <text x="32" y="47" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">8A</text>
+    <text x="60" y="28" fill="#bae6fd" font-family="sans-serif" font-size="14" font-weight="bold">General Ledger &amp; Reconciliation</text>
+    <text x="60" y="48" fill="#7dd3fc" font-family="sans-serif" font-size="11.5">Real-time Trial Balance, Balance Sheet &amp; Profit/Loss summary</text>
+    <text x="60" y="66" fill="#38bdf8" font-family="sans-serif" font-size="11.5">Monthly Bank Reconciliation ensures zero discrepancy</text>
+  </g>
+
+
+  <!-- ========================================================================= -->
+  <!-- RIGHT COLUMN: FACTORY PRODUCTION LIFECYCLE                               -->
+  <!-- ========================================================================= -->
+
+  <!-- Column Header Right -->
+  <g transform="translate(610, 560)">
+    <rect width="420" height="34" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+    <text x="210" y="22" fill="#c7d2fe" font-family="sans-serif" font-size="12" font-weight="800" letter-spacing="1" text-anchor="middle">🏭 FACTORY PRODUCTION &amp; FOLLOW-UP STREAM</text>
+  </g>
+
+  <!-- Step R1: Factory Order Allocation -->
+  <g transform="translate(610, 610)" filter="url(#cardShadow)">
+    <rect width="420" height="74" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+    <circle cx="32" cy="37" r="16" fill="#0284c7" />
+    <text x="32" y="42" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">4B</text>
+    <text x="60" y="30" fill="#e0f2fe" font-family="sans-serif" font-size="14" font-weight="bold">Factory Order Allocation</text>
+    <text x="60" y="50" fill="#7dd3fc" font-family="sans-serif" font-size="11.5">Assign manufacturing unit, set ETD date, FOB &amp; Sub-contract prices</text>
+  </g>
+
+  <!-- Arrow R1 -> R2 -->
+  <line x1="820" y1="684" x2="820" y2="714" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowBlue)" />
+
+  <!-- Step R2: PPS Sample Development -->
+  <g transform="translate(610, 718)" filter="url(#cardShadow)">
+    <rect width="420" height="74" rx="10" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5" />
+    <circle cx="32" cy="37" r="16" fill="#6366f1" />
+    <text x="32" y="42" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">5B</text>
+    <text x="60" y="30" fill="#e0e7ff" font-family="sans-serif" font-size="14" font-weight="bold">PPS Sample Approval</text>
+    <text x="60" y="50" fill="#a5b4fc" font-family="sans-serif" font-size="11.5">Submit Pre-Production Sample to Buyer; track comments &amp; approval</text>
+  </g>
+
+  <!-- Arrow R2 -> R3 -->
+  <line x1="820" y1="792" x2="820" y2="822" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowBlue)" />
+
+  <!-- Step R3: Production Stages (Knit, Dye, Cut) -->
+  <g transform="translate(610, 826)" filter="url(#cardShadow)">
+    <rect width="420" height="96" rx="10" fill="#2e1065" stroke="#8b5cf6" stroke-width="1.5" />
+    <circle cx="32" cy="48" r="16" fill="#8b5cf6" />
+    <text x="32" y="53" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">6B</text>
+    <text x="60" y="28" fill="#f3e8ff" font-family="sans-serif" font-size="14" font-weight="bold">Floor Manufacturing Stages</text>
+    <text x="60" y="48" fill="#d8b4fe" font-family="sans-serif" font-size="11.5">• Knitting: Not Started ➔ In Progress ➔ Completed</text>
+    <text x="60" y="66" fill="#c084fc" font-family="sans-serif" font-size="11.5">• Dyeing: In Progress ➔ Completed</text>
+    <text x="60" y="84" fill="#a855f7" font-family="sans-serif" font-size="11.5">• Cutting &amp; Stitching: In Progress ➔ Completed</text>
+  </g>
+
+  <!-- Arrow R3 -> R4 -->
+  <line x1="820" y1="922" x2="820" y2="952" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowBlue)" />
+
+  <!-- Step R4: SHS Sample & Final Packing -->
+  <g transform="translate(610, 956)" filter="url(#cardShadow)">
+    <rect width="420" height="74" rx="10" fill="#3b0764" stroke="#a855f7" stroke-width="1.5" />
+    <circle cx="32" cy="37" r="16" fill="#a855f7" />
+    <text x="32" y="42" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">7B</text>
+    <text x="60" y="30" fill="#fae8ff" font-family="sans-serif" font-size="14" font-weight="bold">SHS Approval &amp; Carton Packing</text>
+    <text x="60" y="50" fill="#e879f9" font-family="sans-serif" font-size="11.5">Shipment Sample approval, finishing, iron &amp; carton packing</text>
+  </g>
+
+  <!-- Arrow R4 -> R5 -->
+  <line x1="820" y1="1030" x2="820" y2="1060" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowBlue)" />
+
+  <!-- Step R5: Actual Delivery Date & Cargo Dispatch -->
+  <g transform="translate(610, 1064)" filter="url(#cardShadow)">
+    <rect width="420" height="82" rx="10" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1.5" />
+    <circle cx="32" cy="41" r="16" fill="#3b82f6" />
+    <text x="32" y="46" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">8B</text>
+    <text x="60" y="28" fill="#dbeafe" font-family="sans-serif" font-size="14" font-weight="bold">Cargo Dispatch &amp; Delivery (AETD)</text>
+    <text x="60" y="48" fill="#93c5fd" font-family="sans-serif" font-size="11.5">Record Actual Delivery Date (AETD); verify on-time status</text>
+    <text x="60" y="66" fill="#60a5fa" font-family="sans-serif" font-size="11.5">Final factory handover sign-off</text>
+  </g>
+
+
+  <!-- Cost cross-connection: Factory production generates factory expenses -->
+  <path d="M 610 874 Q 550 874 550 986 Q 550 986 492 986" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrowAmber)" />
+  <text x="550" y="930" fill="#fcd34d" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Floor Costs</text>
+
+
+  <!-- ==================== CONVERGENCE TO FINAL STAGE ==================== -->
+  <!-- Line from Left Column to Final -->
+  <path d="M 280 1146 Q 280 1210 460 1230" fill="none" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrowGreen)" />
+  <!-- Line from Right Column to Final -->
+  <path d="M 820 1146 Q 820 1210 640 1230" fill="none" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrowBlue)" />
+
+  <!-- ==================== STAGE 9: ORDER FULFILLED & AUDIT CLOSED ==================== -->
+  <g transform="translate(320, 1220)" filter="url(#glowGold)">
+    <rect width="460" height="88" rx="14" fill="url(#gradEmerald)" stroke="#6ee7b7" stroke-width="2" />
+    <circle cx="44" cy="44" r="22" fill="rgba(255,255,255,0.25)" />
+    <text x="44" y="51" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="bold" text-anchor="middle">✓</text>
+    <text x="80" y="36" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="800">Stage 9: Order Fulfilled &amp; Audit Closed</text>
+    <text x="80" y="58" fill="#d1fae5" font-family="sans-serif" font-size="12">• Buyer delivery confirmed • Factory contracts settled</text>
+    <text x="80" y="74" fill="#a7f3d0" font-family="sans-serif" font-size="12">• Balanced double-entry ledger • Audit-ready financial records</text>
+  </g>
+
+  <!-- ==================== FOOTER LEGEND ==================== -->
+  <g transform="translate(130, 1345)">
+    <rect width="840" height="50" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    
+    <circle cx="40" cy="25" r="7" fill="#6366f1" />
+    <text x="55" y="29" fill="#e2e8f0" font-family="sans-serif" font-size="11.5" font-weight="600">Setup &amp; Booking</text>
+
+    <circle cx="210" cy="25" r="7" fill="#f59e0b" />
+    <text x="225" y="29" fill="#e2e8f0" font-family="sans-serif" font-size="11.5" font-weight="600">Automated Event</text>
+
+    <circle cx="390" cy="25" r="7" fill="#10b981" />
+    <text x="405" y="29" fill="#e2e8f0" font-family="sans-serif" font-size="11.5" font-weight="600">Commercial &amp; Ledger</text>
+
+    <circle cx="600" cy="25" r="7" fill="#0284c7" />
+    <text x="615" y="29" fill="#e2e8f0" font-family="sans-serif" font-size="11.5" font-weight="600">Factory Production</text>
+
+    <circle cx="770" cy="25" r="7" fill="#8b5cf6" />
+    <text x="785" y="29" fill="#e2e8f0" font-family="sans-serif" font-size="11.5" font-weight="600">Quality Sampling</text>
+  </g>
+
+  <!-- Copyright / Metadata -->
+  <text x="550" y="1425" fill="#64748b" font-family="sans-serif" font-size="11" text-anchor="middle">Factory Order Management System ERP • Architectural Specification</text>
+</svg>
