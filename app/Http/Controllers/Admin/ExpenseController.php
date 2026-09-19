@@ -148,39 +148,57 @@ class ExpenseController extends Controller
             ->header('Content-Disposition', 'attachment; filename="expense-' . $expense->id . '.pdf"');
     }
 
-    // public function report(Request $request)
-    // {
-    //     $this->authorize('*accountant');
+    public function report(Request $request)
+    {
+        $this->authorize('*accountant');
 
-    //     $query = Expense::with(['creator', 'chartOfAccount']);
+        $query = Expense::with(['creator', 'chartOfAccount']);
 
-    //     // Apply same filters as index
-    //     if ($search = $request->get('search')) {
-    //         $query->where(function ($q) use ($search) {
-    //             $q->where('description', 'like', "%{$search}%")
-    //                 ->orWhere('payment_method', 'like', "%{$search}%");
-    //         });
-    //     }
+        // Apply same filters as index
+        if ($search = $request->get('search')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('description', 'like', "%{$search}%")
+                    ->orWhere('payment_method', 'like', "%{$search}%");
+            });
+        }
 
-    //     if ($category = $request->get('category')) {
-    //         $query->whereHas('chartOfAccount', function ($q) use ($category) {
-    //             $q->where('name', 'like', "%{$category}%");
-    //         });
-    //     }
+        if ($category = $request->get('category')) {
+            $query->whereHas('chartOfAccount', function ($q) use ($category) {
+                $q->where('name', 'like', "%{$category}%");
+            });
+        }
 
-    //     if ($startDate = $request->get('start_date')) {
-    //         $query->whereDate('expense_date', '>=', $startDate);
-    //     }
-    //     if ($endDate = $request->get('end_date')) {
-    //         $query->whereDate('expense_date', '<=', $endDate);
-    //     }
+        if ($startDate = $request->get('start_date')) {
+            $query->whereDate('expense_date', '>=', $startDate);
+        }
+        if ($endDate = $request->get('end_date')) {
+            $query->whereDate('expense_date', '<=', $endDate);
+        }
 
-    //     $expenses = $query->orderBy('expense_date', 'desc')->get();
-    //     $totalAmount = $expenses->sum('amount');
+        $expenses = $query->orderBy('expense_date', 'desc')->get();
+        $totalAmount = $expenses->sum('amount');
 
-    //     $pdf = Pdf::loadView('admin.expenses.report', compact('expenses', 'totalAmount', 'request'));
-    //     return $pdf->download('expenses-report-' . now()->format('Y-m-d') . '.pdf');
-    // }
+        // Generate PDF using mPDF
+        $mpdf = new Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'margin_top' => 0,
+            'margin_right' => 0,
+            'margin_bottom' => 0,
+            'margin_left' => 0,
+        ]);
+
+        $html = view('admin.expenses.report', compact('expenses', 'totalAmount', 'request'))->render();
+        $mpdf->WriteHTML($html);
+
+        $outputMode = $request->get('output') === 'download' ? 'D' : 'I';
+        $filename = 'expenses-report-' . now()->format('Y-m-d') . '.pdf';
+        $disposition = $outputMode === 'D' ? 'attachment' : 'inline';
+
+        return response($mpdf->Output('', 'S'), 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', "{$disposition}; filename=\"{$filename}\"");
+    }
 
     private function validateExpense(Request $request): array
     {
@@ -196,99 +214,13 @@ class ExpenseController extends Controller
         ]);
     }
 
-       public function preview(Request $request)
+    public function preview(Request $request)
     {
-        $this->authorize('*accountant');
-
-        $query = Expense::with(['creator', 'chartOfAccount']);
-
-        // Apply same filters as index
-        if ($search = $request->get('search')) {
-            $query->where(function ($q) use ($search) {
-                $q->where('description', 'like', "%{$search}%")
-                    ->orWhere('payment_method', 'like', "%{$search}%");
-            });
-        }
-
-        if ($category = $request->get('category')) {
-            $query->whereHas('chartOfAccount', function ($q) use ($category) {
-                $q->where('name', 'like', "%{$category}%");
-            });
-        }
-
-        if ($startDate = $request->get('start_date')) {
-            $query->whereDate('expense_date', '>=', $startDate);
-        }
-        if ($endDate = $request->get('end_date')) {
-            $query->whereDate('expense_date', '<=', $endDate);
-        }
-
-        $expenses = $query->orderBy('expense_date', 'desc')->get();
-        $totalAmount = $expenses->sum('amount');
-
-        // Generate PDF using mPDF for preview
-        $mpdf = new Mpdf([
-            'mode' => 'utf-8',
-            'format' => 'A4',
-            'margin_top' => 0,
-            'margin_right' => 0,
-            'margin_bottom' => 0,
-            'margin_left' => 0,
-        ]);
-
-        $html = view('admin.expenses.report', compact('expenses', 'totalAmount', 'request'))->render();
-        $mpdf->WriteHTML($html);
-
-        return response($mpdf->Output('', 'S'))
-            ->header('Content-Type', 'application/pdf')
-            ->header('Content-Disposition', 'inline; filename="expenses-report-preview.pdf"');
+        return $this->report($request->merge(['output' => 'preview']));
     }
 
     public function download(Request $request)
     {
-        $this->authorize('*accountant');
-
-        $query = Expense::with(['creator', 'chartOfAccount']);
-
-        // Apply same filters as index
-        if ($search = $request->get('search')) {
-            $query->where(function ($q) use ($search) {
-                $q->where('description', 'like', "%{$search}%")
-                    ->orWhere('payment_method', 'like', "%{$search}%");
-            });
-        }
-
-        if ($category = $request->get('category')) {
-            $query->whereHas('chartOfAccount', function ($q) use ($category) {
-                $q->where('name', 'like', "%{$category}%");
-            });
-        }
-
-        if ($startDate = $request->get('start_date')) {
-            $query->whereDate('expense_date', '>=', $startDate);
-        }
-        if ($endDate = $request->get('end_date')) {
-            $query->whereDate('expense_date', '<=', $endDate);
-        }
-
-        $expenses = $query->orderBy('expense_date', 'desc')->get();
-        $totalAmount = $expenses->sum('amount');
-
-        // Generate PDF using mPDF for download
-        $mpdf = new Mpdf([
-            'mode' => 'utf-8',
-            'format' => 'A4',
-            'margin_top' => 0,
-            'margin_right' => 0,
-            'margin_bottom' => 0,
-            'margin_left' => 0,
-        ]);
-
-        $html = view('admin.expenses.report', compact('expenses', 'totalAmount', 'request'))->render();
-        $mpdf->WriteHTML($html);
-
-        return response($mpdf->Output('', 'S'))
-            ->header('Content-Type', 'application/pdf')
-            ->header('Content-Disposition', 'attachment; filename="expenses-report-' . now()->format('Y-m-d') . '.pdf"');
+        return $this->report($request->merge(['output' => 'download']));
     }
 }

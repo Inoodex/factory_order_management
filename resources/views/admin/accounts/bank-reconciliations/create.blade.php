@@ -5,7 +5,14 @@
 @section('content')
     <div class="flex flex-wrap items-center justify-between gap-4">
         <h2 class="text-xl font-semibold uppercase">Start Bank Reconciliation</h2>
-        <a href="{{ route('admin.bank-reconciliations.index') }}" class="btn btn-secondary">Back to List</a>
+        <a href="{{ route('admin.bank-reconciliations.index') }}" class="btn btn-secondary gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to List
+        </a>
     </div>
 
     <div class="panel mt-6 max-w-2xl mx-auto">

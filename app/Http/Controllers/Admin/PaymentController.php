@@ -45,6 +45,64 @@ class PaymentController extends Controller
         return view('admin.payments.index', compact('payments'));
     }
 
+    public function report(Request $request)
+    {
+        $this->authorize('*accountant');
+
+        $query = Payment::with(['customerOrder.customer', 'collector', 'account', 'invoice.customerOrder.customer']);
+
+        if ($search = $request->get('search')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('receipt_number', 'like', "%{$search}%")
+                    ->orWhereHas('customerOrder', function ($oq) use ($search) {
+                        $oq->where('order_no', 'like', "%{$search}%")
+                            ->orWhere('style_no', 'like', "%{$search}%")
+                            ->orWhereHas('customer', function ($cq) use ($search) {
+                                $cq->where('name', 'like', "%{$search}%")
+                                    ->orWhere('brand', 'like', "%{$search}%");
+                            });
+                    });
+            });
+        }
+
+        if ($type = $request->get('payment_type')) {
+            $query->where('payment_type', $type);
+        }
+
+        if ($status = $request->get('payment_status')) {
+            $query->where('payment_status', $status);
+        }
+
+        if ($startDate = $request->get('start_date')) {
+            $query->whereDate('payment_date', '>=', $startDate);
+        }
+        if ($endDate = $request->get('end_date')) {
+            $query->whereDate('payment_date', '<=', $endDate);
+        }
+
+        $payments = $query->latest('payment_date')->latest('id')->get();
+
+        $mpdf = new Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'margin_top' => 0,
+            'margin_right' => 0,
+            'margin_bottom' => 0,
+            'margin_left' => 0,
+        ]);
+
+        $html = view('admin.payments.pdf', compact('payments', 'request'))->render();
+        $mpdf->WriteHTML($html);
+
+        $outputMode = $request->get('output') === 'download' ? 'D' : 'I';
+        $filename = 'payments-report-' . now()->format('Y-m-d') . '.pdf';
+        $disposition = $outputMode === 'D' ? 'attachment' : 'inline';
+
+        return response($mpdf->Output('', 'S'), 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', "{$disposition}; filename=\"{$filename}\"");
+    }
+
     public function create(Request $request)
     {
         $this->authorize('*accountant');
@@ -244,7 +302,9 @@ class PaymentController extends Controller
 
         $filename = 'Invoice_' . ($payment->receipt_number ?: $payment->id) . '.pdf';
 
-        return $mpdf->Output($filename, 'D');
+        return response($mpdf->Output('', 'S'), 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', "attachment; filename=\"{$filename}\"");
     }
 
     private function validatePayment(Request $request): array

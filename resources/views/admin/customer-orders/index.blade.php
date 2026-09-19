@@ -110,14 +110,14 @@
                     <tr>
                         <th>Style Image</th>
                         <th>Order No</th>
-                        <th>Style No & Name</th>
-                        <th>Customer / Brand</th>
-                        <th>Supplier / Factory</th>
+                        <th>Style No</th>
+                        <th>Customer</th>
+                        <th>Factory</th>
                         <th>Color & Qty</th>
                         <th>Price</th>
                         <th>Total Value</th>
                         <th>ETD Date</th>
-                        <th>Follow-up Status</th>
+                        <!-- <th>Follow-up Status</th> -->
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -148,28 +148,27 @@
                             </td>
                             <td>
                                 <div class="font-semibold">{{ $order->style_no }}</div>
-                                <div class="text-xs text-gray-500">{{ $order->style_name ?? '—' }}</div>
+                                <!-- <div class="text-xs text-gray-500">{{ $order->style_name ?? '—' }}</div>
                                 @if($order->composition)
                                     <div class="text-[11px] text-gray-400">{{ $order->composition }}</div>
-                                @endif
+                                @endif -->
                             </td>
                             <td>
                                 <div class="font-semibold">{{ $order->customer?->name ?? '—' }}</div>
-                                <div class="text-xs text-gray-500">
+                                <!-- <div class="text-xs text-gray-500">
                                     @php
                                         $displayBrand = $order->brand ?: $order->customer?->brand;
                                     @endphp
                                     {{ $displayBrand ? "Brand: {$displayBrand}" : '' }}
                                     {{ $order->customer?->session ? "• {$order->customer->session}" : '' }}
-                                </div>
+                                </div> -->
                             </td>
                             <td>
                                 <div class="font-semibold">{{ $order->supplier?->name ?? '—' }}</div>
-                                <div class="text-xs text-gray-400">{{ $order->supplier?->location ?? '' }}</div>
+                                <!-- <div class="text-xs text-gray-400">{{ $order->supplier?->location ?? '' }}</div> -->
                             </td>
                             <td>
-                                <div class="font-medium">{{ $order->color_name ?? 'Standard' }}</div>
-                                <span class="badge bg-dark/10 text-dark font-bold">{{ number_format($order->color_qty) }} pcs</span>
+                                <div class="font-medium">{{ $order->color_name ?? 'N/A' }}/{{ number_format($order->color_qty) }} pcs</div>
                             </td>
                             <td>{{ number_format($order->price, 2) }}</td>
                             <td class="font-bold text-success">{{ number_format($order->total_price, 2) }}</td>
@@ -182,7 +181,7 @@
                                     <span class="text-gray-400">—</span>
                                 @endif
                             </td>
-                            <td>
+                            <!-- <td>
                                 @if($followup)
                                     <div class="flex flex-col gap-1 text-[11px]">
                                         <div class="flex items-center gap-1">
@@ -201,7 +200,7 @@
                                 @else
                                     <span class="text-gray-400 text-xs">—</span>
                                 @endif
-                            </td>
+                            </td> -->
                             <td class="text-center">
                                 <div class="relative inline-block text-left" x-data="tableDropdown" @click.outside="close">
                                     <button type="button" @click="toggle" x-ref="btn" class="flex h-8 w-8 items-center justify-center rounded-full text-gray-500 hover:text-primary hover:bg-gray-100 dark:hover:bg-[#1b2e4b] dark:text-gray-400 focus:outline-none transition" title="Actions">

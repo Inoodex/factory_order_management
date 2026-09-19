@@ -165,8 +165,7 @@
     </style>
 </head>
 @php
-    $bgPath = public_path('assets/images/Invoice_Insaf_02.jpg');
-    $bgSrc = file_exists($bgPath) ? 'file:///' . str_replace('\\', '/', $bgPath) : null;
+    $bgSrc = get_pdf_bg_path('report');
     $companyName = $settings['company_name'] ?? ($settings['site_name'] ?? config('app.name'));
     $totalInc = $payments->sum('amount');
     $totalExp = $expenses->sum('amount');

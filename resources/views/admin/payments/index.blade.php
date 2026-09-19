@@ -17,7 +17,7 @@
                 <line x1="16" y1="17" x2="8" y2="17"></line>
                 <polyline points="10 9 9 9 8 9"></polyline>
             </svg>
-            Preview
+            Preview PDF
         </a>
         <a href="{{ route('admin.payments.report', array_merge(request()->all(), ['output' => 'download'])) }}"
             class="btn btn-outline-success gap-2">
@@ -27,7 +27,7 @@
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-            Download
+            Download PDF
         </a>
         <a href="{{ route('admin.payments.create') }}" class="btn btn-primary gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -83,8 +83,8 @@
                 <thead>
                     <tr>
                         <th>Receipt No</th>
-                        <th>Application ID</th>
-                        <th>Student</th>
+                        <th>Order / Invoice</th>
+                        <th>Customer / Buyer</th>
                         <th>Type</th>
                         <th>Amount</th>
                         <!-- <th>Date</th> -->
@@ -95,16 +95,27 @@
                 </thead>
                 <tbody>
                     @forelse($payments as $payment)
+                    @php
+                        $order = $payment->customerOrder ?? ($payment->invoice?->customerOrder);
+                    @endphp
                     <tr>
                         <td>{{ $payment->receipt_number }}</td>
                         <td class="font-semibold text-primary">
-                            {{ $payment->application->application_id ?? 'N/A' }}
+                            @if($order)
+                                {{ $order->order_no }}
+                            @elseif($payment->invoice)
+                                {{ $payment->invoice->invoice_number }}
+                            @else
+                                N/A
+                            @endif
                         </td>
                         <td>
                             <div class="font-semibold">
-                                {{ $payment->student->first_name }} {{ $payment->student->last_name }}
+                                {{ $order?->customer?->name ?? 'N/A' }}
                             </div>
-                            <div class="text-xs text-white-dark">{{ $payment->student->phone }}</div>
+                            @if($order?->customer?->phone)
+                                <div class="text-xs text-white-dark">{{ $order->customer->phone }}</div>
+                            @endif
                         </td>
                         <td class="capitalize">{{ $payment->payment_type }}</td>
                         <td>{{ number_format($payment->amount, 2) }}</td>

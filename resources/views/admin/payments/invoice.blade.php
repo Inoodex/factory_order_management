@@ -160,8 +160,7 @@
     </style>
 </head>
 @php
-    $bgPath = public_path('assets/images/Invoice_Insaf-signature.jpg');
-    $bgSrc = file_exists($bgPath) ? 'file:///' . str_replace('\\', '/', $bgPath) : null;
+    $bgSrc = get_pdf_bg_path('invoice');
     $invoice = $payment->invoice;
     $invoiceTotal = $invoice ? $invoice->total_amount : $payment->amount;
     $invoiceNo = $invoice?->invoice_number ?? ($payment->receipt_number ?: '#' . $payment->id);
@@ -178,14 +177,19 @@
                 <td style="width: 50%; vertical-align: top;">
                     <table class="info-box">
                         <tr>
-                            <th>Invoice To,</th>
+                            <th>Invoice / Paid By,</th>
                         </tr>
+                        @php
+                            $order = $payment->customerOrder ?? ($payment->invoice?->customerOrder);
+                        @endphp
                         <tr>
-                            <td>{{ $payment->student->first_name }} {{ $payment->student->last_name }}</td>
+                            <td>{{ $order?->customer?->name ?? 'Direct Customer' }}</td>
                         </tr>
+                        @if($order?->customer?->phone)
                         <tr>
-                            <td>{{ $payment->student->phone }}</td>
+                            <td>{{ $order->customer->phone }}</td>
                         </tr>
+                        @endif
                     </table>
                 </td>
                 <td style="width: 50%;" class="invoice-meta">

@@ -123,8 +123,7 @@
     </style>
 </head>
 @php
-    $bgPath = public_path('assets/images/Invoice_Insaf.jpeg');
-    $bgSrc = file_exists($bgPath) ? 'file:///' . str_replace('\\', '/', $bgPath) : null;
+    $bgSrc = get_pdf_bg_path('invoice');
 @endphp
 
 <body>
@@ -142,11 +141,13 @@
                             <th colspan="2">Invoice To,</th>
                         </tr>
                         <tr>
-                            <td>{{ $invoice->student->first_name }} {{ $invoice->student->last_name }}</td>
+                            <td>{{ $invoice->customerOrder?->customer?->name ?? 'Direct Customer' }}</td>
                         </tr>
+                        @if($invoice->customerOrder?->customer?->phone)
                         <tr>
-                            <td>{{ $invoice->student->phone }}</td>
+                            <td>{{ $invoice->customerOrder->customer->phone }}</td>
                         </tr>
+                        @endif
                     </table>
                 </td>
                 <td style="width: 50%; vertical-align: top;" class="invoice-meta">
@@ -156,7 +157,7 @@
                             {{ $invoice->invoice_number }}</strong></p>
                     <!-- <br/> -->
                     <p style="margin: 10px 0;"><strong>Date:</strong>
-                        {{ $invoice->date->format('Y-m-d') }}</p>
+                        {{ optional($invoice->date)->format('Y-m-d') }}</p>
                 </td>
             </tr>
         </table>

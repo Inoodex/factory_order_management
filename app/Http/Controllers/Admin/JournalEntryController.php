@@ -104,9 +104,11 @@ class JournalEntryController extends Controller
         $mpdf->WriteHTML($html);
 
         $outputMode = $request->get('output') === 'download' ? 'D' : 'I';
+        $disposition = $outputMode === 'D' ? 'attachment' : 'inline';
 
-        return response($mpdf->Output('journal-entries-report.pdf', $outputMode), 200)
-            ->header('Content-Type', 'application/pdf');
+        return response($mpdf->Output('', 'S'), 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', "{$disposition}; filename=\"journal-entries-report.pdf\"");
     }
 
     /**

@@ -76,4 +76,55 @@ class FactoryFollowup extends Model
             'customer_order_id' // Local key on factory_orders table
         );
     }
+
+    public function getCurrentStageAttribute(): string
+    {
+        if ($this->cutting_status === self::STATUS_COMPLETED || $this->shs_comments_status === 'Approved') {
+            return 'completed';
+        }
+        if ($this->cutting_status === self::STATUS_IN_PROGRESS || $this->dyeing_status === self::STATUS_COMPLETED) {
+            return 'cutting';
+        }
+        if ($this->dyeing_status === self::STATUS_IN_PROGRESS || $this->knitting_status === self::STATUS_COMPLETED) {
+            return 'dyeing';
+        }
+        if ($this->knitting_status === self::STATUS_IN_PROGRESS || str_contains($this->pps_comments_status ?? '', 'Approved')) {
+            return 'knitting';
+        }
+        return 'sampling';
+    }
+
+    public function getProgressPercentageAttribute(): int
+    {
+        if ($this->cutting_status === self::STATUS_COMPLETED || $this->shs_comments_status === 'Approved') {
+            return 100;
+        }
+        $score = 10;
+        if (str_contains($this->pps_comments_status ?? '', 'Approved')) {
+            $score += 20;
+        } elseif (($this->pps_comments_status ?? '') === 'Submitted') {
+            $score += 10;
+        }
+
+        if ($this->knitting_status === self::STATUS_COMPLETED) {
+            $score += 20;
+        } elseif ($this->knitting_status === self::STATUS_IN_PROGRESS) {
+            $score += 10;
+        }
+
+        if ($this->dyeing_status === self::STATUS_COMPLETED) {
+            $score += 20;
+        } elseif ($this->dyeing_status === self::STATUS_IN_PROGRESS) {
+            $score += 10;
+        }
+
+        if ($this->cutting_status === self::STATUS_COMPLETED) {
+            $score += 20;
+        } elseif ($this->cutting_status === self::STATUS_IN_PROGRESS) {
+            $score += 10;
+        }
+
+        return min(95, $score);
+    }
 }
+

@@ -35,7 +35,20 @@ This hands-on guide walks you through the entire Buying House workflow from begi
 
 ---
 
-## Step 2: Verify Master Financial Foundation
+## Step 2: Configure System Settings & PDF Letterheads
+Set up company branding and custom dynamic PDF background letterheads for Invoices and Reports.
+
+1. In the sidebar, navigate to **Settings** (or go to `http://127.0.0.1:8000/dashboard/settings`).
+2. Click the **PDF & Templates** tab (`#pdf-templates`).
+3. **Upload Background Letterheads**:
+   - **Invoice PDF Background**: Upload your official invoice letterhead graphic (e.g. `inoodex_invoice.jpg` with top header and bottom signature/footer).
+   - **Reports PDF Background**: Upload your official general reporting letterhead.
+4. Click **Save PDF Settings**.
+5. **Expected Result**: Success alert appears. All future PDF invoices and financial reports dynamically inherit the uploaded letterhead designs.
+
+---
+
+## Step 3: Verify Master Financial Foundation
 Before placing an order, confirm that the accounting period and bank accounts are active.
 
 1. **Check Office Accounts (Cash & Bank)**:
@@ -56,7 +69,7 @@ Before placing an order, confirm that the accounting period and bank accounts ar
 
 ---
 
-## Step 3: Create a Buyer / Customer
+## Step 4: Create a Buyer / Customer
 A foreign buyer who places garment orders with your buying house.
 
 1. In the sidebar, click **Customers** ➔ **Add Customer**, or navigate to:
@@ -65,17 +78,18 @@ A foreign buyer who places garment orders with your buying house.
    ```
 2. Enter the following test details:
    - **Company / Buyer Name**: `Nordic Wear Apparel AB`
+   - **Brand**: `Nordic Trend`
    - **Contact Person**: `Erik Lindqvist`
    - **Email**: `erik@nordicwear.se`
    - **Phone**: `+46 8 123 4567`
    - **Country**: `Sweden`
    - **Address**: `Kungsgatan 14, 111 35 Stockholm, Sweden`
 3. Click **Save Customer**.
-4. **Expected Result**: Success alert appears, and `Nordic Wear Apparel AB` is listed in the Customers table.
+4. **Expected Result**: Success alert appears, and `Nordic Wear Apparel AB` (Brand: `Nordic Trend`) is listed in the Customers table. Notice the clean left-arrow back navigation button (`<i class="ti ti-arrow-left"></i>`).
 
 ---
 
-## Step 4: Create a Manufacturing Factory / Supplier
+## Step 5: Create a Manufacturing Factory / Supplier
 The garment factory where your buying house will contract the production.
 
 1. In the sidebar, click **Suppliers** ➔ **Add Supplier**, or navigate to:
@@ -93,17 +107,18 @@ The garment factory where your buying house will contract the production.
 
 ---
 
-## Step 5: Place a Customer Order (PO Booking)
+## Step 6: Place a Customer Order (PO Booking)
 The buyer orders 5,000 pcs of hoodies at $12.00/pc.
 
 1. In the sidebar, click **Customer Orders** ➔ **Create Order**, or go to:
    ```
    http://127.0.0.1:8000/dashboard/customer-orders/create
    ```
-2. Enter the order specifications:
+2. Enter the order specifications (leveraging Select2 autocomplete):
    - **Customer**: Select `Nordic Wear Apparel AB`
    - **Supplier**: Select `Apex Knit Composite Ltd`
    - **Order No**: `PO-2026-SE901`
+   - **Season**: `Autumn / Winter 2026`
    - **Style No**: `HD-8840`
    - **Style Name**: `Men's Organic Fleece Hoodie`
    - **Composition**: `80% Organic Cotton, 20% Polyester, 320 GSM`
@@ -119,7 +134,7 @@ The buyer orders 5,000 pcs of hoodies at $12.00/pc.
 
 ---
 
-## Step 6: Verify Automatic Factory Order & Followup Creation
+## Step 7: Verify Automatic Factory Order & Followup Creation
 *Notice that you did NOT have to manually create the factory order! The system automatically initialized it.*
 
 1. Go to **Factory Orders**:
@@ -138,7 +153,7 @@ The buyer orders 5,000 pcs of hoodies at $12.00/pc.
 
 ---
 
-## Step 7: Update Factory Production & Sample Follow-ups
+## Step 8: Update Factory Production & Sample Follow-ups
 Merchandisers track sampling and manufacturing stages.
 
 1. Go to **Factory Followups**:
@@ -156,7 +171,7 @@ Merchandisers track sampling and manufacturing stages.
 
 ---
 
-## Step 8: View the Factory Production Pipeline
+## Step 9: View the Factory Production Pipeline
 1. In the sidebar under **Factory Orders**, click **Pipeline** or navigate to:
    ```
    http://127.0.0.1:8000/dashboard/factory-followups/pipeline
@@ -165,14 +180,14 @@ Merchandisers track sampling and manufacturing stages.
 
 ---
 
-## Step 9: Issue Commercial Invoice to Buyer
+## Step 10: Issue Commercial Invoice & Download PDF
 Issue an invoice for 50% advance payment ($30,000.00).
 
 1. In the sidebar, click **Invoices** ➔ **Create Invoice**:
    ```
    http://127.0.0.1:8000/dashboard/invoices/create
    ```
-2. Fill in the invoice details:
+2. Fill in the invoice details (using Select2 dropdown):
    - **Customer Order**: Select `PO-2026-SE901 (Nordic Wear Apparel AB)`
    - **Invoice Number**: `INV-2026-001`
    - **Invoice Date**: Today's date
@@ -181,11 +196,13 @@ Issue an invoice for 50% advance payment ($30,000.00).
    - **Status**: `Sent`
    - **Notes**: `50% Advance deposit as per sales contract.`
 3. Click **Save Invoice**.
-4. **Verify**: Invoice appears with status **Sent / Unpaid**.
+4. **Generate PDF**:
+   - In the Invoices list, click the 3-dot menu for `INV-2026-001` ➔ **Download PDF** (or **View** ➔ **Print / Export PDF**).
+   - **Verify**: The generated PDF renders with your custom **Invoice Letterhead Background** configured in Step 2.
 
 ---
 
-## Step 10: Record Customer Payment
+## Step 11: Record Customer Payment
 The buyer wires the $30,000.00 advance to your bank.
 
 1. In the sidebar, click **Payments** ➔ **Record Payment**:
@@ -207,7 +224,7 @@ The buyer wires the $30,000.00 advance to your bank.
 
 ---
 
-## Step 11: Record a Factory Expense / Trim Procurement
+## Step 12: Record a Factory Expense / Trim Procurement
 Your buying house purchases special YKK zippers and polybags for this order.
 
 1. In the sidebar, click **Expenses** ➔ **Add Expense**:
@@ -228,7 +245,24 @@ Your buying house purchases special YKK zippers and polybags for this order.
 
 ---
 
-## Step 12: Inspect General Ledger & Journal Entries
+## Step 13: Financial Reports & PDF Export
+Verify the dedicated reporting views and instant PDF generation.
+
+1. **Payment Report**:
+   - Click **Reports** ➔ **Payment Report** (or go to `http://127.0.0.1:8000/dashboard/payments/report`).
+   - Filter by date range or payment method.
+   - Click **Preview PDF** to open the report directly in a new browser tab.
+   - Click **Download PDF** to export the file.
+   - **Verify**: The document is branded with the **Report Letterhead Background** and contains summary totals.
+2. **Expense Report**:
+   - Click **Reports** ➔ **Expense Report** (or go to `http://127.0.0.1:8000/dashboard/expenses/report`).
+   - Filter by Category or Account.
+   - Click **Preview PDF** or **Download PDF**.
+   - **Verify**: Renders with category breakdowns and correct totals.
+
+---
+
+## Step 14: Inspect General Ledger & Journal Entries
 Verify that the accounting engine tracked every transaction automatically.
 
 1. Go to **Journal Entries**:
@@ -242,7 +276,7 @@ Verify that the accounting engine tracked every transaction automatically.
 
 ---
 
-## Step 13: View Executive Dashboard Analytics
+## Step 15: View Executive Dashboard Analytics
 See the real-time business metrics.
 
 1. Click **Dashboard** in the top left, or navigate to:
@@ -259,21 +293,23 @@ See the real-time business metrics.
 
 ## Testing Checklist
 
-| Step | Action | Status |
-| :---: | :--- | :---: |
-| 1 | Log in with default admin credentials | [ ] |
-| 2 | Verify Office Accounts & Accounting Period | [ ] |
-| 3 | Create Buyer (`Nordic Wear Apparel AB`) | [ ] |
-| 4 | Create Factory (`Apex Knit Composite Ltd`) | [ ] |
-| 5 | Book Customer Order `PO-2026-SE901` (5,000 pcs @ $12) | [ ] |
-| 6 | Verify auto-created Factory Order & set sub-price ($8.50) | [ ] |
-| 7 | Update Sampling (PPS) & Floor Stages (Knitting, Dyeing) | [ ] |
-| 8 | Check Production Pipeline Board | [ ] |
-| 9 | Issue Commercial Invoice ($30,000) | [ ] |
-| 10 | Receive Buyer Payment into Primary Bank Account | [ ] |
-| 11 | Log Factory Material Expense ($2,500) | [ ] |
-| 12 | Verify balanced Journal Entries in General Ledger | [ ] |
-| 13 | Verify live metrics on the Executive Dashboard | [ ] |
+| Step | Action | Feature Verified | Status |
+| :---: | :--- | :--- | :---: |
+| 1 | Log in with default admin credentials | Authentication & Session | [ ] |
+| 2 | Configure PDF Letterhead Backgrounds in Settings | Dynamic PDF Template Engine | [ ] |
+| 3 | Verify Office Accounts & Accounting Period | Multi-account Financial Core | [ ] |
+| 4 | Create Buyer (`Nordic Wear Apparel AB`, Brand: `Nordic Trend`) | Customer & Brand Management | [ ] |
+| 5 | Create Factory (`Apex Knit Composite Ltd`) | Supplier / Factory Management | [ ] |
+| 6 | Book Customer Order `PO-2026-SE901` (5,000 pcs @ $12) | Order Booking & Select2 Autocomplete | [ ] |
+| 7 | Verify auto-created Factory Order & set sub-price ($8.50) | Automated Factory Allocation & Margin | [ ] |
+| 8 | Update Sampling (PPS) & Floor Stages (Knitting, Dyeing) | Factory Followup & Milestones | [ ] |
+| 9 | Check Production Pipeline Board | Kanban / Pipeline Workflow | [ ] |
+| 10 | Issue Commercial Invoice ($30,000) & Export PDF | Billing & Dynamic Invoice Letterhead | [ ] |
+| 11 | Receive Buyer Payment into Primary Bank Account | Cash/Bank Inflow & Auto GL Posting | [ ] |
+| 12 | Log Factory Material Expense ($2,500) | Cash Outflow & Expense Allocation | [ ] |
+| 13 | Filter & Export Payment and Expense Reports to PDF | PDF Report Generation & Previews | [ ] |
+| 14 | Verify balanced Journal Entries in General Ledger | Double-Entry Accounting Audit | [ ] |
+| 15 | Verify live metrics on the Executive Dashboard | Real-time Business Analytics | [ ] |
 
 ---
 *Happy Testing! You have successfully verified the full Buying House lifecycle.*

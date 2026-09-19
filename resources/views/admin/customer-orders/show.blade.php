@@ -11,8 +11,13 @@
     <!-- Top Action Bar -->
     <div class="flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center gap-3">
-            <a href="{{ route('admin.customer-orders.index') }}" class="btn btn-outline-secondary btn-sm">
-                ← Back to Orders
+            <a href="{{ route('admin.customer-orders.index') }}" class="btn btn-outline-secondary btn-sm gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Orders
             </a>
             <h2 class="text-xl font-bold uppercase text-primary">
                 Order #{{ $customerOrder->order_no }}

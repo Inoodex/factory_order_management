@@ -22,6 +22,11 @@
                                 :class="{ 'text-primary border-primary': activeTab === 'contact', 'text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300': activeTab !== 'contact' }"
                                 class="inline-block p-4 border-b-2 border-transparent rounded-t-lg">Contact</a>
                         </li>
+                        <li class="mr-2">
+                            <a href="#" @click.prevent="activeTab = 'pdf'"
+                                :class="{ 'text-primary border-primary': activeTab === 'pdf', 'text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300': activeTab !== 'pdf' }"
+                                class="inline-block p-4 border-b-2 border-transparent rounded-t-lg">PDF & Templates</a>
+                        </li>
                         {{-- <li class="mr-2">
                             <a href="#" @click.prevent="activeTab = 'social'"
                                 :class="{ 'text-primary border-primary': activeTab === 'social', 'text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300': activeTab !== 'social' }"
@@ -95,6 +100,109 @@
                                 <div class="col-span-2">
                                     <label for="address">Address</label>
                                     <textarea id="address" name="address" rows="3" class="form-input">{{ $settings['address'] ?? '' }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PDF & Templates Tab -->
+                        <div x-show="activeTab === 'pdf'" style="display: none;">
+                            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                                <!-- Invoice Background Box -->
+                                <div class="rounded-lg border border-gray-200 p-4 dark:border-gray-700 bg-gray-50/50 dark:bg-[#1b2e4b]/40">
+                                    <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-gray-700">
+                                        <div>
+                                            <h6 class="font-bold text-base text-gray-800 dark:text-white-light">1. Invoice PDF Background</h6>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Used for Customer Invoices and Payment Receipts</p>
+                                        </div>
+                                        <span class="badge {{ !empty($settings['pdf_invoice_bg']) ? 'badge-outline-primary' : 'badge-outline-secondary' }}">
+                                            {{ !empty($settings['pdf_invoice_bg']) ? 'Custom Upload' : 'Default Preset' }}
+                                        </span>
+                                    </div>
+
+                                    <div class="mt-4 space-y-4">
+                                        <div>
+                                            <label for="pdf_invoice_bg" class="text-xs font-semibold text-gray-700 dark:text-gray-300">Upload New Background Image (JPG / PNG - Max 4MB, A4 recommended)</label>
+                                            <input id="pdf_invoice_bg" type="file" name="pdf_invoice_bg" accept="image/jpeg,image/png,image/jpg"
+                                                class="form-input file:py-1.5 file:px-3 file:border-0 file:text-xs file:font-semibold file:bg-primary file:text-white hover:file:bg-primary/90" />
+                                        </div>
+
+                                        @if (!empty($settings['pdf_invoice_bg']))
+                                            <div class="flex items-start gap-4 rounded-md border border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-[#0e1726]">
+                                                <a href="{{ asset('storage/' . $settings['pdf_invoice_bg']) }}" target="_blank" title="Click to view full size">
+                                                    <img src="{{ asset('storage/' . $settings['pdf_invoice_bg']) }}"
+                                                        alt="Invoice Background Preview" class="h-28 w-20 object-cover rounded shadow-sm border border-gray-200 dark:border-gray-700 hover:opacity-90 transition" />
+                                                </a>
+                                                <div class="flex-1 text-xs space-y-2">
+                                                    <p class="font-semibold text-gray-700 dark:text-gray-300">Active Custom Background</p>
+                                                    <p class="text-gray-500 dark:text-gray-400 text-[11px]">Click thumbnail to view full image in new tab.</p>
+                                                    <label class="inline-flex items-center gap-2 cursor-pointer text-danger font-medium hover:underline pt-1">
+                                                        <input type="checkbox" name="remove_pdf_invoice_bg" value="1" class="form-checkbox text-danger rounded" />
+                                                        <span>Reset to default template</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="flex items-start gap-4 rounded-md border border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-[#0e1726]">
+                                                <a href="{{ asset('assets/images/inoodex_invoice.jpg') }}" target="_blank" title="Click to view full size">
+                                                    <img src="{{ asset('assets/images/inoodex_invoice.jpg') }}"
+                                                        alt="Default Invoice Background" class="h-28 w-20 object-cover rounded shadow-sm border border-gray-200 dark:border-gray-700 hover:opacity-90 transition" />
+                                                </a>
+                                                <div class="flex-1 text-xs space-y-1">
+                                                    <p class="font-semibold text-gray-700 dark:text-gray-300">Default Template Active</p>
+                                                    <p class="text-gray-500 dark:text-gray-400 text-[11px]">Using standard inoodex invoice background letterhead.</p>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- Report Background Box -->
+                                <div class="rounded-lg border border-gray-200 p-4 dark:border-gray-700 bg-gray-50/50 dark:bg-[#1b2e4b]/40">
+                                    <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-gray-700">
+                                        <div>
+                                            <h6 class="font-bold text-base text-gray-800 dark:text-white-light">2. Report PDF Background</h6>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Used for Financial Summary, Balance Sheet, Payments, Expenses & Journal Vouchers</p>
+                                        </div>
+                                        <span class="badge {{ !empty($settings['pdf_report_bg']) ? 'badge-outline-primary' : 'badge-outline-secondary' }}">
+                                            {{ !empty($settings['pdf_report_bg']) ? 'Custom Upload' : 'Default Preset' }}
+                                        </span>
+                                    </div>
+
+                                    <div class="mt-4 space-y-4">
+                                        <div>
+                                            <label for="pdf_report_bg" class="text-xs font-semibold text-gray-700 dark:text-gray-300">Upload New Background Image (JPG / PNG - Max 4MB, A4 recommended)</label>
+                                            <input id="pdf_report_bg" type="file" name="pdf_report_bg" accept="image/jpeg,image/png,image/jpg"
+                                                class="form-input file:py-1.5 file:px-3 file:border-0 file:text-xs file:font-semibold file:bg-primary file:text-white hover:file:bg-primary/90" />
+                                        </div>
+
+                                        @if (!empty($settings['pdf_report_bg']))
+                                            <div class="flex items-start gap-4 rounded-md border border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-[#0e1726]">
+                                                <a href="{{ asset('storage/' . $settings['pdf_report_bg']) }}" target="_blank" title="Click to view full size">
+                                                    <img src="{{ asset('storage/' . $settings['pdf_report_bg']) }}"
+                                                        alt="Report Background Preview" class="h-28 w-20 object-cover rounded shadow-sm border border-gray-200 dark:border-gray-700 hover:opacity-90 transition" />
+                                                </a>
+                                                <div class="flex-1 text-xs space-y-2">
+                                                    <p class="font-semibold text-gray-700 dark:text-gray-300">Active Custom Background</p>
+                                                    <p class="text-gray-500 dark:text-gray-400 text-[11px]">Click thumbnail to view full image in new tab.</p>
+                                                    <label class="inline-flex items-center gap-2 cursor-pointer text-danger font-medium hover:underline pt-1">
+                                                        <input type="checkbox" name="remove_pdf_report_bg" value="1" class="form-checkbox text-danger rounded" />
+                                                        <span>Reset to default template</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="flex items-start gap-4 rounded-md border border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-[#0e1726]">
+                                                <a href="{{ asset('assets/images/inoodex_invoice.jpg') }}" target="_blank" title="Click to view full size">
+                                                    <img src="{{ asset('assets/images/inoodex_invoice.jpg') }}"
+                                                        alt="Default Report Background" class="h-28 w-20 object-cover rounded shadow-sm border border-gray-200 dark:border-gray-700 hover:opacity-90 transition" />
+                                                </a>
+                                                <div class="flex-1 text-xs space-y-1">
+                                                    <p class="font-semibold text-gray-700 dark:text-gray-300">Default Template Active</p>
+                                                    <p class="text-gray-500 dark:text-gray-400 text-[11px]">Using standard inoodex invoice background letterhead.</p>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>

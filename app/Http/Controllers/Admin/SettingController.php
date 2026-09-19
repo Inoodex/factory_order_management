@@ -30,6 +30,8 @@ class SettingController extends Controller
             'app_name' => 'nullable|string|max:255',
             'app_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'app_favicon' => 'nullable|image|mimes:ico,png,jpg,jpeg|max:1024',
+            'pdf_invoice_bg' => 'nullable|image|mimes:jpeg,png,jpg|max:4096',
+            'pdf_report_bg' => 'nullable|image|mimes:jpeg,png,jpg|max:4096',
             'contact_email' => 'nullable|email|max:255',
             'contact_phone' => 'nullable|string|max:255',
             'address' => 'nullable|string|max:500',
@@ -89,6 +91,40 @@ class SettingController extends Controller
             $favicon = $request->file('app_favicon');
             $faviconPath = $favicon->store('uploads/settings', 'public');
             Setting::updateOrCreate(['key' => 'app_favicon'], ['value' => $faviconPath]);
+        }
+
+        // PDF Invoice Background
+        if ($request->boolean('remove_pdf_invoice_bg')) {
+            $oldInvoiceBg = Setting::where('key', 'pdf_invoice_bg')->value('value');
+            if ($oldInvoiceBg && Storage::disk('public')->exists($oldInvoiceBg)) {
+                Storage::disk('public')->delete($oldInvoiceBg);
+            }
+            Setting::where('key', 'pdf_invoice_bg')->delete();
+        } elseif ($request->hasFile('pdf_invoice_bg')) {
+            $oldInvoiceBg = Setting::where('key', 'pdf_invoice_bg')->value('value');
+            if ($oldInvoiceBg && Storage::disk('public')->exists($oldInvoiceBg)) {
+                Storage::disk('public')->delete($oldInvoiceBg);
+            }
+            $invoiceBg = $request->file('pdf_invoice_bg');
+            $invoiceBgPath = $invoiceBg->store('uploads/settings', 'public');
+            Setting::updateOrCreate(['key' => 'pdf_invoice_bg'], ['value' => $invoiceBgPath]);
+        }
+
+        // PDF Report Background
+        if ($request->boolean('remove_pdf_report_bg')) {
+            $oldReportBg = Setting::where('key', 'pdf_report_bg')->value('value');
+            if ($oldReportBg && Storage::disk('public')->exists($oldReportBg)) {
+                Storage::disk('public')->delete($oldReportBg);
+            }
+            Setting::where('key', 'pdf_report_bg')->delete();
+        } elseif ($request->hasFile('pdf_report_bg')) {
+            $oldReportBg = Setting::where('key', 'pdf_report_bg')->value('value');
+            if ($oldReportBg && Storage::disk('public')->exists($oldReportBg)) {
+                Storage::disk('public')->delete($oldReportBg);
+            }
+            $reportBg = $request->file('pdf_report_bg');
+            $reportBgPath = $reportBg->store('uploads/settings', 'public');
+            Setting::updateOrCreate(['key' => 'pdf_report_bg'], ['value' => $reportBgPath]);
         }
 
         return redirect()->back()->with('success', 'Settings updated successfully.');

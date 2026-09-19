@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 14, 2026 at 12:49 PM
+-- Generation Time: Sep 17, 2026 at 11:33 AM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.28
 
@@ -49,7 +49,7 @@ CREATE TABLE `accounting_periods` (
 --
 
 INSERT INTO `accounting_periods` (`id`, `name`, `year`, `month`, `start_date`, `end_date`, `type`, `status`, `remarks`, `is_closed`, `closed_at`, `closed_by`, `created_at`, `updated_at`) VALUES
-(1, 'FY-2026', '2026', NULL, '2026-01-01', '2026-12-31', 'fiscal_year', 'open', 'Fiscal Year 2026', 0, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48');
+(1, 'FY-2026', '2026', NULL, '2026-01-01', '2026-12-31', 'fiscal_year', 'open', 'Fiscal Year 2026', 0, NULL, NULL, '2026-09-15 22:50:58', '2026-09-15 22:50:58');
 
 -- --------------------------------------------------------
 
@@ -126,8 +126,8 @@ CREATE TABLE `cache` (
 --
 
 INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
-('factory-order-management-cache-active_currencies', 'O:39:\"Illuminate\\Database\\Eloquent\\Collection\":2:{s:8:\"\0*\0items\";a:3:{i:0;O:19:\"App\\Models\\Currency\":33:{s:13:\"\0*\0connection\";s:5:\"mysql\";s:8:\"\0*\0table\";s:10:\"currencies\";s:13:\"\0*\0primaryKey\";s:2:\"id\";s:10:\"\0*\0keyType\";s:3:\"int\";s:12:\"incrementing\";b:1;s:7:\"\0*\0with\";a:0:{}s:12:\"\0*\0withCount\";a:0:{}s:19:\"preventsLazyLoading\";b:0;s:10:\"\0*\0perPage\";i:15;s:6:\"exists\";b:1;s:18:\"wasRecentlyCreated\";b:0;s:28:\"\0*\0escapeWhenCastingToString\";b:0;s:13:\"\0*\0attributes\";a:9:{s:2:\"id\";i:1;s:4:\"name\";s:9:\"US Dollar\";s:4:\"code\";s:3:\"USD\";s:6:\"symbol\";s:1:\"$\";s:13:\"exchange_rate\";s:10:\"1.00000000\";s:9:\"is_active\";i:1;s:10:\"is_default\";i:1;s:10:\"created_at\";s:19:\"2026-09-14 11:07:48\";s:10:\"updated_at\";s:19:\"2026-09-14 11:07:48\";}s:11:\"\0*\0original\";a:9:{s:2:\"id\";i:1;s:4:\"name\";s:9:\"US Dollar\";s:4:\"code\";s:3:\"USD\";s:6:\"symbol\";s:1:\"$\";s:13:\"exchange_rate\";s:10:\"1.00000000\";s:9:\"is_active\";i:1;s:10:\"is_default\";i:1;s:10:\"created_at\";s:19:\"2026-09-14 11:07:48\";s:10:\"updated_at\";s:19:\"2026-09-14 11:07:48\";}s:10:\"\0*\0changes\";a:0:{}s:11:\"\0*\0previous\";a:0:{}s:8:\"\0*\0casts\";a:3:{s:13:\"exchange_rate\";s:9:\"decimal:2\";s:9:\"is_active\";s:7:\"boolean\";s:10:\"is_default\";s:7:\"boolean\";}s:17:\"\0*\0classCastCache\";a:0:{}s:21:\"\0*\0attributeCastCache\";a:0:{}s:13:\"\0*\0dateFormat\";N;s:10:\"\0*\0appends\";a:0:{}s:19:\"\0*\0dispatchesEvents\";a:0:{}s:14:\"\0*\0observables\";a:0:{}s:12:\"\0*\0relations\";a:0:{}s:10:\"\0*\0touches\";a:0:{}s:27:\"\0*\0relationAutoloadCallback\";N;s:26:\"\0*\0relationAutoloadContext\";N;s:10:\"timestamps\";b:1;s:13:\"usesUniqueIds\";b:0;s:9:\"\0*\0hidden\";a:0:{}s:10:\"\0*\0visible\";a:0:{}s:11:\"\0*\0fillable\";a:6:{i:0;s:4:\"name\";i:1;s:4:\"code\";i:2;s:6:\"symbol\";i:3;s:13:\"exchange_rate\";i:4;s:9:\"is_active\";i:5;s:10:\"is_default\";}s:10:\"\0*\0guarded\";a:1:{i:0;s:1:\"*\";}}i:1;O:19:\"App\\Models\\Currency\":33:{s:13:\"\0*\0connection\";s:5:\"mysql\";s:8:\"\0*\0table\";s:10:\"currencies\";s:13:\"\0*\0primaryKey\";s:2:\"id\";s:10:\"\0*\0keyType\";s:3:\"int\";s:12:\"incrementing\";b:1;s:7:\"\0*\0with\";a:0:{}s:12:\"\0*\0withCount\";a:0:{}s:19:\"preventsLazyLoading\";b:0;s:10:\"\0*\0perPage\";i:15;s:6:\"exists\";b:1;s:18:\"wasRecentlyCreated\";b:0;s:28:\"\0*\0escapeWhenCastingToString\";b:0;s:13:\"\0*\0attributes\";a:9:{s:2:\"id\";i:2;s:4:\"name\";s:4:\"Euro\";s:4:\"code\";s:3:\"EUR\";s:6:\"symbol\";s:3:\"€\";s:13:\"exchange_rate\";s:10:\"1.08000000\";s:9:\"is_active\";i:1;s:10:\"is_default\";i:0;s:10:\"created_at\";s:19:\"2026-09-14 11:07:48\";s:10:\"updated_at\";s:19:\"2026-09-14 11:07:48\";}s:11:\"\0*\0original\";a:9:{s:2:\"id\";i:2;s:4:\"name\";s:4:\"Euro\";s:4:\"code\";s:3:\"EUR\";s:6:\"symbol\";s:3:\"€\";s:13:\"exchange_rate\";s:10:\"1.08000000\";s:9:\"is_active\";i:1;s:10:\"is_default\";i:0;s:10:\"created_at\";s:19:\"2026-09-14 11:07:48\";s:10:\"updated_at\";s:19:\"2026-09-14 11:07:48\";}s:10:\"\0*\0changes\";a:0:{}s:11:\"\0*\0previous\";a:0:{}s:8:\"\0*\0casts\";a:3:{s:13:\"exchange_rate\";s:9:\"decimal:2\";s:9:\"is_active\";s:7:\"boolean\";s:10:\"is_default\";s:7:\"boolean\";}s:17:\"\0*\0classCastCache\";a:0:{}s:21:\"\0*\0attributeCastCache\";a:0:{}s:13:\"\0*\0dateFormat\";N;s:10:\"\0*\0appends\";a:0:{}s:19:\"\0*\0dispatchesEvents\";a:0:{}s:14:\"\0*\0observables\";a:0:{}s:12:\"\0*\0relations\";a:0:{}s:10:\"\0*\0touches\";a:0:{}s:27:\"\0*\0relationAutoloadCallback\";N;s:26:\"\0*\0relationAutoloadContext\";N;s:10:\"timestamps\";b:1;s:13:\"usesUniqueIds\";b:0;s:9:\"\0*\0hidden\";a:0:{}s:10:\"\0*\0visible\";a:0:{}s:11:\"\0*\0fillable\";a:6:{i:0;s:4:\"name\";i:1;s:4:\"code\";i:2;s:6:\"symbol\";i:3;s:13:\"exchange_rate\";i:4;s:9:\"is_active\";i:5;s:10:\"is_default\";}s:10:\"\0*\0guarded\";a:1:{i:0;s:1:\"*\";}}i:2;O:19:\"App\\Models\\Currency\":33:{s:13:\"\0*\0connection\";s:5:\"mysql\";s:8:\"\0*\0table\";s:10:\"currencies\";s:13:\"\0*\0primaryKey\";s:2:\"id\";s:10:\"\0*\0keyType\";s:3:\"int\";s:12:\"incrementing\";b:1;s:7:\"\0*\0with\";a:0:{}s:12:\"\0*\0withCount\";a:0:{}s:19:\"preventsLazyLoading\";b:0;s:10:\"\0*\0perPage\";i:15;s:6:\"exists\";b:1;s:18:\"wasRecentlyCreated\";b:0;s:28:\"\0*\0escapeWhenCastingToString\";b:0;s:13:\"\0*\0attributes\";a:9:{s:2:\"id\";i:3;s:4:\"name\";s:16:\"Bangladeshi Taka\";s:4:\"code\";s:3:\"BDT\";s:6:\"symbol\";s:3:\"৳\";s:13:\"exchange_rate\";s:10:\"0.00830000\";s:9:\"is_active\";i:1;s:10:\"is_default\";i:0;s:10:\"created_at\";s:19:\"2026-09-14 11:07:48\";s:10:\"updated_at\";s:19:\"2026-09-14 11:07:48\";}s:11:\"\0*\0original\";a:9:{s:2:\"id\";i:3;s:4:\"name\";s:16:\"Bangladeshi Taka\";s:4:\"code\";s:3:\"BDT\";s:6:\"symbol\";s:3:\"৳\";s:13:\"exchange_rate\";s:10:\"0.00830000\";s:9:\"is_active\";i:1;s:10:\"is_default\";i:0;s:10:\"created_at\";s:19:\"2026-09-14 11:07:48\";s:10:\"updated_at\";s:19:\"2026-09-14 11:07:48\";}s:10:\"\0*\0changes\";a:0:{}s:11:\"\0*\0previous\";a:0:{}s:8:\"\0*\0casts\";a:3:{s:13:\"exchange_rate\";s:9:\"decimal:2\";s:9:\"is_active\";s:7:\"boolean\";s:10:\"is_default\";s:7:\"boolean\";}s:17:\"\0*\0classCastCache\";a:0:{}s:21:\"\0*\0attributeCastCache\";a:0:{}s:13:\"\0*\0dateFormat\";N;s:10:\"\0*\0appends\";a:0:{}s:19:\"\0*\0dispatchesEvents\";a:0:{}s:14:\"\0*\0observables\";a:0:{}s:12:\"\0*\0relations\";a:0:{}s:10:\"\0*\0touches\";a:0:{}s:27:\"\0*\0relationAutoloadCallback\";N;s:26:\"\0*\0relationAutoloadContext\";N;s:10:\"timestamps\";b:1;s:13:\"usesUniqueIds\";b:0;s:9:\"\0*\0hidden\";a:0:{}s:10:\"\0*\0visible\";a:0:{}s:11:\"\0*\0fillable\";a:6:{i:0;s:4:\"name\";i:1;s:4:\"code\";i:2;s:6:\"symbol\";i:3;s:13:\"exchange_rate\";i:4;s:9:\"is_active\";i:5;s:10:\"is_default\";}s:10:\"\0*\0guarded\";a:1:{i:0;s:1:\"*\";}}}s:28:\"\0*\0escapeWhenCastingToString\";b:0;}', 1789391474),
-('factory-order-management-cache-tyro:user-1:roles', 'a:4:{i:0;s:10:\"accountant\";i:1;s:5:\"admin\";i:2;s:5:\"staff\";i:3;s:11:\"super-admin\";}', 1789390247);
+('factory-order-management-cache-tyro_dashboard_heartbeat_1', 'i:1789637144;', 1789637744),
+('factory-order-management-cache-tyro:user-1:roles', 'a:4:{i:0;s:11:\"super-admin\";i:1;s:5:\"admin\";i:2;s:10:\"accountant\";i:3;s:5:\"staff\";}', 1789644890);
 
 -- --------------------------------------------------------
 
@@ -164,69 +164,17 @@ CREATE TABLE `chart_of_accounts` (
 --
 
 INSERT INTO `chart_of_accounts` (`id`, `parent_id`, `code`, `name`, `type`, `is_active`, `is_default`, `created_at`, `updated_at`) VALUES
-(1, NULL, '10001', 'Office Cash', 'asset', 1, 1, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(2, NULL, '10002', 'Factory Operating Bank Account', 'asset', 1, 1, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(3, NULL, '20001', 'Accounts Payable', 'liability', 1, 1, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(4, NULL, '30001', 'Owner\'s Equity', 'equity', 1, 1, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(5, NULL, '41001', 'Garment Production Revenue', 'revenue', 1, 1, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(6, NULL, '41002', 'Export Sample & Freight Revenue', 'revenue', 1, 0, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(7, NULL, '51001', 'Factory Rent', 'expense', 1, 1, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(8, NULL, '51002', 'Worker & Staff Salaries', 'expense', 1, 1, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(9, NULL, '51003', 'Utilities & Power', 'expense', 1, 1, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(10, NULL, '51004', 'Fabric & Trims Raw Materials', 'expense', 1, 1, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(11, NULL, '51005', 'Logistics & Shipping', 'expense', 1, 1, '2026-09-14 05:07:48', '2026-09-14 05:07:48');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `commissions`
---
-
-CREATE TABLE `commissions` (
-  `id` bigint UNSIGNED NOT NULL,
-  `customer_order_id` bigint UNSIGNED DEFAULT NULL,
-  `user_id` bigint UNSIGNED NOT NULL,
-  `percentage` decimal(5,2) DEFAULT NULL,
-  `amount` decimal(15,2) NOT NULL DEFAULT '0.00',
-  `proposed_amount` decimal(15,2) DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
-  `workflow_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'draft',
-  `claimed_at` timestamp NULL DEFAULT NULL,
-  `claim_notes` text COLLATE utf8mb4_unicode_ci,
-  `reviewed_by` bigint UNSIGNED DEFAULT NULL,
-  `reviewed_at` timestamp NULL DEFAULT NULL,
-  `review_notes` text COLLATE utf8mb4_unicode_ci,
-  `notes` text COLLATE utf8mb4_unicode_ci,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `currencies`
---
-
-CREATE TABLE `currencies` (
-  `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `code` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `symbol` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exchange_rate` decimal(16,8) NOT NULL DEFAULT '1.00000000',
-  `is_active` tinyint(1) NOT NULL DEFAULT '1',
-  `is_default` tinyint(1) NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `currencies`
---
-
-INSERT INTO `currencies` (`id`, `name`, `code`, `symbol`, `exchange_rate`, `is_active`, `is_default`, `created_at`, `updated_at`) VALUES
-(1, 'US Dollar', 'USD', '$', 1.00000000, 1, 1, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(2, 'Euro', 'EUR', '€', 1.08000000, 1, 0, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(3, 'Bangladeshi Taka', 'BDT', '৳', 0.00830000, 1, 0, '2026-09-14 05:07:48', '2026-09-14 05:07:48');
+(1, NULL, '10001', 'Office Cash', 'asset', 1, 1, '2026-09-15 22:50:58', '2026-09-15 22:50:58'),
+(2, NULL, '10002', 'Pubali Bank', 'asset', 1, 1, '2026-09-15 22:50:58', '2026-09-17 04:17:58'),
+(3, NULL, '20001', 'Accounts Payable', 'liability', 1, 1, '2026-09-15 22:50:58', '2026-09-15 22:50:58'),
+(4, NULL, '30001', 'Owner\'s Equity', 'equity', 1, 1, '2026-09-15 22:50:58', '2026-09-15 22:50:58'),
+(5, NULL, '41001', 'Garment Production Revenue', 'revenue', 1, 1, '2026-09-15 22:50:58', '2026-09-15 22:50:58'),
+(6, NULL, '41002', 'Export Sample & Freight Revenue', 'revenue', 1, 0, '2026-09-15 22:50:58', '2026-09-15 22:50:58'),
+(7, NULL, '51001', 'Factory Rent', 'expense', 1, 1, '2026-09-15 22:50:58', '2026-09-15 22:50:58'),
+(8, NULL, '51002', 'Worker & Staff Salaries', 'expense', 1, 1, '2026-09-15 22:50:58', '2026-09-15 22:50:58'),
+(9, NULL, '51003', 'Utilities & Power', 'expense', 1, 1, '2026-09-15 22:50:58', '2026-09-15 22:50:58'),
+(10, NULL, '51004', 'Fabric & Trims Raw Materials', 'expense', 1, 1, '2026-09-15 22:50:58', '2026-09-15 22:50:58'),
+(11, NULL, '51005', 'Logistics & Shipping', 'expense', 1, 1, '2026-09-15 22:50:58', '2026-09-15 22:50:58');
 
 -- --------------------------------------------------------
 
@@ -251,9 +199,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `brand`, `session`, `email`, `phone`, `address`, `created_at`, `updated_at`) VALUES
-(1, 'H&M Hennes & Mauritz', 'H&M Divided', 'Summer 2026', 'sourcing.dhaka@hm.com', '+880 1711 111111', 'Gulshan 2, Dhaka 1212', '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(2, 'Inditex Sourcing Ltd', 'Zara Man', 'Autumn/Winter 2026', 'buyer.bd@inditex.com', '+880 1722 222222', 'Banani, Dhaka 1213', '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(3, 'Next Retail UK', 'Next Casuals', 'Spring 2026', 'next.sourcing@next.co.uk', '+880 1733 333333', 'Baridhara DOHS, Dhaka', '2026-09-14 05:07:48', '2026-09-14 05:07:48');
+(1, 'Schuyler Green', 'Tracto', 'Celo', 'your.email+fakedata40936@gmail.com', '509-918-7000', '45759 E Washington Street', '2026-09-17 04:42:22', '2026-09-17 05:13:12');
 
 -- --------------------------------------------------------
 
@@ -268,6 +214,7 @@ CREATE TABLE `customer_orders` (
   `order_no` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `style_no` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `style_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `brand` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `style_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `composition` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `color_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -284,15 +231,8 @@ CREATE TABLE `customer_orders` (
 -- Dumping data for table `customer_orders`
 --
 
-INSERT INTO `customer_orders` (`id`, `customer_id`, `supplier_id`, `order_no`, `style_no`, `style_name`, `style_image`, `composition`, `color_name`, `color_qty`, `order_date`, `etd_date`, `price`, `notes`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'ORD-2026-00001', 'STY-HM-101', 'Men Relaxed Fit Jersey T-Shirt', NULL, '100% BCI Organic Cotton (180 GSM)', 'Navy Blue', 12000, '2026-08-20', '2026-10-04', 3.85, 'Enzyme bio-wash required, export hanger pack.', '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(2, 2, 2, 'ORD-2026-00002', 'STY-ZR-440', 'Men Oversized French Terry Hoodie', NULL, '80% Cotton 20% Polyester (320 GSM)', 'Olive Heather', 8500, '2026-08-05', '2026-09-26', 7.60, 'Metal eyelets and matching flat drawstrings.', '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(3, 3, 3, 'ORD-2026-00003', 'STY-NX-882', 'Ladies Ribbed Crewneck Long Sleeve', NULL, '95% Modal 5% Elastane 2x2 Rib', 'Dusty Rose', 6000, '2026-08-30', '2026-09-12', 5.20, 'Silicone softener wash, flatlock stitch detailing.', '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(4, 1, 2, 'ORD-2026-00004', 'STY-HM-555', 'Kids Graphic Printed Romper', NULL, '100% Combed Cotton Single Jersey', 'Butter Yellow', 15000, '2026-09-04', '2026-10-29', 2.95, 'Nickel-free snaps at bottom, lead-free water base pigment print.', '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(5, 2, 1, 'ORD-2026-00005', 'STY-ZR-109', 'Classic Cotton Pique Polo', NULL, '100% Combed Cotton Pique (220 GSM)', 'Classic White', 14000, '2026-04-12', '2026-06-20', 4.20, 'Flat knit collar and cuffs, 2-button placket.', '2026-09-14 06:09:45', '2026-09-14 06:09:45'),
-(6, 3, 2, 'ORD-2026-00006', 'STY-NX-304', 'Ladies Lightweight Cardigan', NULL, '60% Cotton 40% Viscose Fine Knit', 'Oatmeal Melange', 18500, '2026-05-18', '2026-07-10', 5.10, 'Tortoiseshell effect buttons, rib trim hem.', '2026-09-14 06:09:45', '2026-09-14 06:09:45'),
-(7, 1, 3, 'ORD-2026-00007', 'STY-HM-712', 'Unisex Brushed Fleece Joggers', NULL, '70% Cotton 30% Polyester (280 GSM)', 'Charcoal Grey', 22000, '2026-06-08', '2026-08-15', 4.80, 'Side welt pockets, elasticated waistband with drawcord.', '2026-09-14 06:09:45', '2026-09-14 06:09:45'),
-(8, 2, 1, 'ORD-2026-00008', 'STY-ZR-620', 'Cargo Shorts with Utility Pockets', NULL, '98% Cotton 2% Spandex Twill', 'Khaki Tan', 25000, '2026-07-14', '2026-09-04', 5.40, 'Garment enzyme stone wash, double needle topstitch.', '2026-09-14 06:09:45', '2026-09-14 06:09:45');
+INSERT INTO `customer_orders` (`id`, `customer_id`, `supplier_id`, `order_no`, `style_no`, `style_name`, `brand`, `style_image`, `composition`, `color_name`, `color_qty`, `order_date`, `etd_date`, `price`, `notes`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '180', '525', 'Deleniti', 'Alius ver vito turba dolorum curriculum amplus curis.', 'styles/NGQWIZE4EYxhuZGk9HWy6NrDCVhO1USpAqq4NhqZ.jpg', '15', 'Bradley Schaefer', 493, '2026-09-17', '2026-09-25', 153.00, 'Test', '2026-09-17 05:04:36', '2026-09-17 05:04:36');
 
 -- --------------------------------------------------------
 
@@ -344,14 +284,7 @@ CREATE TABLE `factory_followups` (
 --
 
 INSERT INTO `factory_followups` (`id`, `factory_order_id`, `pps_date`, `pps_comments_status`, `shs_sending_date`, `shs_comments_status`, `knitting_status`, `dyeing_status`, `cutting_status`, `fob_price`, `sub_price`, `notes`, `created_at`, `updated_at`) VALUES
-(1, 1, '2026-09-04', 'Approved', '2026-09-09', 'Sent', 'Completed', 'Completed', 'In Progress', 3.40, 0.45, NULL, '2026-09-14 05:07:48', '2026-09-14 06:09:44'),
-(2, 2, '2026-09-04', 'Approved with Comments', '2026-09-09', 'Approved', 'Completed', 'Completed', 'Completed', 6.95, 1.20, NULL, '2026-09-14 05:07:48', '2026-09-14 06:09:45'),
-(3, 3, '2026-09-04', 'Approved', NULL, 'Pending', 'Completed', 'In Progress', 'Not Started', 4.70, 0.60, NULL, '2026-09-14 05:07:48', '2026-09-14 06:09:45'),
-(4, 4, '2026-09-04', 'Submitted', NULL, 'Pending', 'In Progress', 'Not Started', 'Not Started', 2.60, 0.35, NULL, '2026-09-14 05:07:48', '2026-09-14 06:09:45'),
-(5, 5, '2026-09-04', 'Approved', '2026-09-09', 'Approved', 'Completed', 'Completed', 'Completed', 3.80, 0.40, NULL, '2026-09-14 06:09:45', '2026-09-14 06:09:45'),
-(6, 6, '2026-09-04', 'Approved', '2026-09-09', 'Approved', 'Completed', 'Completed', 'Completed', 4.60, 0.55, NULL, '2026-09-14 06:09:45', '2026-09-14 06:09:45'),
-(7, 7, '2026-09-04', 'Approved', '2026-09-09', 'Approved', 'Completed', 'Completed', 'Completed', 4.30, 0.50, NULL, '2026-09-14 06:09:45', '2026-09-14 06:09:45'),
-(8, 8, '2026-09-04', 'Approved', '2026-09-09', 'Approved', 'Completed', 'Completed', 'Completed', 4.85, 0.65, NULL, '2026-09-14 06:09:45', '2026-09-14 06:09:45');
+(1, 1, NULL, 'Pending', NULL, 'Pending', 'Not Started', 'Not Started', 'Not Started', 0.00, 0.00, NULL, '2026-09-17 05:04:36', '2026-09-17 05:04:36');
 
 -- --------------------------------------------------------
 
@@ -376,14 +309,7 @@ CREATE TABLE `factory_orders` (
 --
 
 INSERT INTO `factory_orders` (`id`, `customer_order_id`, `etd_price`, `sub_price`, `aetd_date`, `fob_price`, `notes`, `created_at`, `updated_at`) VALUES
-(1, 1, 3.50, 0.45, '2026-10-04', 3.40, NULL, '2026-09-14 05:07:48', '2026-09-14 06:09:44'),
-(2, 2, 7.10, 1.20, '2026-09-29', 6.95, NULL, '2026-09-14 05:07:48', '2026-09-14 06:09:44'),
-(3, 3, 4.80, 0.60, '2026-09-12', 4.70, NULL, '2026-09-14 05:07:48', '2026-09-14 06:09:45'),
-(4, 4, 2.65, 0.35, '2026-10-29', 2.60, NULL, '2026-09-14 05:07:48', '2026-09-14 06:09:45'),
-(5, 5, 3.85, 0.40, '2026-06-20', 3.80, NULL, '2026-09-14 06:09:45', '2026-09-14 06:09:45'),
-(6, 6, 4.65, 0.55, '2026-07-10', 4.60, NULL, '2026-09-14 06:09:45', '2026-09-14 06:09:45'),
-(7, 7, 4.35, 0.50, '2026-08-15', 4.30, NULL, '2026-09-14 06:09:45', '2026-09-14 06:09:45'),
-(8, 8, 4.90, 0.65, '2026-09-04', 4.85, NULL, '2026-09-14 06:09:45', '2026-09-14 06:09:45');
+(1, 1, 153.00, NULL, '2026-09-25', NULL, NULL, '2026-09-17 05:04:36', '2026-09-17 05:04:36');
 
 -- --------------------------------------------------------
 
@@ -566,7 +492,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2025_01_01_000003_add_suspension_columns_to_users_table', 1),
 (10, '2025_02_08_000000_add_profile_photo_to_users_table', 1),
 (11, '2026_02_15_000000_create_tyro_audit_logs_table', 1),
-(12, '2026_03_01_000001_create_factory_order_management_tables', 1);
+(12, '2026_03_01_000001_create_factory_order_management_tables', 1),
+(13, '2025_01_01_000001_create_media_table', 2),
+(14, '2025_01_01_000002_create_starred_import_images_table', 2),
+(15, '2026_02_20_000000_create_smtp_presets_table', 2),
+(16, '2026_09_17_105840_add_brand_to_customer_orders_table', 2);
 
 -- --------------------------------------------------------
 
@@ -612,8 +542,8 @@ CREATE TABLE `office_accounts` (
 --
 
 INSERT INTO `office_accounts` (`id`, `account_name`, `account_type`, `provider_name`, `account_number`, `chart_of_account_id`, `opening_balance`, `branch_name`, `status`, `created_by`, `notes`, `created_at`, `updated_at`) VALUES
-(1, 'Office Cash Drawer', 'cash', NULL, 'CASH-DRAWER-01', 1, 150000.00, NULL, 'active', 1, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(2, 'Pubali Bank - Operations', 'bank', 'Pubali Bank Ltd', '3781901011402', 2, 500000.00, 'Panthapath Branch, Dhaka', 'active', 1, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48');
+(1, 'Office Cash Drawer', 'cash', NULL, '00000000', 1, 500000.00, NULL, 'active', 1, NULL, '2026-09-15 22:50:58', '2026-09-15 22:50:58'),
+(2, 'Pubali Bank', 'bank', 'Pubali Bank Ltd', '3781901011402', 2, 500000.00, 'Panthapath Branch, Dhaka', 'active', 1, NULL, '2026-09-15 22:50:58', '2026-09-17 04:17:58');
 
 -- --------------------------------------------------------
 
@@ -689,8 +619,8 @@ CREATE TABLE `privileges` (
 --
 
 INSERT INTO `privileges` (`id`, `name`, `slug`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'Wildcard Full Access', '*', NULL, '2026-09-14 05:07:47', '2026-09-14 05:07:47'),
-(2, 'Accountant Access', '*accountant', NULL, '2026-09-14 05:07:47', '2026-09-14 05:07:47');
+(1, 'Wildcard Full Access', '*', NULL, '2026-09-15 22:50:57', '2026-09-15 22:50:57'),
+(2, 'Accountant Access', '*accountant', NULL, '2026-09-15 22:50:57', '2026-09-15 22:50:57');
 
 -- --------------------------------------------------------
 
@@ -711,9 +641,9 @@ CREATE TABLE `privilege_role` (
 --
 
 INSERT INTO `privilege_role` (`id`, `role_id`, `privilege_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '2026-09-14 05:07:47', '2026-09-14 05:07:47'),
-(2, 2, 1, '2026-09-14 05:07:47', '2026-09-14 05:07:47'),
-(3, 3, 2, '2026-09-14 05:07:47', '2026-09-14 05:07:47');
+(1, 2, 1, '2026-09-15 22:50:57', '2026-09-15 22:50:57'),
+(2, 1, 1, '2026-09-15 22:50:57', '2026-09-15 22:50:57'),
+(3, 3, 2, '2026-09-15 22:50:57', '2026-09-15 22:50:57');
 
 -- --------------------------------------------------------
 
@@ -735,10 +665,10 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `slug`, `is_active`, `created_at`, `updated_at`) VALUES
-(1, 'Administrator', 'admin', 1, '2026-09-14 05:07:47', '2026-09-14 05:07:47'),
-(2, 'Super Admin', 'super-admin', 1, '2026-09-14 05:07:47', '2026-09-14 05:07:47'),
-(3, 'Accountant', 'accountant', 1, '2026-09-14 05:07:47', '2026-09-14 05:07:47'),
-(4, 'Merchandiser Staff', 'staff', 1, '2026-09-14 05:07:47', '2026-09-14 05:07:47');
+(1, 'Super Admin', 'super-admin', 1, '2026-09-15 22:50:57', '2026-09-15 22:50:57'),
+(2, 'Administrator', 'admin', 1, '2026-09-15 22:50:57', '2026-09-15 22:50:57'),
+(3, 'Accountant', 'accountant', 1, '2026-09-15 22:50:57', '2026-09-15 22:50:57'),
+(4, 'Merchandiser Staff', 'staff', 1, '2026-09-15 22:50:57', '2026-09-15 22:50:57');
 
 -- --------------------------------------------------------
 
@@ -776,37 +706,6 @@ CREATE TABLE `salaries` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `salaries`
---
-
-INSERT INTO `salaries` (`id`, `user_id`, `employee_name`, `month`, `basic_salary`, `overtime_amount`, `bonus`, `allowances`, `gross_salary`, `tax_deduction`, `insurance_deduction`, `other_deductions`, `net_salary`, `paid_amount`, `payment_status`, `payment_date`, `payment_method`, `account_number`, `bank_name`, `bank_branch`, `routing_number`, `transaction_id`, `journal_entry_id`, `notes`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'Md. Abul Hasan Saidy', '2026-05', 60000.00, 0.00, 0.00, 0.00, 60000.00, 0.00, 0.00, 0.00, 60000.00, 0.00, 'pending', NULL, NULL, '3781-101-83523', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(2, NULL, 'Mohammad Faisal', '2026-05', 60000.00, 0.00, 0.00, 0.00, 60000.00, 0.00, 0.00, 0.00, 60000.00, 0.00, 'pending', NULL, NULL, '3781-101-83725', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(3, NULL, 'Insan Kamal Shafat', '2026-05', 40000.00, 0.00, 0.00, 0.00, 40000.00, 0.00, 0.00, 0.00, 40000.00, 0.00, 'pending', NULL, NULL, '3781-101-83764', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(4, NULL, 'Sakib Hasan', '2026-05', 46000.00, 0.00, 0.00, 0.00, 46000.00, 0.00, 0.00, 0.00, 46000.00, 0.00, 'pending', NULL, NULL, '3781-101-83536', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(5, NULL, 'Lutfur Kabir Rana', '2026-05', 40000.00, 0.00, 0.00, 0.00, 40000.00, 0.00, 0.00, 0.00, 40000.00, 0.00, 'pending', NULL, NULL, '3781-101-83501', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(6, NULL, 'Sharafat Ullah Mohim', '2026-05', 40000.00, 0.00, 0.00, 0.00, 40000.00, 0.00, 0.00, 0.00, 40000.00, 0.00, 'pending', NULL, NULL, '3781-101-83756', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(7, NULL, 'Mainul Hasan', '2026-05', 40000.00, 0.00, 0.00, 0.00, 40000.00, 0.00, 0.00, 0.00, 40000.00, 0.00, 'pending', NULL, NULL, '3781-101-83609', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(8, NULL, 'Singmay Chowdhury', '2026-05', 30000.00, 0.00, 0.00, 0.00, 30000.00, 0.00, 0.00, 0.00, 30000.00, 0.00, 'pending', NULL, NULL, '3781-101-83540', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(9, NULL, 'Arif Hossain Nayan', '2026-05', 17000.00, 0.00, 0.00, 0.00, 17000.00, 0.00, 0.00, 0.00, 17000.00, 0.00, 'pending', NULL, NULL, '3781-101-83710', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(10, NULL, 'Abdul Alim Shezan', '2026-05', 32000.00, 0.00, 0.00, 0.00, 32000.00, 0.00, 0.00, 0.00, 32000.00, 0.00, 'pending', NULL, NULL, '3781-101-83586', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(11, NULL, 'Moshraful Islam', '2026-05', 30000.00, 0.00, 0.00, 0.00, 30000.00, 0.00, 0.00, 0.00, 30000.00, 0.00, 'pending', NULL, NULL, '3781-101-83560', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(12, NULL, 'Harunur Rashid', '2026-05', 15000.00, 0.00, 0.00, 0.00, 15000.00, 0.00, 0.00, 0.00, 15000.00, 0.00, 'pending', NULL, NULL, '3781-101-83684', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(13, NULL, 'Abu haider', '2026-05', 13000.00, 0.00, 0.00, 0.00, 13000.00, 0.00, 0.00, 0.00, 13000.00, 0.00, 'pending', NULL, NULL, '3781-101-83783', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(14, NULL, 'Anta Tasnim Rafa', '2026-05', 17500.00, 0.00, 0.00, 0.00, 17500.00, 0.00, 0.00, 0.00, 17500.00, 0.00, 'pending', NULL, NULL, '3781-101-83555', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(15, NULL, 'Kawcer Hossen Rakib', '2026-05', 25000.00, 0.00, 0.00, 0.00, 25000.00, 0.00, 0.00, 0.00, 25000.00, 0.00, 'pending', NULL, NULL, '3781-101-83497', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(16, NULL, 'Md Shohan', '2026-05', 15000.00, 0.00, 0.00, 0.00, 15000.00, 0.00, 0.00, 0.00, 15000.00, 0.00, 'pending', NULL, NULL, '3781-101-83706', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(17, NULL, 'Mahabub Hossain Alif', '2026-05', 15000.00, 0.00, 0.00, 0.00, 15000.00, 0.00, 0.00, 0.00, 15000.00, 0.00, 'pending', NULL, NULL, '3781-101-83730', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(18, NULL, 'Shah Amanat Ullah', '2026-05', 15000.00, 0.00, 0.00, 0.00, 15000.00, 0.00, 0.00, 0.00, 15000.00, 0.00, 'pending', NULL, NULL, '3781-101-83747', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(19, NULL, 'MOSHAROF RONY', '2026-05', 9000.00, 0.00, 0.00, 0.00, 9000.00, 0.00, 0.00, 0.00, 9000.00, 0.00, 'pending', NULL, NULL, '3781-101-83594', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(20, NULL, 'Mohammed Abdullah', '2026-05', 11000.00, 0.00, 0.00, 0.00, 11000.00, 0.00, 0.00, 0.00, 11000.00, 0.00, 'pending', NULL, NULL, '3781-101-83693', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(21, NULL, 'Chelsi Rema', '2026-05', 13000.00, 0.00, 0.00, 0.00, 13000.00, 0.00, 0.00, 0.00, 13000.00, 0.00, 'pending', NULL, NULL, '3781-101-83779', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(22, NULL, 'Emelia Ani Areng', '2026-05', 13000.00, 0.00, 0.00, 0.00, 13000.00, 0.00, 0.00, 0.00, 13000.00, 0.00, 'pending', NULL, NULL, '3781-101-83667', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(23, NULL, 'Rakesh Saha', '2026-05', 8000.00, 0.00, 0.00, 0.00, 8000.00, 0.00, 0.00, 0.00, 8000.00, 0.00, 'pending', NULL, NULL, '3781-101-83652', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(24, NULL, 'Barsha Saha', '2026-05', 8000.00, 0.00, 0.00, 0.00, 8000.00, 0.00, 0.00, 0.00, 8000.00, 0.00, 'pending', NULL, NULL, '3781-101-83630', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(25, NULL, 'Riad Mia', '2026-05', 21000.00, 0.00, 0.00, 0.00, 21000.00, 0.00, 0.00, 0.00, 21000.00, 0.00, 'pending', NULL, NULL, '3781-101-83822', 'Pubali Bank', 'Panthapath Branch, Dhaka', NULL, NULL, NULL, NULL, NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48');
-
 -- --------------------------------------------------------
 
 --
@@ -827,18 +726,12 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('7IxmfEEZGSkKqPwr20TTvbw7dtGjDHt6tj0yED1Z', 1, '127.0.0.1', 'Symfony', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoibUR0YTB3SEdyVWhrM212eWZBZHhXSWtrUm1KZGN6THpyR1FOSnhUdSI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czo1NjoiaHR0cDovL2xvY2FsaG9zdC9kYXNoYm9hcmQvbXktY29tbWlzc2lvbnMvb3JkZXJzLzEvY2xhaW0iO3M6NToicm91dGUiO3M6Mjc6Im15LWNvbW1pc3Npb25zLmNyZWF0ZS1jbGFpbSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1789384468),
-('8KGsiHExwGDp7wCC45lYPvMdSZhNhEGeqwuo5vXM', 1, '127.0.0.1', 'Symfony', 'YTo0OntzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NjoiX3Rva2VuIjtzOjQwOiJwVExmY3hzbVM2QmRIa0JmQnljMWdrd1RtZlFyYkc0S1UzNlRhY0o0IjtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czoyNjoiaHR0cDovL2xvY2FsaG9zdC9kYXNoYm9hcmQiO3M6NToicm91dGUiO3M6MjA6InR5cm8tZGFzaGJvYXJkLmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1789385455),
-('DdaSEi4bARRU70PILtuQHPryXynpsOnChrQfWp4W', 1, '127.0.0.1', 'Symfony', 'YTo0OntzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NjoiX3Rva2VuIjtzOjQwOiI5SHJJN1RCY1FXUFFBTDdJTkJORjlGdWJDcU5MYXhYeVZVTFp2eUtJIjtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czoyNjoiaHR0cDovL2xvY2FsaG9zdC9kYXNoYm9hcmQiO3M6NToicm91dGUiO3M6MjA6InR5cm8tZGFzaGJvYXJkLmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1789385414),
-('IMUofPePWUgHluxQ95k6Xk7jDfm8Ln7ckoXdpWLc', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidW5uSGFaRzF1OUdsenU5cjFzelVtR0tOWG96SnF1WW1RQjdCUHY1WCI7czoxMDoidHlyby1sb2dpbiI7YToxOntzOjc6ImNhcHRjaGEiO2E6MDp7fX1zOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czo1MToiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2Rhc2hib2FyZC9ub3RpZmljYXRpb25zL2NvdW50IjtzOjU6InJvdXRlIjtzOjI1OiJhZG1pbi5ub3RpZmljYXRpb25zLmNvdW50Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1789390189),
-('jKzVRqepvS5zXTJm20Wow3fXIAeolH4PyLl2RGB5', NULL, '127.0.0.1', '', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoieXJiMGhpeFRkYzFxTUZXdHpRa0QxejBVdUJrMDBVc3V5ZHpyRVhrayI7czoxMDoidHlyby1sb2dpbiI7YToxOntzOjc6ImNhcHRjaGEiO2E6MTp7czo1OiJsb2dpbiI7aTo1O319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7czo1OiJyb3V0ZSI7czoxNjoidHlyby1sb2dpbi5sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1789385574),
-('K5HKWKJXEbzsGZh5DKmLzxrrMX3nRXPhtbzEsP3a', 1, '127.0.0.1', 'Symfony', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZENSaVVLY05QeWNoVDMwU0xCVnlKRHRCT25mdXNPOEE1UndNbW5KWCI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czo1NjoiaHR0cDovL2xvY2FsaG9zdC9kYXNoYm9hcmQvbXktY29tbWlzc2lvbnMvb3JkZXJzLzEvY2xhaW0iO3M6NToicm91dGUiO3M6Mjc6Im15LWNvbW1pc3Npb25zLmNyZWF0ZS1jbGFpbSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1789384488),
-('Ks2hJrhtIOdDKwJH7HU9A2XdllExKPWitMnz6VGL', 1, '127.0.0.1', 'Symfony', 'YTo0OntzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NjoiX3Rva2VuIjtzOjQwOiJYSXBFZGtXOHhzb3BYWDU0UlVQYWY0TnBkdE1kS04zZGdvWE9uV1JQIjtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czoyNjoiaHR0cDovL2xvY2FsaG9zdC9kYXNoYm9hcmQiO3M6NToicm91dGUiO3M6MjA6InR5cm8tZGFzaGJvYXJkLmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1789387623),
-('L8ieovo9xGhw2YeHVyiDKusPVtHE623re6mJlflY', NULL, '127.0.0.1', '', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoib3ExakZveXZ1dmpabXlmR09pcEVUNDNqYVl5a0JSbXVid041MEZjTyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7czo1OiJyb3V0ZSI7Tjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1789385573),
-('LzSpw4DkQrwXRIl1fhT2ruInre2lXPi6vXs27p3r', 1, '127.0.0.1', 'Symfony', 'YTo0OntzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NjoiX3Rva2VuIjtzOjQwOiJwUlRiQzlrYlBxSTNSMDloSUdYOTB3dDZ4dTVuSnd5c3A3NHZWWHkyIjtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czoyNjoiaHR0cDovL2xvY2FsaG9zdC9kYXNoYm9hcmQiO3M6NToicm91dGUiO3M6MjA6InR5cm8tZGFzaGJvYXJkLmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1789387874),
-('mfMx2eye12KO2RUWffdcHg7d6eG17f3HkixYt6i5', 1, '127.0.0.1', 'Symfony', 'YTo0OntzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NjoiX3Rva2VuIjtzOjQwOiJhb0hpN0pJZFBnYzYzSGpuM1NMTWYyMUFyQ29zNlJ5NGh4NWhxTmVlIjtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czoyNjoiaHR0cDovL2xvY2FsaG9zdC9kYXNoYm9hcmQiO3M6NToicm91dGUiO3M6MjA6InR5cm8tZGFzaGJvYXJkLmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1789385565),
-('nRFupxKXWHqSgiU8d0X73oZM4YHOqmOmpAhv2phq', 1, '127.0.0.1', 'Symfony', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTnVZMUpobjM5Zk5XVDlxODN4ZkRBZDJqY0o4YnpPY04xbGU1UU5qQyI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czo1NjoiaHR0cDovL2xvY2FsaG9zdC9kYXNoYm9hcmQvbXktY29tbWlzc2lvbnMvb3JkZXJzLzEvY2xhaW0iO3M6NToicm91dGUiO3M6Mjc6Im15LWNvbW1pc3Npb25zLmNyZWF0ZS1jbGFpbSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1789384093),
-('UN8Hm9h1Q3pB20nnI3HtJrLOcmwhYHttBBD1FQmh', 1, '127.0.0.1', 'Symfony', 'YTo0OntzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NjoiX3Rva2VuIjtzOjQwOiJac0p4TUhCem4wNVB6Nkttdkc1SmphZU16VlhUOVN3amdaNDQ0VTVyIjtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czoyNjoiaHR0cDovL2xvY2FsaG9zdC9kYXNoYm9hcmQiO3M6NToicm91dGUiO3M6MjA6InR5cm8tZGFzaGJvYXJkLmluZGV4Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1789385531);
+('eRs7BzBjHPz2cp2b8ggrwbnNgmqkNtpRfcMRqLel', 1, '127.0.0.1', 'Symfony', 'YTo0OntzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NjoiX3Rva2VuIjtzOjQwOiJaTlZ3WVQzbzZjbkRBRHdkRDlUd25heVNQVnhMMmVCcnROdUFlSVlvIjtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czo2MjoiaHR0cDovL2xvY2FsaG9zdC9kYXNoYm9hcmQvaW52b2ljZXMvY3JlYXRlP2N1c3RvbWVyX29yZGVyX2lkPTEiO3M6NToicm91dGUiO3M6MjE6ImFkbWluLmludm9pY2VzLmNyZWF0ZSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1789644271),
+('GpzJvotoKHj7zNNr2jOVONP3roqHvkMNKfyxs3S8', 1, '127.0.0.1', 'Symfony', 'YTo0OntzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NjoiX3Rva2VuIjtzOjQwOiJOaUIxczFzV2VJckY0amxUcEQ3NEQxWGtsMUtwVHQzWHdFM3Q3ckZQIjtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czo0MjoiaHR0cDovL2xvY2FsaG9zdC9kYXNoYm9hcmQvaW52b2ljZXMvY3JlYXRlIjtzOjU6InJvdXRlIjtzOjIxOiJhZG1pbi5pbnZvaWNlcy5jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1789644522),
+('jKzxJyv2lMY3I8vRBCU7y2rxj30kLwy86FZcMEXd', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiaTI4OG1jYU9NeWNRZW9hYU5OOUtPQ1BleEJ4MjJqYTdaVTRFRlNnMCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NTE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQvbm90aWZpY2F0aW9ucy9jb3VudCI7czo1OiJyb3V0ZSI7czoyNToiYWRtaW4ubm90aWZpY2F0aW9ucy5jb3VudCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MTA6InR5cm8tbG9naW4iO2E6MTp7czo3OiJjYXB0Y2hhIjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1789644771),
+('mpJtfaqzef249GZaMpXrojFCQ18Q2wcOuUANasoo', NULL, '127.0.0.1', '', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoibzlUUklxY25tOUY1Sm8zUUxyZ29yUEJjaVV5V0ptdENMaWNCTm4yRSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQvaW52b2ljZXMvY3JlYXRlIjtzOjU6InJvdXRlIjtzOjIxOiJhZG1pbi5pbnZvaWNlcy5jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1789644081),
+('tGuSiJPHQvRHC96Tq4z1UewxFeE9PZaJtfiUczKm', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicmh5MmRGM0F1R0lwM1BkcnVJUXhyVE5kQ0NKQkc4elk5QzZBTFZvRCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQvaW52b2ljZXMvY3JlYXRlIjtzOjU6InJvdXRlIjtzOjIxOiJhZG1pbi5pbnZvaWNlcy5jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1789643871),
+('uyZ54D760nVY8Sm6fpo3gQq0MZUGXtIWNs0vyGlj', 1, '127.0.0.1', 'Symfony', 'YTo0OntzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NjoiX3Rva2VuIjtzOjQwOiJUSHZwbHRXSGhDRmNiNDI5dUVSWjZkZXFScGFzdkdoRGRGMDJVcGkyIjtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czo0MjoiaHR0cDovL2xvY2FsaG9zdC9kYXNoYm9hcmQvaW52b2ljZXMvY3JlYXRlIjtzOjU6InJvdXRlIjtzOjIxOiJhZG1pbi5pbnZvaWNlcy5jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1789644260);
 
 -- --------------------------------------------------------
 
@@ -859,14 +752,14 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES
-(1, 'app_name', 'Factory_Order_Management', '2026-09-14 05:09:49', '2026-09-14 05:09:49'),
-(2, 'contact_email', NULL, '2026-09-14 05:09:49', '2026-09-14 05:09:49'),
-(3, 'contact_phone', NULL, '2026-09-14 05:09:49', '2026-09-14 05:09:49'),
-(4, 'address', NULL, '2026-09-14 05:09:49', '2026-09-14 05:09:49'),
-(5, 'enable_registration', '0', '2026-09-14 05:09:49', '2026-09-14 05:09:49'),
-(6, 'maintenance_mode', '0', '2026-09-14 05:09:49', '2026-09-14 05:09:49'),
-(7, 'app_logo', 'uploads/settings/3XXxV5gRot3d3VIIYfDjlTYbRJvCnteHBVqdeVai.png', '2026-09-14 05:09:49', '2026-09-14 05:09:49'),
-(8, 'app_favicon', 'uploads/settings/BoNyGC604sTgav1eyZweRN2otBig65Zr33kZTD66.png', '2026-09-14 05:09:49', '2026-09-14 05:09:49');
+(1, 'app_name', 'Factory_Order_Management', '2026-09-15 22:57:12', '2026-09-15 22:57:12'),
+(2, 'contact_email', NULL, '2026-09-15 22:57:12', '2026-09-15 22:57:12'),
+(3, 'contact_phone', NULL, '2026-09-15 22:57:12', '2026-09-15 22:57:12'),
+(4, 'address', NULL, '2026-09-15 22:57:12', '2026-09-15 22:57:12'),
+(5, 'enable_registration', '0', '2026-09-15 22:57:12', '2026-09-15 22:57:12'),
+(6, 'maintenance_mode', '0', '2026-09-15 22:57:12', '2026-09-15 22:57:12'),
+(7, 'app_logo', 'uploads/settings/cOciXRyulg5nP4Ih3OSiLtNQOfVzuAg4VfqagJwz.png', '2026-09-15 22:57:12', '2026-09-15 22:57:12'),
+(8, 'app_favicon', 'uploads/settings/Q6CPmXKoMgDT2UKJUuJikEuIu06FpQTRDrnNgcbO.png', '2026-09-15 22:57:12', '2026-09-15 22:57:12');
 
 -- --------------------------------------------------------
 
@@ -910,9 +803,7 @@ CREATE TABLE `suppliers` (
 --
 
 INSERT INTO `suppliers` (`id`, `name`, `location`, `contact_person`, `phone`, `email`, `created_at`, `updated_at`) VALUES
-(1, 'Apex Knitting & Dyeing Mills Ltd', 'Kashimpur, Gazipur', 'Engr. Rafiqul Islam (GM Production)', '+880 1819 001122', 'production@apexknitting.com', '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(2, 'Viyellatex Fashions Ltd', 'Tongi Industrial Area, Gazipur', 'Tanvir Ahmed (Merchandising Head)', '+880 1819 334455', 'orders@viyellatexgroup.com', '2026-09-14 05:07:48', '2026-09-14 05:07:48'),
-(3, 'Square Fashions Ltd', 'Valuka, Mymensingh', 'Mustafa Kamal (Factory Manager)', '+880 1819 556677', 'squarefashions@squaregroup.com', '2026-09-14 05:07:48', '2026-09-14 05:07:48');
+(1, 'Esteban Heaney', 'Vetus uter', 'Cook Islands', '457-771-6965', 'your.email+fakedata88434@gmail.com', '2026-09-17 04:50:53', '2026-09-17 04:50:53');
 
 -- --------------------------------------------------------
 
@@ -953,138 +844,84 @@ CREATE TABLE `tyro_audit_logs` (
 --
 
 INSERT INTO `tyro_audit_logs` (`id`, `user_id`, `event`, `auditable_type`, `auditable_id`, `old_values`, `new_values`, `metadata`, `created_at`) VALUES
-(1, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:11'),
-(2, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:11'),
-(3, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:11'),
-(4, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:11'),
-(5, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:11'),
-(6, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:11'),
-(7, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:11'),
-(8, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:11'),
-(9, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:11'),
-(10, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:11'),
-(11, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:11'),
-(12, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:11'),
-(13, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(14, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(15, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(16, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(17, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(18, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(19, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(20, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(21, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(22, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(23, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(24, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(25, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(26, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(27, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(28, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(29, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(30, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(31, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:12'),
-(32, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:13'),
-(33, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:13'),
-(34, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:13'),
-(35, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:13'),
-(36, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:13'),
-(37, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:13'),
-(38, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:13'),
-(39, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:13'),
-(40, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:13'),
-(41, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:08:13'),
-(42, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": false, \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36\"}', '2026-09-14 11:08:35'),
-(43, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:26'),
-(44, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:26'),
-(45, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:26'),
-(46, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:26'),
-(47, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:26'),
-(48, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:26'),
-(49, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:26'),
-(50, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:26'),
-(51, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:26'),
-(52, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:26'),
-(53, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:26'),
-(54, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(55, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(56, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(57, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(58, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(59, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(60, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(61, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(62, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(63, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(64, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(65, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(66, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(67, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(68, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(69, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(70, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(71, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:27'),
-(72, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:28'),
-(73, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:28'),
-(74, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:28'),
-(75, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:28'),
-(76, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:28'),
-(77, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:28'),
-(78, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:28'),
-(79, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:28'),
-(80, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:28'),
-(81, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:28'),
-(82, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:28'),
-(83, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:28'),
-(84, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:28'),
-(85, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:46'),
-(86, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:46'),
-(87, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:46'),
-(88, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:46'),
-(89, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:46'),
-(90, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:46'),
-(91, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:46'),
-(92, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:46'),
-(93, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:46'),
-(94, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:46'),
-(95, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:46'),
-(96, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:46'),
-(97, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:46'),
-(98, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(99, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(100, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(101, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(102, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(103, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(104, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(105, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(106, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(107, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(108, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(109, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(110, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(111, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(112, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(113, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(114, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:47'),
-(115, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:48'),
-(116, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:48'),
-(117, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:48'),
-(118, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:48'),
-(119, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:48'),
-(120, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:48'),
-(121, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:48'),
-(122, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:48'),
-(123, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:48'),
-(124, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:48'),
-(125, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:48'),
-(126, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:14:48'),
-(127, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:30:11'),
-(128, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:30:44'),
-(129, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:32:05'),
-(130, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 11:32:45'),
-(131, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 12:07:03'),
-(132, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-14 12:11:13');
+(1, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": false, \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36\"}', '2026-09-16 04:56:47'),
+(2, 1, 'user.logout', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": false, \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36\"}', '2026-09-16 04:57:18'),
+(3, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": false, \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36\"}', '2026-09-17 04:45:56'),
+(4, 1, 'user.logout', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": false, \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36\"}', '2026-09-17 05:15:32'),
+(5, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": false, \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36\"}', '2026-09-17 09:25:44'),
+(6, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-17 11:21:32'),
+(7, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-17 11:23:49'),
+(8, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-17 11:24:20'),
+(9, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-17 11:24:30'),
+(10, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-17 11:28:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tyro_media`
+--
+
+CREATE TABLE `tyro_media` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `filename` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `webp_path` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `thumbnail_path` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `disk` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'public',
+  `mime_type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size` bigint UNSIGNED NOT NULL,
+  `alt_text` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `source_url` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tyro_smtp_presets`
+--
+
+CREATE TABLE `tyro_smtp_presets` (
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mailer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'smtp',
+  `host` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `port` smallint UNSIGNED NOT NULL DEFAULT '587',
+  `encryption` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` text COLLATE utf8mb4_unicode_ci,
+  `from_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `from_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tyro_starred_import_images`
+--
+
+CREATE TABLE `tyro_starred_import_images` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `star_key` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `provider` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `external_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alt` text COLLATE utf8mb4_unicode_ci,
+  `author` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `thumb_url` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `preview_url` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `download_url` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `download_location` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `source_url` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payload` json DEFAULT NULL,
+  `starred_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1118,7 +955,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `username`, `designation`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `plain_password`, `remember_token`, `created_at`, `updated_at`, `suspended_at`, `suspension_reason`, `profile_photo_path`, `use_gravatar`) VALUES
-(1, 'Admin', 'hello@inoodex.com', 'admin', 'System Administrator', '2026-09-14 05:07:48', '$2y$12$WhYZ5EnUMWrdeg4caluPnOd4.NxgF4GJ44aIw6yPMUJaMHviWXltC', NULL, NULL, NULL, 'hello@inoodex.com', NULL, '2026-09-14 05:07:48', '2026-09-14 05:07:48', NULL, NULL, NULL, 0);
+(1, 'Admin', 'hello@inoodex.com', 'admin', 'System Administrator', '2026-09-15 22:50:57', '$2y$12$pDTLkwnMQXYipQZOVycMp.HwNPPV8TtmSOYRA0TIHOdswHbuiEQ4i', NULL, NULL, NULL, 'hello@inoodex.com', NULL, '2026-09-15 22:50:57', '2026-09-15 22:50:57', NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1139,10 +976,10 @@ CREATE TABLE `user_roles` (
 --
 
 INSERT INTO `user_roles` (`id`, `user_id`, `role_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, NULL, NULL),
+(1, 1, 3, NULL, NULL),
 (2, 1, 2, NULL, NULL),
-(3, 1, 3, NULL, NULL),
-(4, 1, 4, NULL, NULL);
+(3, 1, 4, NULL, NULL),
+(4, 1, 1, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -1200,22 +1037,6 @@ ALTER TABLE `chart_of_accounts`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `chart_of_accounts_code_unique` (`code`),
   ADD KEY `chart_of_accounts_parent_id_foreign` (`parent_id`);
-
---
--- Indexes for table `commissions`
---
-ALTER TABLE `commissions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `commissions_customer_order_id_foreign` (`customer_order_id`),
-  ADD KEY `commissions_user_id_foreign` (`user_id`),
-  ADD KEY `commissions_reviewed_by_foreign` (`reviewed_by`);
-
---
--- Indexes for table `currencies`
---
-ALTER TABLE `currencies`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `currencies_code_unique` (`code`);
 
 --
 -- Indexes for table `customers`
@@ -1451,6 +1272,28 @@ ALTER TABLE `tyro_audit_logs`
   ADD KEY `tyro_audit_logs_event_index` (`event`);
 
 --
+-- Indexes for table `tyro_media`
+--
+ALTER TABLE `tyro_media`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tyro_media_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `tyro_smtp_presets`
+--
+ALTER TABLE `tyro_smtp_presets`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tyro_smtp_presets_name_unique` (`name`);
+
+--
+-- Indexes for table `tyro_starred_import_images`
+--
+ALTER TABLE `tyro_starred_import_images`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tyro_starred_import_images_user_id_star_key_unique` (`user_id`,`star_key`),
+  ADD KEY `tyro_starred_import_images_user_id_starred_at_index` (`user_id`,`starred_at`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -1501,28 +1344,16 @@ ALTER TABLE `chart_of_accounts`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `commissions`
---
-ALTER TABLE `commissions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `currencies`
---
-ALTER TABLE `currencies`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `customer_orders`
 --
 ALTER TABLE `customer_orders`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `expenses`
@@ -1534,13 +1365,13 @@ ALTER TABLE `expenses`
 -- AUTO_INCREMENT for table `factory_followups`
 --
 ALTER TABLE `factory_followups`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `factory_orders`
 --
 ALTER TABLE `factory_orders`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1594,7 +1425,7 @@ ALTER TABLE `journal_entry_items`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `office_accounts`
@@ -1636,7 +1467,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `salaries`
 --
 ALTER TABLE `salaries`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -1654,7 +1485,7 @@ ALTER TABLE `social_accounts`
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `taxes`
@@ -1666,7 +1497,25 @@ ALTER TABLE `taxes`
 -- AUTO_INCREMENT for table `tyro_audit_logs`
 --
 ALTER TABLE `tyro_audit_logs`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `tyro_media`
+--
+ALTER TABLE `tyro_media`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tyro_smtp_presets`
+--
+ALTER TABLE `tyro_smtp_presets`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tyro_starred_import_images`
+--
+ALTER TABLE `tyro_starred_import_images`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -1717,14 +1566,6 @@ ALTER TABLE `budgets`
 --
 ALTER TABLE `chart_of_accounts`
   ADD CONSTRAINT `chart_of_accounts_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `chart_of_accounts` (`id`) ON DELETE SET NULL;
-
---
--- Constraints for table `commissions`
---
-ALTER TABLE `commissions`
-  ADD CONSTRAINT `commissions_customer_order_id_foreign` FOREIGN KEY (`customer_order_id`) REFERENCES `customer_orders` (`id`) ON DELETE SET NULL,
-  ADD CONSTRAINT `commissions_reviewed_by_foreign` FOREIGN KEY (`reviewed_by`) REFERENCES `users` (`id`) ON DELETE SET NULL,
-  ADD CONSTRAINT `commissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `customer_orders`
@@ -1831,6 +1672,18 @@ ALTER TABLE `social_accounts`
 --
 ALTER TABLE `taxes`
   ADD CONSTRAINT `taxes_chart_of_account_id_foreign` FOREIGN KEY (`chart_of_account_id`) REFERENCES `chart_of_accounts` (`id`);
+
+--
+-- Constraints for table `tyro_media`
+--
+ALTER TABLE `tyro_media`
+  ADD CONSTRAINT `tyro_media_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `tyro_starred_import_images`
+--
+ALTER TABLE `tyro_starred_import_images`
+  ADD CONSTRAINT `tyro_starred_import_images_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `user_roles`

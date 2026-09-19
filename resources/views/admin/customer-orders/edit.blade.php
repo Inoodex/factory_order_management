@@ -2,13 +2,93 @@
 
 @section('title', 'Edit Customer Order #' . $customerOrder->order_no)
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('assets/css/nice-select2.css') }}">
+    <style>
+        .nice-select {
+            width: 100%;
+            height: 42px !important;
+            display: flex !important;
+            align-items: center !important;
+            background-image: none !important;
+        }
+
+        .nice-select .current {
+            line-height: normal !important;
+            display: flex !important;
+            align-items: center !important;
+            height: 100% !important;
+        }
+
+        .nice-select .list {
+            width: 100%;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .nice-select .nice-select-dropdown {
+            width: 100% !important;
+            z-index: 50 !important;
+        }
+
+        .form-select {
+            background-image: none !important;
+        }
+
+        /* Dark mode support */
+        .dark .nice-select {
+            background-color: #1b2e4b;
+            border-color: #253b5c;
+            color: #888ea8;
+        }
+
+        .dark .nice-select .current {
+            color: #bfc9d4;
+        }
+
+        .dark .nice-select .nice-select-dropdown {
+            background-color: #1b2e4b;
+            border-color: #253b5c;
+            box-shadow: 0 0 0 1px #253b5c;
+        }
+
+        .dark .nice-select .nice-select-search {
+            background-color: #0e1726;
+            border-color: #253b5c;
+            color: #e0e6ed;
+        }
+
+        .dark .nice-select .option {
+            color: #bfc9d4;
+        }
+
+        .dark .nice-select .option:hover,
+        .dark .nice-select .option.focus,
+        .dark .nice-select .option.selected.focus {
+            background-color: #0e1726 !important;
+            color: #fff;
+        }
+
+        .dark .nice-select:after {
+            border-color: #888ea8;
+        }
+    </style>
+@endpush
+
 @section('content')
     <div class="flex items-center justify-between gap-4">
         <div>
             <h2 class="text-xl font-semibold uppercase">Edit Customer Order</h2>
             <p class="text-sm text-gray-500">Order #{{ $customerOrder->order_no }} (Style: {{ $customerOrder->style_no }})</p>
         </div>
-        <a href="{{ route('admin.customer-orders.show', $customerOrder) }}" class="btn btn-outline-secondary">Back to Order</a>
+        <a href="{{ route('admin.customer-orders.show', $customerOrder) }}" class="btn btn-outline-secondary gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Order
+        </a>
     </div>
 
     <div class="panel mt-6">
@@ -23,6 +103,7 @@
                     <div>
                         <label for="customer_id" class="font-semibold">Customer / Buyer <span class="text-danger">*</span></label>
                         <select name="customer_id" id="customer_id" class="form-select" required>
+                            <option value="">Select Buyer</option>
                             @foreach ($customers as $c)
                                 <option value="{{ $c->id }}" data-brand="{{ $c->brand }}" {{ old('customer_id', $customerOrder->customer_id) == $c->id ? 'selected' : '' }}>
                                     {{ $c->name }} {{ $c->brand ? "({$c->brand})" : '' }} {{ $c->session ? "- {$c->session}" : '' }}
@@ -35,6 +116,7 @@
                     <div>
                         <label for="supplier_id" class="font-semibold">Supplier / Factory Unit <span class="text-danger">*</span></label>
                         <select name="supplier_id" id="supplier_id" class="form-select" required>
+                            <option value="">Select Factory / Supplier</option>
                             @foreach ($suppliers as $s)
                                 <option value="{{ $s->id }}" {{ old('supplier_id', $customerOrder->supplier_id) == $s->id ? 'selected' : '' }}>
                                     {{ $s->name }} {{ $s->location ? "({$s->location})" : '' }}
@@ -159,14 +241,35 @@
     </div>
 
     @push('scripts')
+        <script src="{{ asset('assets/js/nice-select2.js') }}"></script>
         <script>
-            document.getElementById('customer_id')?.addEventListener('change', function() {
-                const selected = this.options[this.selectedIndex];
-                const brandInput = document.getElementById('brand');
-                if (brandInput && !brandInput.value && selected && selected.dataset.brand) {
-                    brandInput.value = selected.dataset.brand;
+            document.addEventListener('DOMContentLoaded', function() {
+                const customerSelect = document.getElementById('customer_id');
+                const supplierSelect = document.getElementById('supplier_id');
+
+                if (customerSelect && typeof NiceSelect !== 'undefined') {
+                    NiceSelect.bind(customerSelect, {
+                        searchable: true,
+                        placeholder: 'Select Buyer / Customer'
+                    });
                 }
+
+                if (supplierSelect && typeof NiceSelect !== 'undefined') {
+                    NiceSelect.bind(supplierSelect, {
+                        searchable: true,
+                        placeholder: 'Select Factory / Supplier'
+                    });
+                }
+
+                customerSelect?.addEventListener('change', function() {
+                    const selected = this.options[this.selectedIndex];
+                    const brandInput = document.getElementById('brand');
+                    if (brandInput && !brandInput.value && selected && selected.dataset.brand) {
+                        brandInput.value = selected.dataset.brand;
+                    }
+                });
             });
         </script>
     @endpush
 @endsection
+

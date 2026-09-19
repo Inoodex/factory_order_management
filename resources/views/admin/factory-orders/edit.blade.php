@@ -8,7 +8,14 @@
             <h2 class="text-xl font-semibold uppercase">Edit Factory Commercials</h2>
             <p class="text-sm text-gray-500">Order #{{ $factoryOrder->customerOrder?->order_no }} (Style: {{ $factoryOrder->customerOrder?->style_no }})</p>
         </div>
-        <a href="{{ route('admin.factory-orders.index') }}" class="btn btn-outline-secondary">Back to List</a>
+        <a href="{{ route('admin.factory-orders.index') }}" class="btn btn-outline-secondary gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to List
+        </a>
     </div>
 
     <div class="panel mt-6 max-w-2xl">

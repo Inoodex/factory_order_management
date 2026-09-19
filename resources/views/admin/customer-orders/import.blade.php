@@ -8,7 +8,14 @@
             <h2 class="text-xl font-semibold uppercase">Bulk Import Customer Orders</h2>
             <p class="text-sm text-gray-500">Upload an Excel/CSV file to batch-import apparel orders</p>
         </div>
-        <a href="{{ route('admin.customer-orders.index') }}" class="btn btn-outline-secondary">Back to Orders</a>
+        <a href="{{ route('admin.customer-orders.index') }}" class="btn btn-outline-secondary gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Orders
+        </a>
     </div>
 
     <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">

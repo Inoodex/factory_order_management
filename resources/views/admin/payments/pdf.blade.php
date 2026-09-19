@@ -133,8 +133,7 @@
     </style>
 </head>
 @php
-    $bgPath = public_path('assets/images/Invoice_Insaf_02.jpg');
-    $bgSrc = file_exists($bgPath) ? 'file:///' . str_replace('\\', '/', $bgPath) : null;
+    $bgSrc = get_pdf_bg_path('report');
     $grandTotal = $payments->sum('amount');
     $paymentCount = $payments->count();
     $startDate = request('start_date');
@@ -158,7 +157,7 @@
                             <th style="text-align: center;">Payments Report</th>
                         </tr>
                         <tr>
-                            <td>Statement of Student Payments</td>
+                            <td>Statement of Order Payments</td>
                         </tr>
                     </table>
                 </td>
@@ -189,8 +188,8 @@
                 <tr>
                     <th style="width: 10%;">DATE</th>
                     <th style="width: 14%;">RECEIPT NO</th>
-                    <th style="width: 14%;">TYPE</th>
-                    <th style="width: 25%;" class="text-left">STUDENT / APPLICATION</th>
+                    <th style="width: 12%;">TYPE</th>
+                    <th style="width: 27%;" class="text-left">CUSTOMER / ORDER</th>
                     <th style="width: 12%;">STATUS</th>
                     <th style="width: 10%;">COLLECTED BY</th>
                     <th style="width: 15%;">AMOUNT</th>
@@ -198,13 +197,18 @@
             </thead>
             <tbody>
                 @forelse ($payments as $payment)
+                    @php
+                        $order = $payment->customerOrder ?? ($payment->invoice?->customerOrder);
+                        $customerName = $order?->customer?->name ?? 'N/A';
+                        $orderIdentifier = $order?->order_no ?? ($payment->invoice?->invoice_number ?? 'N/A');
+                    @endphp
                     <tr>
                         <td class="{{ $loop->odd ? 'table-shade' : '' }}">{{ optional($payment->payment_date)->format('d M Y') }}</td>
                         <td class="{{ $loop->odd ? 'table-shade' : '' }}">{{ $payment->receipt_number }}</td>
                         <td class="{{ $loop->odd ? 'table-shade' : '' }}">{{ ucfirst($payment->payment_type) }}</td>
                         <td class="text-left {{ $loop->odd ? 'table-shade' : '' }}">
-                            {{ $payment->student->first_name }} {{ $payment->student->last_name }}
-                            <br><span style="font-size: 8px; color: #666;">({{ $payment->application->application_id ?? 'N/A' }})</span>
+                            {{ $customerName }}
+                            <br><span style="font-size: 8px; color: #666;">(Order: {{ $orderIdentifier }})</span>
                         </td>
                         <td class="{{ $loop->odd ? 'table-shade' : '' }}">{{ ucfirst($payment->payment_status) }}</td>
                         <td class="{{ $loop->odd ? 'table-shade' : '' }}">{{ $payment->collector->name ?? '-' }}</td>

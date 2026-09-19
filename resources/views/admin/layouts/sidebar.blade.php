@@ -335,12 +335,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.payments.report') }}" class="block rounded-md px-3 py-1.5 text-xs font-medium transition-colors hover:bg-white hover:shadow-sm dark:hover:bg-[#0e1726] {{ request()->routeIs('admin.payments.report') ? 'bg-white text-primary font-bold shadow-sm dark:bg-[#0e1726]' : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white' }}">
+                            <a href="{{ route('admin.payments.index') }}" class="block rounded-md px-3 py-1.5 text-xs font-medium transition-colors hover:bg-white hover:shadow-sm dark:hover:bg-[#0e1726] {{ request()->routeIs('admin.payments.index', 'admin.payments.report') ? 'bg-white text-primary font-bold shadow-sm dark:bg-[#0e1726]' : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white' }}">
                                 Payment Report
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.expenses.report') }}" class="block rounded-md px-3 py-1.5 text-xs font-medium transition-colors hover:bg-white hover:shadow-sm dark:hover:bg-[#0e1726] {{ request()->routeIs('admin.expenses.report') ? 'bg-white text-primary font-bold shadow-sm dark:bg-[#0e1726]' : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white' }}">
+                            <a href="{{ route('admin.expenses.index') }}" class="block rounded-md px-3 py-1.5 text-xs font-medium transition-colors hover:bg-white hover:shadow-sm dark:hover:bg-[#0e1726] {{ request()->routeIs('admin.expenses.index', 'admin.expenses.report') ? 'bg-white text-primary font-bold shadow-sm dark:bg-[#0e1726]' : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white' }}">
                                 Expense Report
                             </a>
                         </li>

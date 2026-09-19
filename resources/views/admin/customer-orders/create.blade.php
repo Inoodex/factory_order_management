@@ -2,13 +2,93 @@
 
 @section('title', 'New Customer Order')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('assets/css/nice-select2.css') }}">
+    <style>
+        .nice-select {
+            width: 100%;
+            height: 42px !important;
+            display: flex !important;
+            align-items: center !important;
+            background-image: none !important;
+        }
+
+        .nice-select .current {
+            line-height: normal !important;
+            display: flex !important;
+            align-items: center !important;
+            height: 100% !important;
+        }
+
+        .nice-select .list {
+            width: 100%;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .nice-select .nice-select-dropdown {
+            width: 100% !important;
+            z-index: 50 !important;
+        }
+
+        .form-select {
+            background-image: none !important;
+        }
+
+        /* Dark mode support */
+        .dark .nice-select {
+            background-color: #1b2e4b;
+            border-color: #253b5c;
+            color: #888ea8;
+        }
+
+        .dark .nice-select .current {
+            color: #bfc9d4;
+        }
+
+        .dark .nice-select .nice-select-dropdown {
+            background-color: #1b2e4b;
+            border-color: #253b5c;
+            box-shadow: 0 0 0 1px #253b5c;
+        }
+
+        .dark .nice-select .nice-select-search {
+            background-color: #0e1726;
+            border-color: #253b5c;
+            color: #e0e6ed;
+        }
+
+        .dark .nice-select .option {
+            color: #bfc9d4;
+        }
+
+        .dark .nice-select .option:hover,
+        .dark .nice-select .option.focus,
+        .dark .nice-select .option.selected.focus {
+            background-color: #0e1726 !important;
+            color: #fff;
+        }
+
+        .dark .nice-select:after {
+            border-color: #888ea8;
+        }
+    </style>
+@endpush
+
 @section('content')
     <div class="flex items-center justify-between gap-4">
         <div>
             <h2 class="text-xl font-semibold uppercase">Create Customer Order</h2>
             <p class="text-sm text-gray-500">Initiate a new apparel manufacturing order and auto-generate factory follow-up</p>
         </div>
-        <a href="{{ route('admin.customer-orders.index') }}" class="btn btn-outline-secondary">Back to Orders</a>
+        <a href="{{ route('admin.customer-orders.index') }}" class="btn btn-outline-secondary gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Orders
+        </a>
     </div>
 
     <div class="panel mt-6">
@@ -146,14 +226,35 @@
     </div>
 
     @push('scripts')
+        <script src="{{ asset('assets/js/nice-select2.js') }}"></script>
         <script>
-            document.getElementById('customer_id')?.addEventListener('change', function() {
-                const selected = this.options[this.selectedIndex];
-                const brandInput = document.getElementById('brand');
-                if (brandInput && !brandInput.value && selected && selected.dataset.brand) {
-                    brandInput.value = selected.dataset.brand;
+            document.addEventListener('DOMContentLoaded', function() {
+                const customerSelect = document.getElementById('customer_id');
+                const supplierSelect = document.getElementById('supplier_id');
+
+                if (customerSelect && typeof NiceSelect !== 'undefined') {
+                    NiceSelect.bind(customerSelect, {
+                        searchable: true,
+                        placeholder: 'Select Buyer / Customer'
+                    });
                 }
+
+                if (supplierSelect && typeof NiceSelect !== 'undefined') {
+                    NiceSelect.bind(supplierSelect, {
+                        searchable: true,
+                        placeholder: 'Select Factory / Supplier'
+                    });
+                }
+
+                customerSelect?.addEventListener('change', function() {
+                    const selected = this.options[this.selectedIndex];
+                    const brandInput = document.getElementById('brand');
+                    if (brandInput && !brandInput.value && selected && selected.dataset.brand) {
+                        brandInput.value = selected.dataset.brand;
+                    }
+                });
             });
         </script>
     @endpush
 @endsection
+

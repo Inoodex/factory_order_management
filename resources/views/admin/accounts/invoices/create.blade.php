@@ -110,18 +110,33 @@
                 </div>
             </div>
 
-            <div class="mt-5">
-                <label>Notes <span class="text-xs text-white-dark">(appears on invoice PDF)</span></label>
-                <input type="hidden" name="notes" id="notes" value="" />
-                <div class="flex flex-col gap-2 mt-2" id="notes-container">
-                    <div class="flex items-center gap-2">
-                        <input type="checkbox" class="note-checkbox" checked />
-                        <input type="text" class="form-input text-sm note-text flex-1" value="Payment terms: As per agreed purchase order contract." />
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <input type="checkbox" class="note-checkbox" checked />
-                        <input type="text" class="form-input text-sm note-text flex-1" value="Goods once inspected and accepted are subject to standard factory warranty." />
-                    </div>
+            <div class="mt-4">
+                <div class="flex items-center justify-between mb-1.5">
+                    <label class="font-semibold text-sm mb-0">Invoice Notes & Payment Terms <span class="text-xs text-white-dark font-normal">(Printed on Invoice PDF)</span></label>
+                    <button type="button" @click="addNote()" class="btn btn-xs btn-outline-primary py-0.5 px-2.5 flex items-center gap-1">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M12 5v14M5 12h14" />
+                        </svg>
+                        Add Note
+                    </button>
+                </div>
+                
+                <input type="hidden" name="notes" id="notes" :value="compiledNotes" />
+                
+                <div class="flex flex-col gap-1.5" id="notes-container">
+                    <template x-for="(note, nIdx) in notesList" :key="nIdx">
+                        <div class="flex items-center gap-2">
+                            <label class="inline-flex items-center mb-0 cursor-pointer" title="Include in invoice">
+                                <input type="checkbox" class="form-checkbox text-primary rounded" x-model="note.checked" />
+                            </label>
+                            <input type="text" class="form-input text-xs py-1.5 flex-1" x-model="note.text" placeholder="Enter note or payment term..." />
+                            <button type="button" @click="removeNote(nIdx)" class="p-1 text-danger hover:bg-danger/10 rounded transition" title="Remove Note" x-show="notesList.length > 1">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 6L6 18M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>
@@ -259,9 +274,27 @@
                 grandTotal: 0,
                 selectedOrderId: '{{ old('customer_order_id', $selectedOrder ? $selectedOrder->id : '') }}',
                 orderDetails: null,
+                notesList: [
+                    { text: 'Payment terms: As per agreed purchase order contract.', checked: true },
+                    { text: 'Goods once inspected and accepted are subject to standard factory warranty.', checked: true }
+                ],
+
+                addNote(text = '') {
+                    this.notesList.push({ text: text || '', checked: true });
+                },
+
+                removeNote(index) {
+                    this.notesList.splice(index, 1);
+                },
+
+                get compiledNotes() {
+                    return this.notesList
+                        .filter(n => n.checked && n.text && n.text.trim().length > 0)
+                        .map(n => n.text.trim())
+                        .join('\n');
+                },
 
                 init() {
-                    this.syncNotes();
                     const self = this;
                     const el = document.getElementById('customer_order_id');
                     if (el && typeof NiceSelect !== 'undefined') {
@@ -341,26 +374,13 @@
                     }).format(val || 0);
                 },
 
-                syncNotes() {
-                    const rows = document.querySelectorAll('#notes-container > div');
-                    const notes = [];
-                    rows.forEach(row => {
-                        const checkbox = row.querySelector('.note-checkbox');
-                        const text = row.querySelector('.note-text');
-                        if (checkbox && checkbox.checked && text && text.value.trim()) {
-                            notes.push(text.value.trim());
-                        }
-                    });
-                    document.getElementById('notes').value = notes.join('\n');
-                },
-
                 submitInvoice() {
                     this.calculateTotals();
                     if (this.grandTotal <= 0) {
                         alert('Invoice total must be greater than zero.');
                         return;
                     }
-                    this.syncNotes();
+                    document.getElementById('notes').value = this.compiledNotes;
                     document.getElementById('invoice-form').submit();
                 }
             }
