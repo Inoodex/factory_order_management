@@ -78,25 +78,12 @@
                         Accounts Dept.</p>
                 </div>
 
-                <div class="grid grid-cols-2 gap-3">
+                <div class="grid grid-cols-1 gap-3">
                     <div>
                         <p class="text-[10px] text-white-dark font-bold uppercase tracking-widest mb-0.5">Accounting Period
                         </p>
                         <p class="text-sm font-bold text-primary">{{ $journalEntry->period->name }}</p>
                     </div>
-                    @if ($journalEntry->application)
-                        <div>
-                            <p class="text-[10px] text-white-dark font-bold uppercase tracking-widest mb-0.5">Related
-                                Application</p>
-                            <a href="{{ route('admin.applications.edit', $journalEntry->application) }}"
-                                class="text-sm font-bold text-primary hover:underline">
-                                {{ $journalEntry->application->student->first_name }}
-                                {{ $journalEntry->application->student->last_name }}
-                                <span
-                                    class="block text-[10px] text-white-dark">{{ $journalEntry->application->application_id }}</span>
-                            </a>
-                        </div>
-                    @endif
                 </div>
             </div>
 

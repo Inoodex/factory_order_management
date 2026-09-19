@@ -117,10 +117,10 @@
                 <div class="form-group">
                     <label for="payment_status">Payment Status <span class="text-danger">*</span></label>
                     <select name="payment_status" id="payment_status" class="form-select" required>
-                        <option value="pending" {{ old('payment_status', 'pending') == 'pending' ? 'selected' : '' }}>
-                            Pending
+                        <option value="completed" {{ old('payment_status', 'completed') == 'completed' ? 'selected' : '' }}>Completed
                         </option>
-                        <option value="completed" {{ old('payment_status') == 'completed' ? 'selected' : '' }}>Completed
+                        <option value="pending" {{ old('payment_status') == 'pending' ? 'selected' : '' }}>
+                            Pending
                         </option>
                     </select>
                     @error('payment_status')
@@ -203,7 +203,7 @@
                     return;
                 }
 
-                fetch(`{{ route('admin.payments.get-application-invoices') }}?customer_order_id=${orderId}`)
+                fetch(`{{ route('admin.payments.get-order-invoices') }}?customer_order_id=${orderId}`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error(`Invoice endpoint returned ${response.status}`);
@@ -242,7 +242,7 @@
                     return;
                 }
 
-                fetch(`{{ route('admin.payments.get-application-balance') }}?customer_order_id=${orderId}`)
+                fetch(`{{ route('admin.payments.get-order-balance') }}?customer_order_id=${orderId}`)
                     .then(response => response.json())
                     .then(data => {
                         balanceInfoContainer.classList.remove('hidden');

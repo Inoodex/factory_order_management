@@ -126,55 +126,8 @@ class PaymentController extends Controller
 
             $payment = Payment::create($validated);
 
-            // Double-Entry Ledger Posting
-            if ($validated['payment_status'] === 'completed') {
-                $officeAccount = OfficeAccount::find($payment->office_account_id);
-                $period = AccountingPeriod::where('is_closed', false)
-                    ->orderBy('year', 'desc')
-                    ->orderBy('month', 'desc')
-                    ->first();
-
-                if ($officeAccount && $officeAccount->chart_of_account_id && $period) {
-                    $orderNo = $payment->customerOrder ? $payment->customerOrder->order_no : 'N/A';
-                    $entry = JournalEntry::create([
-                        'period_id' => $period->id,
-                        'date' => $payment->payment_date ?? now(),
-                        'reference_number' => 'JV-PAY-' . $payment->receipt_number,
-                        'note' => 'Automated post for Order Payment: ' . $payment->receipt_number . ($orderNo !== 'N/A' ? " (Order #{$orderNo})" : ''),
-                        'status' => 'posted',
-                        'created_by' => Auth::id(),
-                    ]);
-
-                    // Debit: Cash/Bank Account (Asset increases)
-                    JournalEntryItem::create([
-                        'journal_entry_id' => $entry->id,
-                        'chart_of_account_id' => $officeAccount->chart_of_account_id,
-                        'debit' => $payment->amount,
-                        'credit' => 0,
-                        'description' => 'Receipt via ' . $officeAccount->account_name,
-                    ]);
-
-                    // Credit: Revenue Account or Accounts Receivable
-                    $revenueCoa = ChartOfAccount::where('type', 'revenue')->first() 
-                        ?? ChartOfAccount::first();
-
-                    if ($revenueCoa) {
-                        JournalEntryItem::create([
-                            'journal_entry_id' => $entry->id,
-                            'chart_of_account_id' => $revenueCoa->id,
-                            'debit' => 0,
-                            'credit' => $payment->amount,
-                            'description' => 'Payment received for Order: ' . $orderNo,
-                        ]);
-                    }
-
-                    $payment->journal_entry_id = $entry->id;
-                    $payment->save();
-                }
-            }
-
             DB::commit();
-            return redirect()->route('admin.payments.index')->with('success', 'Payment recorded successfully.');
+            return redirect()->route('admin.payments.index')->with('success', 'Payment recorded and posted to journal ledger successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->withErrors(['msg' => 'Creation failed: ' . $e->getMessage()])->withInput();
@@ -210,45 +163,8 @@ class PaymentController extends Controller
 
             $payment->update($validated);
 
-            // Double-Entry Ledger Sync
-            if ($payment->journal_entry_id) {
-                $entry = JournalEntry::find($payment->journal_entry_id);
-                if ($entry) {
-                    if ($payment->payment_status === 'completed') {
-                        $officeAccount = OfficeAccount::find($payment->office_account_id);
-                        $orderNo = $payment->customerOrder ? $payment->customerOrder->order_no : 'N/A';
-
-                        $entry->items()->delete();
-
-                        if ($officeAccount && $officeAccount->chart_of_account_id) {
-                            JournalEntryItem::create([
-                                'journal_entry_id' => $entry->id,
-                                'chart_of_account_id' => $officeAccount->chart_of_account_id,
-                                'debit' => $payment->amount,
-                                'credit' => 0,
-                                'description' => 'Receipt via ' . $officeAccount->account_name,
-                            ]);
-                        }
-
-                        $revenueCoa = ChartOfAccount::where('type', 'revenue')->first() ?? ChartOfAccount::first();
-                        if ($revenueCoa) {
-                            JournalEntryItem::create([
-                                'journal_entry_id' => $entry->id,
-                                'chart_of_account_id' => $revenueCoa->id,
-                                'debit' => 0,
-                                'credit' => $payment->amount,
-                                'description' => 'Payment received for Order: ' . $orderNo,
-                            ]);
-                        }
-                    } else {
-                        // If changed back to pending, void the journal entry
-                        $entry->update(['status' => 'void']);
-                    }
-                }
-            }
-
             DB::commit();
-            return redirect()->route('admin.payments.index')->with('success', 'Payment updated successfully.');
+            return redirect()->route('admin.payments.index')->with('success', 'Payment updated and ledger synchronized successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->withErrors(['msg' => 'Update failed: ' . $e->getMessage()])->withInput();
@@ -261,14 +177,6 @@ class PaymentController extends Controller
 
         try {
             DB::beginTransaction();
-
-            if ($payment->journal_entry_id) {
-                $entry = JournalEntry::find($payment->journal_entry_id);
-                if ($entry) {
-                    $entry->items()->delete();
-                    $entry->delete();
-                }
-            }
 
             $payment->delete();
 

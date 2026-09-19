@@ -47,7 +47,7 @@
             class="flex flex-1 flex-col gap-5 md:flex-row md:items-center w-full">
             <div class="relative flex-1">
                 <input type="text" name="search" value="{{ request('search') }}"
-                    placeholder="Search student name, phone or email..." class="form-input ltr:pr-11 rtl:pl-11" />
+                    placeholder="Search receipt #, buyer / customer, order #, style #..." class="form-input ltr:pr-11 rtl:pl-11" />
                 <button type="submit"
                     class="absolute inset-y-0 flex items-center hover:text-primary ltr:right-4 rtl:left-4">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

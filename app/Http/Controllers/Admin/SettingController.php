@@ -28,6 +28,8 @@ class SettingController extends Controller
 
         $request->validate([
             'app_name' => 'nullable|string|max:255',
+            'currency_symbol' => 'nullable|string|max:10',
+            'currency_code' => 'nullable|string|max:10',
             'app_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'app_favicon' => 'nullable|image|mimes:ico,png,jpg,jpeg|max:1024',
             'pdf_invoice_bg' => 'nullable|image|mimes:jpeg,png,jpg|max:4096',
@@ -48,6 +50,8 @@ class SettingController extends Controller
 
         $keys = [
             'app_name',
+            'currency_symbol',
+            'currency_code',
             'contact_email',
             'contact_phone',
             'address',

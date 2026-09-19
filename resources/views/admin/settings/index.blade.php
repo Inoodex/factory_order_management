@@ -47,11 +47,21 @@
                     <div class="mt-5">
                         <!-- General Tab -->
                         <div x-show="activeTab === 'general'">
-                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                                 <div>
                                     <label for="app_name">Application Name</label>
                                     <input id="app_name" type="text" name="app_name"
                                         value="{{ $settings['app_name'] ?? config('app.name') }}" class="form-input" />
+                                </div>
+                                <div>
+                                    <label for="currency_symbol">Currency Symbol</label>
+                                    <input id="currency_symbol" type="text" name="currency_symbol"
+                                        value="{{ $settings['currency_symbol'] ?? '$' }}" placeholder="$, BDT, €, £" class="form-input font-bold font-mono" />
+                                </div>
+                                <div>
+                                    <label for="currency_code">Currency Code</label>
+                                    <input id="currency_code" type="text" name="currency_code"
+                                        value="{{ $settings['currency_code'] ?? 'USD' }}" placeholder="USD, EUR, BDT" class="form-input font-bold uppercase font-mono" />
                                 </div>
                             </div>
                             <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">

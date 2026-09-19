@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 17, 2026 at 11:33 AM
+-- Generation Time: Sep 19, 2026 at 08:43 AM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.28
 
@@ -126,8 +126,7 @@ CREATE TABLE `cache` (
 --
 
 INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
-('factory-order-management-cache-tyro_dashboard_heartbeat_1', 'i:1789637144;', 1789637744),
-('factory-order-management-cache-tyro:user-1:roles', 'a:4:{i:0;s:11:\"super-admin\";i:1;s:5:\"admin\";i:2;s:10:\"accountant\";i:3;s:5:\"staff\";}', 1789644890);
+('factory-order-management-cache-tyro:user-1:roles', 'a:4:{i:0;s:11:\"super-admin\";i:1;s:5:\"admin\";i:2;s:10:\"accountant\";i:3;s:5:\"staff\";}', 1789806739);
 
 -- --------------------------------------------------------
 
@@ -199,7 +198,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `brand`, `session`, `email`, `phone`, `address`, `created_at`, `updated_at`) VALUES
-(1, 'Schuyler Green', 'Tracto', 'Celo', 'your.email+fakedata40936@gmail.com', '509-918-7000', '45759 E Washington Street', '2026-09-17 04:42:22', '2026-09-17 05:13:12');
+(1, 'Nordic Wear Apparel AB', 'Nordic Trend', 'Winter', 'erik@nordicwear.com', '509-918-7000', 'Kungsgatan 14, 111 35 Stockholm, Sweden', '2026-09-17 04:42:22', '2026-09-19 01:37:08');
 
 -- --------------------------------------------------------
 
@@ -232,7 +231,8 @@ CREATE TABLE `customer_orders` (
 --
 
 INSERT INTO `customer_orders` (`id`, `customer_id`, `supplier_id`, `order_no`, `style_no`, `style_name`, `brand`, `style_image`, `composition`, `color_name`, `color_qty`, `order_date`, `etd_date`, `price`, `notes`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '180', '525', 'Deleniti', 'Alius ver vito turba dolorum curriculum amplus curis.', 'styles/NGQWIZE4EYxhuZGk9HWy6NrDCVhO1USpAqq4NhqZ.jpg', '15', 'Bradley Schaefer', 493, '2026-09-17', '2026-09-25', 153.00, 'Test', '2026-09-17 05:04:36', '2026-09-17 05:04:36');
+(2, 1, 1, 'ORD-2026-00001', 'HD-8840', 'Men\'s Hoodie', 'Nordic Trend', 'styles/Ls8dRJreYd70hqBYx29t0cHPXaNE0gZkURAdoftT.png', '80% Organic Cotton, 20% Polyester, 320 GSM', 'Black', 500, '2026-09-19', '2026-10-31', 275.00, 'Test', '2026-09-19 01:45:44', '2026-09-19 01:45:44'),
+(3, 1, 1, 'ORD-2026-00003', 'HD-8845', 'Men\'s Shirt', 'Nordic Trend', 'styles/h9BabejlayWZaquS1N2p01tZLuFE5k8KP1Qcyk5P.jpg', '90% Organic Cotton, 10% Polyester, 280 GSM', 'White', 250, '2026-09-19', '2026-10-20', 320.00, 'Test 2', '2026-09-19 01:56:34', '2026-09-19 01:56:34');
 
 -- --------------------------------------------------------
 
@@ -284,7 +284,8 @@ CREATE TABLE `factory_followups` (
 --
 
 INSERT INTO `factory_followups` (`id`, `factory_order_id`, `pps_date`, `pps_comments_status`, `shs_sending_date`, `shs_comments_status`, `knitting_status`, `dyeing_status`, `cutting_status`, `fob_price`, `sub_price`, `notes`, `created_at`, `updated_at`) VALUES
-(1, 1, NULL, 'Pending', NULL, 'Pending', 'Not Started', 'Not Started', 'Not Started', 0.00, 0.00, NULL, '2026-09-17 05:04:36', '2026-09-17 05:04:36');
+(2, 2, NULL, 'Pending', NULL, 'Pending', 'Completed', 'In Progress', 'Not Started', 0.00, 0.00, NULL, '2026-09-19 01:45:44', '2026-09-19 02:06:14'),
+(3, 3, NULL, 'Pending', NULL, 'Pending', 'In Progress', 'Not Started', 'Not Started', 0.00, 0.00, NULL, '2026-09-19 01:56:34', '2026-09-19 02:05:39');
 
 -- --------------------------------------------------------
 
@@ -309,7 +310,8 @@ CREATE TABLE `factory_orders` (
 --
 
 INSERT INTO `factory_orders` (`id`, `customer_order_id`, `etd_price`, `sub_price`, `aetd_date`, `fob_price`, `notes`, `created_at`, `updated_at`) VALUES
-(1, 1, 153.00, NULL, '2026-09-25', NULL, NULL, '2026-09-17 05:04:36', '2026-09-17 05:04:36');
+(2, 2, 275.00, NULL, '2026-10-31', NULL, NULL, '2026-09-19 01:45:44', '2026-09-19 01:45:44'),
+(3, 3, 320.00, NULL, '2026-10-20', NULL, NULL, '2026-09-19 01:56:34', '2026-09-19 01:56:34');
 
 -- --------------------------------------------------------
 
@@ -726,12 +728,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('eRs7BzBjHPz2cp2b8ggrwbnNgmqkNtpRfcMRqLel', 1, '127.0.0.1', 'Symfony', 'YTo0OntzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NjoiX3Rva2VuIjtzOjQwOiJaTlZ3WVQzbzZjbkRBRHdkRDlUd25heVNQVnhMMmVCcnROdUFlSVlvIjtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czo2MjoiaHR0cDovL2xvY2FsaG9zdC9kYXNoYm9hcmQvaW52b2ljZXMvY3JlYXRlP2N1c3RvbWVyX29yZGVyX2lkPTEiO3M6NToicm91dGUiO3M6MjE6ImFkbWluLmludm9pY2VzLmNyZWF0ZSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1789644271),
-('GpzJvotoKHj7zNNr2jOVONP3roqHvkMNKfyxs3S8', 1, '127.0.0.1', 'Symfony', 'YTo0OntzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NjoiX3Rva2VuIjtzOjQwOiJOaUIxczFzV2VJckY0amxUcEQ3NEQxWGtsMUtwVHQzWHdFM3Q3ckZQIjtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czo0MjoiaHR0cDovL2xvY2FsaG9zdC9kYXNoYm9hcmQvaW52b2ljZXMvY3JlYXRlIjtzOjU6InJvdXRlIjtzOjIxOiJhZG1pbi5pbnZvaWNlcy5jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1789644522),
-('jKzxJyv2lMY3I8vRBCU7y2rxj30kLwy86FZcMEXd', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiaTI4OG1jYU9NeWNRZW9hYU5OOUtPQ1BleEJ4MjJqYTdaVTRFRlNnMCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NTE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQvbm90aWZpY2F0aW9ucy9jb3VudCI7czo1OiJyb3V0ZSI7czoyNToiYWRtaW4ubm90aWZpY2F0aW9ucy5jb3VudCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MTA6InR5cm8tbG9naW4iO2E6MTp7czo3OiJjYXB0Y2hhIjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1789644771),
-('mpJtfaqzef249GZaMpXrojFCQ18Q2wcOuUANasoo', NULL, '127.0.0.1', '', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoibzlUUklxY25tOUY1Sm8zUUxyZ29yUEJjaVV5V0ptdENMaWNCTm4yRSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQvaW52b2ljZXMvY3JlYXRlIjtzOjU6InJvdXRlIjtzOjIxOiJhZG1pbi5pbnZvaWNlcy5jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1789644081),
-('tGuSiJPHQvRHC96Tq4z1UewxFeE9PZaJtfiUczKm', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicmh5MmRGM0F1R0lwM1BkcnVJUXhyVE5kQ0NKQkc4elk5QzZBTFZvRCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQvaW52b2ljZXMvY3JlYXRlIjtzOjU6InJvdXRlIjtzOjIxOiJhZG1pbi5pbnZvaWNlcy5jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1789643871),
-('uyZ54D760nVY8Sm6fpo3gQq0MZUGXtIWNs0vyGlj', 1, '127.0.0.1', 'Symfony', 'YTo0OntzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NjoiX3Rva2VuIjtzOjQwOiJUSHZwbHRXSGhDRmNiNDI5dUVSWjZkZXFScGFzdkdoRGRGMDJVcGkyIjtzOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czo0MjoiaHR0cDovL2xvY2FsaG9zdC9kYXNoYm9hcmQvaW52b2ljZXMvY3JlYXRlIjtzOjU6InJvdXRlIjtzOjIxOiJhZG1pbi5pbnZvaWNlcy5jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1789644260);
+('9FPjGbEvMF43PlEaAqnRLwdIrPYsjFe1y9gFbz2r', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiQ0dUZFNuek92TG5zak94bTVtVEJKalFCOFc0WmExTW5wVEZXUlRxWCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NTE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQvbm90aWZpY2F0aW9ucy9jb3VudCI7czo1OiJyb3V0ZSI7czoyNToiYWRtaW4ubm90aWZpY2F0aW9ucy5jb3VudCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MTA6InR5cm8tbG9naW4iO2E6MTp7czo3OiJjYXB0Y2hhIjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1789807376);
 
 -- --------------------------------------------------------
 
@@ -759,7 +756,9 @@ INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES
 (5, 'enable_registration', '0', '2026-09-15 22:57:12', '2026-09-15 22:57:12'),
 (6, 'maintenance_mode', '0', '2026-09-15 22:57:12', '2026-09-15 22:57:12'),
 (7, 'app_logo', 'uploads/settings/cOciXRyulg5nP4Ih3OSiLtNQOfVzuAg4VfqagJwz.png', '2026-09-15 22:57:12', '2026-09-15 22:57:12'),
-(8, 'app_favicon', 'uploads/settings/Q6CPmXKoMgDT2UKJUuJikEuIu06FpQTRDrnNgcbO.png', '2026-09-15 22:57:12', '2026-09-15 22:57:12');
+(8, 'app_favicon', 'uploads/settings/Q6CPmXKoMgDT2UKJUuJikEuIu06FpQTRDrnNgcbO.png', '2026-09-15 22:57:12', '2026-09-15 22:57:12'),
+(9, 'pdf_invoice_bg', 'uploads/settings/Ezd1KsHuJNVLo65fVydcfRvAd37Gcyav4YPBwNeW.jpg', '2026-09-19 00:57:26', '2026-09-19 01:01:31'),
+(10, 'pdf_report_bg', 'assets/images/inoodex_invoice.jpg', '2026-09-19 00:57:26', '2026-09-19 00:57:26');
 
 -- --------------------------------------------------------
 
@@ -803,7 +802,7 @@ CREATE TABLE `suppliers` (
 --
 
 INSERT INTO `suppliers` (`id`, `name`, `location`, `contact_person`, `phone`, `email`, `created_at`, `updated_at`) VALUES
-(1, 'Esteban Heaney', 'Vetus uter', 'Cook Islands', '457-771-6965', 'your.email+fakedata88434@gmail.com', '2026-09-17 04:50:53', '2026-09-17 04:50:53');
+(1, 'Apex Knit Composite Ltd', 'Gazipur Industrial Area, Dhaka, Bangladesh', 'Rafiqul Islam', '457-771-6965', 'rafiq@apexknit.com', '2026-09-17 04:50:53', '2026-09-19 01:38:03');
 
 -- --------------------------------------------------------
 
@@ -853,7 +852,19 @@ INSERT INTO `tyro_audit_logs` (`id`, `user_id`, `event`, `auditable_type`, `audi
 (7, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-17 11:23:49'),
 (8, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-17 11:24:20'),
 (9, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-17 11:24:30'),
-(10, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-17 11:28:42');
+(10, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-17 11:28:42'),
+(11, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": false, \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36\"}', '2026-09-19 05:24:28'),
+(12, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-19 05:39:41'),
+(13, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-19 05:51:48'),
+(14, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-19 05:51:53'),
+(15, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-19 06:42:48'),
+(16, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-19 06:50:23'),
+(17, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-19 06:50:31'),
+(18, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-19 06:50:39'),
+(19, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-19 06:57:26'),
+(20, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-19 06:58:34'),
+(21, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-19 06:58:45'),
+(22, 1, 'user.login', 'App\\Models\\User', 1, NULL, '{\"email\": \"hello@inoodex.com\"}', '{\"ip\": \"127.0.0.1\", \"is_console\": true, \"user_agent\": \"Symfony\"}', '2026-09-19 06:59:56');
 
 -- --------------------------------------------------------
 
@@ -1353,7 +1364,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `customer_orders`
 --
 ALTER TABLE `customer_orders`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `expenses`
@@ -1365,13 +1376,13 @@ ALTER TABLE `expenses`
 -- AUTO_INCREMENT for table `factory_followups`
 --
 ALTER TABLE `factory_followups`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `factory_orders`
 --
 ALTER TABLE `factory_orders`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1473,7 +1484,7 @@ ALTER TABLE `salaries`
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `social_accounts`
@@ -1497,7 +1508,7 @@ ALTER TABLE `taxes`
 -- AUTO_INCREMENT for table `tyro_audit_logs`
 --
 ALTER TABLE `tyro_audit_logs`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tyro_media`

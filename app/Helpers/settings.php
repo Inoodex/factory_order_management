@@ -11,6 +11,40 @@ if (!function_exists('get_setting')) {
     }
 }
 
+if (!function_exists('currency_symbol')) {
+    /**
+     * Get configured global currency symbol (e.g. $, BDT, €, £)
+     */
+    function currency_symbol(string $default = '$'): string
+    {
+        return get_setting('currency_symbol', $default) ?: $default;
+    }
+}
+
+if (!function_exists('currency_code')) {
+    /**
+     * Get configured global currency code (e.g. USD, EUR, BDT)
+     */
+    function currency_code(string $default = 'USD'): string
+    {
+        return get_setting('currency_code', $default) ?: $default;
+    }
+}
+
+if (!function_exists('format_currency')) {
+    /**
+     * Format an amount with currency symbol or code
+     */
+    function format_currency($amount, bool $showSymbol = true, int $decimals = 2): string
+    {
+        $formatted = number_format((float) $amount, $decimals);
+        if ($showSymbol) {
+            return currency_symbol() . ' ' . $formatted;
+        }
+        return $formatted;
+    }
+}
+
 if (!function_exists('get_pdf_bg_path')) {
     /**
      * Get the absolute normalized file path for PDF background image.

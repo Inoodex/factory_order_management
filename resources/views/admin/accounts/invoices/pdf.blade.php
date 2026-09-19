@@ -124,6 +124,9 @@
 </head>
 @php
     $bgSrc = get_pdf_bg_path('invoice');
+    $currency = currency_symbol('$');
+    $totalPaid = $invoice->payments ? $invoice->payments->where('payment_status', 'completed')->sum('amount') : 0;
+    $totalDue = max(0, $invoice->total_amount - $totalPaid);
 @endphp
 
 <body>
@@ -141,8 +144,13 @@
                             <th colspan="2">Invoice To,</th>
                         </tr>
                         <tr>
-                            <td>{{ $invoice->customerOrder?->customer?->name ?? 'Direct Customer' }}</td>
+                            <td><strong>{{ $invoice->customerOrder?->customer?->name ?? 'Direct Customer' }}</strong></td>
                         </tr>
+                        @if($invoice->customerOrder?->customer?->company_name)
+                        <tr>
+                            <td>{{ $invoice->customerOrder->customer->company_name }}</td>
+                        </tr>
+                        @endif
                         @if($invoice->customerOrder?->customer?->phone)
                         <tr>
                             <td>{{ $invoice->customerOrder->customer->phone }}</td>
@@ -155,7 +163,6 @@
                             style="display: inline-block; background-color: #263a79; color: white; padding: 10px 10px; line-height: 1.2; margin-bottom: 10px;">Invoice
                             No:
                             {{ $invoice->invoice_number }}</strong></p>
-                    <!-- <br/> -->
                     <p style="margin: 10px 0;"><strong>Date:</strong>
                         {{ optional($invoice->date)->format('Y-m-d') }}</p>
                 </td>
@@ -167,10 +174,10 @@
             <thead>
                 <tr>
                     <th style="width: 8%; ">SL NO.</th>
-                    <th style="width: 47%;" class="text-left">PURPOSE</th>
-                    <th style="width: 15%;">FEE</th>
+                    <th style="width: 47%;" class="text-left">DESCRIPTION</th>
+                    <th style="width: 15%;">PRICE ({{ $currency }})</th>
                     <th style="width: 12%;">QTY</th>
-                    <th style="width: 18%;">TOTAL</th>
+                    <th style="width: 18%;">TOTAL ({{ $currency }})</th>
                 </tr>
             </thead>
             <tbody>
@@ -179,7 +186,7 @@
                         <td class="table-shade">{{ $loop->index + 1 }}</td>
                         <td class="text-left">{{ $item->description }}</td>
                         <td class="table-shade">{{ number_format($item->unit_price, 2) }}</td>
-                        <td> - </td>
+                        <td>{{ $item->quantity }}</td>
                         <td class="table-shade">{{ number_format($item->total, 2) }}</td>
                     </tr>
                 @endforeach
@@ -191,11 +198,11 @@
                 </tr>
                 <tr class="summary-row">
                     <td colspan="4" class="summary-label" style="text-align: right;">TOTAL PAID:</td>
-                    <td class="table-shade">{{ number_format($invoice->paid ?? 0, 2) }}</td>
+                    <td class="table-shade">{{ number_format($totalPaid, 2) }}</td>
                 </tr>
                 <tr class="summary-row">
                     <td colspan="4" class="summary-label" style="text-align: right;">TOTAL DUE:</td>
-                    <td class="table-shade">{{ number_format($invoice->total_amount - ($invoice->paid ?? 0), 2) }}</td>
+                    <td class="table-shade">{{ number_format($totalDue, 2) }}</td>
                 </tr>
             </tbody>
         </table>

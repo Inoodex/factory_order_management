@@ -161,6 +161,7 @@
 </head>
 @php
     $bgSrc = get_pdf_bg_path('invoice');
+    $currency = currency_symbol('$');
     $invoice = $payment->invoice;
     $invoiceTotal = $invoice ? $invoice->total_amount : $payment->amount;
     $invoiceNo = $invoice?->invoice_number ?? ($payment->receipt_number ?: '#' . $payment->id);
@@ -204,10 +205,10 @@
             <thead>
                 <tr>
                     <th style="width: 8%;">SL NO.</th>
-                    <th style="width: 47%;" class="text-left">PURPOSE</th>
-                    <th style="width: 15%;">FEE</th>
+                    <th style="width: 47%;" class="text-left">DESCRIPTION</th>
+                    <th style="width: 15%;">PRICE ({{ $currency }})</th>
                     <th style="width: 12%;">QTY</th>
-                    <th style="width: 18%;">TOTAL</th>
+                    <th style="width: 18%;">TOTAL ({{ $currency }})</th>
                 </tr>
             </thead>
             <tbody>

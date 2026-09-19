@@ -187,12 +187,12 @@
             <thead>
                 <tr>
                     <th style="width: 10%;">DATE</th>
-                    <th style="width: 14%;">REFERENCE</th>
+                    <th style="width: 15%;">REFERENCE</th>
                     <th style="width: 14%;">PERIOD</th>
-                    <th style="width: 25%;" class="text-left">STUDENT / APPLICATION</th>
+                    <th style="width: 25%;" class="text-left">NOTE / DESCRIPTION</th>
                     <th style="width: 12%;">POSTED BY</th>
                     <th style="width: 10%;">STATUS</th>
-                    <th style="width: 15%;">AMOUNT</th>
+                    <th style="width: 14%;">AMOUNT</th>
                 </tr>
             </thead>
             <tbody>
@@ -202,13 +202,7 @@
                         <td class="{{ $loop->odd ? 'table-shade' : '' }}">{{ $entry->reference_number }}</td>
                         <td class="{{ $loop->odd ? 'table-shade' : '' }}">{{ $entry->period->name ?? '-' }}</td>
                         <td class="text-left {{ $loop->odd ? 'table-shade' : '' }}">
-                            @if ($entry->application)
-                                {{ $entry->application->student->first_name }} {{ $entry->application->student->last_name }}
-                                <br><span
-                                    style="font-size: 8px; color: #666;">({{ $entry->application->application_id }})</span>
-                            @else
-                                General Entry
-                            @endif
+                            {{ $entry->note ?: 'General Entry' }}
                         </td>
                         <td class="{{ $loop->odd ? 'table-shade' : '' }}">{{ $entry->creator->name ?? '-' }}</td>
                         <td class="{{ $loop->odd ? 'table-shade' : '' }}">{{ ucfirst($entry->status) }}</td>

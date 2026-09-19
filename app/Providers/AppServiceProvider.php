@@ -50,5 +50,11 @@ class AppServiceProvider extends ServiceProvider
             \HasinHayder\TyroDashboard\Http\Controllers\UserController::class,
             \App\Http\Controllers\Admin\UserController::class
         );
+
+        // Override the vendor RoleController with our local one
+        $this->app->bind(
+            \HasinHayder\TyroDashboard\Http\Controllers\RoleController::class,
+            \App\Http\Controllers\Admin\RoleController::class
+        );
     }
 }

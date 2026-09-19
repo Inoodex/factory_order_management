@@ -51,9 +51,6 @@
             <input type="text" name="reference_number" value="{{ request('reference_number') }}"
                 placeholder="Reference No..." class="form-input flex-1 min-w-[150px]">
 
-            <input type="text" name="student_name" value="{{ request('student_name') }}" placeholder="Student Name..."
-                class="form-input flex-1 min-w-[150px]">
-
             <select name="period_id" class="form-select flex-1 min-w-[150px]">
                 <option value="">All Periods</option>
                 @foreach ($periods as $period)
@@ -83,7 +80,7 @@
                     <tr>
                         <th>Transaction Date</th>
                         <th>Reference</th>
-                        <th>Student</th>
+                        <th>Note / Description</th>
                         <th>Period</th>
                         <th>Voucher Amount</th>
                         <th>Posted By</th>
@@ -98,18 +95,8 @@
                                 <a
                                     href="{{ route('admin.journal-entries.show', $entry) }}">{{ $entry->reference_number }}</a>
                             </td>
-                            <td class="font-xs">
-                                @if ($entry->application)
-                                    <div class="flex flex-col">
-                                        <span
-                                            class="font-bold text-black dark:text-white">{{ $entry->application->student->first_name }}
-                                            {{ $entry->application->student->last_name }}</span>
-                                        <span
-                                            class="text-[10px] text-gray-500 uppercase">{{ $entry->application->application_id }}</span>
-                                    </div>
-                                @else
-                                    <span class="text-gray-400 italic text-[11px]">General Entry</span>
-                                @endif
+                            <td class="font-xs max-w-xs truncate">
+                                <span class="text-xs text-gray-700 dark:text-gray-300">{{ $entry->note ?: 'General Entry' }}</span>
                             </td>
                             <td>
                                 <span

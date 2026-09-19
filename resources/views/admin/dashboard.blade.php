@@ -98,6 +98,7 @@
                 <div>
                     <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">Gross Order Value</span>
                     <div class="mt-2 flex items-baseline gap-1">
+                        <span class="text-lg font-bold text-success font-mono">{{ currency_symbol() }}</span>
                         <h3 class="text-2xl font-black text-success">{{ number_format($stats['total_order_value'] ?? 0, 2) }}</h3>
                     </div>
                 </div>
@@ -112,8 +113,8 @@
             <div class="mt-2 h-10 w-full" id="sparklineValues"></div>
             <div class="flex items-center justify-between border-t border-gray-100 pt-2 text-xs dark:border-gray-800">
                 <span class="text-gray-500">Avg. Unit Price:</span>
-                <span class="font-bold text-success">
-                    {{ ($stats['total_order_qty'] ?? 0) > 0 ? number_format(($stats['total_order_value'] ?? 0) / $stats['total_order_qty'], 2) : '0.00' }}
+                <span class="font-bold text-success font-mono">
+                    {{ currency_symbol() }} {{ ($stats['total_order_qty'] ?? 0) > 0 ? number_format(($stats['total_order_value'] ?? 0) / $stats['total_order_qty'], 2) : '0.00' }}
                 </span>
             </div>
         </div>

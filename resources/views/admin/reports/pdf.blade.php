@@ -222,24 +222,30 @@
             </tbody>
         </table>
 
-        <div class="section-title">Income Breakdown (Student Payments)</div>
+        <div class="section-title">Income Breakdown (Order Payments)</div>
         <table class="items-table" style="margin-top: 8px;">
             <thead>
                 <tr>
                     <th style="width: 16%;">DATE</th>
-                    <th style="width: 40%;" class="text-left">STUDENT</th>
+                    <th style="width: 40%;" class="text-left">CUSTOMER / ORDER</th>
                     <th style="width: 24%;">RECEIPT NO.</th>
                     <th style="width: 20%;">AMOUNT</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse($payments as $payment)
+                    @php
+                        $order = $payment->customerOrder ?? ($payment->invoice?->customerOrder);
+                    @endphp
                     <tr>
                         <td class="{{ $loop->odd ? 'table-shade' : '' }}">
                             {{ \Carbon\Carbon::parse($payment->payment_date)->format('d M, Y') }}
                         </td>
-                        <td class="text-left {{ $loop->odd ? 'table-shade' : '' }}" style="text-transform: uppercase;">
-                            {{ $payment->student->first_name ?? 'N/A' }} {{ $payment->student->last_name ?? '' }}
+                        <td class="text-left {{ $loop->odd ? 'table-shade' : '' }}">
+                            <strong>{{ $order?->customer?->name ?? 'Direct Payment' }}</strong>
+                            @if($order)
+                                <br><span style="font-size: 8px; color: #666;">(Order: {{ $order->order_no }} | Style: {{ $order->style_no }})</span>
+                            @endif
                         </td>
                         <td class="{{ $loop->odd ? 'table-shade' : '' }}">{{ $payment->receipt_number ?? '-' }}</td>
                         <td class="text-right {{ $loop->odd ? 'table-shade' : '' }}">

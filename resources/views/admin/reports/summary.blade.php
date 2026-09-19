@@ -202,7 +202,7 @@
                         <thead>
                             <tr class="border-b">
                                 <th class="py-2 text-left">Date</th>
-                                <th class="py-2 text-left">Student</th>
+                                <th class="py-2 text-left">Customer / Order</th>
                                 <th class="py-2 text-left">Receipt</th>
                                 <th class="py-2 text-right">Amount</th>
                             </tr>
@@ -210,13 +210,20 @@
                         <tbody>
                             @forelse($payments->take(10) as $payment)
                                 <tr class="border-b">
-                                    <td class="py-2">{{ $payment->payment_date->format('d M, Y') }}</td>
-                                    <td class="py-2 uppercase">
-                                        {{ $payment->student->first_name ?? 'N/A' }}
-                                        {{ $payment->student->last_name ?? '' }}
+                                    <td class="py-2">{{ $payment->payment_date ? $payment->payment_date->format('d M, Y') : '-' }}</td>
+                                    <td class="py-2">
+                                        @php
+                                            $order = $payment->customerOrder ?? ($payment->invoice?->customerOrder);
+                                        @endphp
+                                        <div class="font-bold text-dark dark:text-white-light">
+                                            {{ $order?->customer?->name ?? 'Direct Payment' }}
+                                        </div>
+                                        @if($order)
+                                            <span class="text-[10px] text-white-dark block">Order: {{ $order->order_no }} (Style: {{ $order->style_no }})</span>
+                                        @endif
                                     </td>
-                                    <td class="py-2">{{ $payment->receipt_number }}</td>
-                                    <td class="py-2 text-right font-bold text-success">
+                                    <td class="py-2 font-mono text-xs">{{ $payment->receipt_number }}</td>
+                                    <td class="py-2 text-right font-bold text-success font-mono">
                                         {{ number_format($payment->amount, 2) }}
                                     </td>
                                 </tr>

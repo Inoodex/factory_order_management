@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Student Invoices')
+@section('title', 'Order Invoices')
 
 @section('content')
     <div class="flex flex-wrap items-center justify-between gap-4">
@@ -21,7 +21,7 @@
                 <div style="display: flex; align-items: center; gap: 8px; width: 100%; flex-wrap: wrap;">
                     <div class="relative" style="flex: 2; min-width: 200px;">
                         <input type="text" name="search" value="{{ request('search') }}"
-                            placeholder="Search invoice #, student, university..." class="form-input ltr:pr-11 rtl:pl-11" style="width: 100%;" />
+                            placeholder="Search invoice #, customer / buyer, order #, style #..." class="form-input ltr:pr-11 rtl:pl-11" style="width: 100%;" />
                         <button type="submit"
                             class="absolute inset-y-0 flex items-center hover:text-primary ltr:right-4 rtl:left-4">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,8 +58,8 @@
                     <tr>
                         <th>Issue Date</th>
                         <th>Invoice Number</th>
-                        <th>Student Name</th>
-                        <th>University</th>
+                        <th>Buyer / Customer</th>
+                        <th>Order / Style</th>
                         <th>Total Amount</th>
                         <!-- <th>Billing Status</th> -->
                         <th class="text-center">Action</th>
@@ -73,10 +73,21 @@
                                 <a href="{{ route('admin.invoices.show', $invoice) }}">{{ $invoice->invoice_number }}</a>
                             </td>
                             <td class="font-semibold text-sm">
-                                {{ $invoice->student->first_name }} {{ $invoice->student->last_name }}
-                                <span class="block text-[10px] text-white-dark">{{ $invoice->student->id_number }}</span>
+                                {{ $invoice->customerOrder?->customer?->name ?? 'Direct Invoice' }}
+                                @if($invoice->customerOrder?->customer?->company_name)
+                                    <span class="block text-[10px] text-white-dark">{{ $invoice->customerOrder->customer->company_name }}</span>
+                                @endif
                             </td>
-                            <td class="text-xs">{{ $invoice->university->name ?? 'N/A' }}</td>
+                            <td class="text-xs">
+                                @if($invoice->customerOrder)
+                                    <a href="{{ route('admin.customer-orders.show', $invoice->customerOrder) }}" class="font-bold text-primary hover:underline">
+                                        {{ $invoice->customerOrder->order_no }}
+                                    </a>
+                                    <span class="block text-[10px] text-white-dark">Style: {{ $invoice->customerOrder->style_no }}</span>
+                                @else
+                                    <span class="text-gray-400">N/A</span>
+                                @endif
+                            </td>
                             <td class="font-black text-dark dark:text-white-light font-mono">
                                 {{ number_format($invoice->total_amount, 2) }}</td>
                             <!-- <td>
@@ -159,7 +170,7 @@
                                         </svg>
                                     </div>
                                     <p class="text-sm font-semibold tracking-widest uppercase">No Invoices Found</p>
-                                    <p class="text-xs text-white-dark mt-1">Start by billing a student or university.</p>
+                                    <p class="text-xs text-white-dark mt-1">Start by creating an invoice for a customer order.</p>
                                 </div>
                             </td>
                         </tr>

@@ -21,7 +21,7 @@ use App\Http\Controllers\Admin\{
     OrderImportExportController,
     PaymentController,
     ReportController,
-    RoleController as LocalRoleController,
+    RoleController,
     SalaryController,
     SettingController,
     SupplierController
@@ -122,6 +122,8 @@ Route::prefix('dashboard/payments')->name('admin.payments.')->group(function () 
     Route::post('/', [PaymentController::class, 'store'])->name('store')->middleware('can:*accountant');
     Route::get('{payment}/edit', [PaymentController::class, 'edit'])->name('edit')->middleware('can:*accountant');
     Route::get('{payment}/download-invoice', [PaymentController::class, 'downloadInvoice'])->name('download-invoice')->middleware('can:*accountant');
+    Route::get('/get-order-balance', [PaymentController::class, 'getOrderBalance'])->name('get-order-balance');
+    Route::get('/get-order-invoices', [PaymentController::class, 'getOrderInvoices'])->name('get-order-invoices');
     Route::get('/get-application-balance', [PaymentController::class, 'getApplicationBalance'])->name('get-application-balance');
     Route::get('/get-application-invoices', [PaymentController::class, 'getApplicationInvoices'])->name('get-application-invoices');
     Route::put('{payment}', [PaymentController::class, 'update'])->name('update')->middleware('can:*accountant');
@@ -130,13 +132,13 @@ Route::prefix('dashboard/payments')->name('admin.payments.')->group(function () 
 
 // Role Management
 Route::prefix('dashboard/roles')->name('tyro-dashboard.roles.')->group(function () {
-    Route::get('/', [LocalRoleController::class, 'index'])->name('index');
-    Route::get('/create', [LocalRoleController::class, 'create'])->name('create');
-    Route::post('/', [LocalRoleController::class, 'store'])->name('store');
-    Route::get('{id}/edit', [LocalRoleController::class, 'edit'])->name('edit');
-    Route::put('{id}', [LocalRoleController::class, 'update'])->name('update');
-    Route::post('{id}/toggle', [LocalRoleController::class, 'toggleStatus'])->name('toggle');
-    Route::delete('{id}', [LocalRoleController::class, 'destroy'])->name('destroy');
+    Route::get('/', [RoleController::class, 'index'])->name('index');
+    Route::get('/create', [RoleController::class, 'create'])->name('create');
+    Route::post('/', [RoleController::class, 'store'])->name('store');
+    Route::get('{id}/edit', [RoleController::class, 'edit'])->name('edit');
+    Route::put('{id}', [RoleController::class, 'update'])->name('update');
+    Route::post('{id}/toggle', [RoleController::class, 'toggleStatus'])->name('toggle');
+    Route::delete('{id}', [RoleController::class, 'destroy'])->name('destroy');
 });
 
 // Expense Management
